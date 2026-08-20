@@ -1,0 +1,284 @@
+.resume-modal-content {
+  max-width: 900px;
+  background: #0d1322;
+  border: 1px solid var(--border-glow);
+  color: #e2e8f0;
+  padding: 3rem;
+}
+
+.resume-modal-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.modal-cv-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.title-icon {
+  color: var(--secondary);
+}
+
+.resume-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.resume-tab-btn.active {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.action-buttons-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.drive-btn {
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.pdf-viewer-wrapper {
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  background: #000;
+}
+
+.resume-pdf-iframe {
+  border: none;
+  display: block;
+}
+
+.printable-resume {
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.resume-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.resume-logo-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  border: 1.5px solid var(--primary-light);
+}
+
+.resume-name {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.resume-title {
+  font-size: 1.05rem;
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.resume-contact-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.meta-item-group {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.resume-divider {
+  border: none;
+  border-top: 1px solid var(--border-glass);
+  margin: 1.5rem 0;
+}
+
+.resume-sec-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.35rem;
+}
+
+.resume-section {
+  margin-bottom: 1.75rem;
+}
+
+.resume-text {
+  font-size: 0.925rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.resume-exp-item {
+  margin-bottom: 1.25rem;
+}
+
+.exp-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.job-role {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.job-role span {
+  color: var(--secondary);
+}
+
+.job-date {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.job-bullets {
+  list-style-type: square;
+  padding-left: 1.25rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.tech-meta {
+  font-size: 0.825rem;
+  color: var(--text-dim);
+  margin-top: 0.4rem;
+}
+
+.edu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  font-size: 0.875rem;
+}
+
+.cert-list {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .resume-modal-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .resume-modal-content {
+    visibility: visible;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+    background: #fff !important;
+    color: #000 !important;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+  }
+  .printable-resume, .printable-resume * {
+    visibility: visible;
+    color: #111 !important;
+  }
+  .resume-name, .job-role, .resume-sec-title {
+    color: #000 !important;
+  }
+@media (max-width: 768px) {
+  .resume-modal-content {
+    padding: 1.25rem 1rem;
+  }
+  .resume-pdf-iframe {
+    height: 550px;
+  }
+}
+
+@media (max-width: 576px) {
+  .resume-modal-content {
+    padding: 1rem 0.65rem;
+    border-radius: var(--radius-md);
+  }
+  .resume-pdf-iframe {
+    height: 480px;
+  }
+  .modal-cv-title {
+    font-size: 0.9rem;
+  }
+  .drive-btn {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.775rem;
+  }
+}
