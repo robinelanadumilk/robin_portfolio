@@ -28,7 +28,7 @@ const Navbar = ({ activeSection, onOpenResume }) => {
       <div className="container nav-container">
         <a href="#hero" className="brand-logo">
           <div className="logo-icon-img-wrapper">
-            <img src={logoImg} alt="Robin Roy Logo" className="brand-logo-img" />
+            <img src={logoImg} alt="Robin Roy Logo" className="brand-logo-img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
           <span className="brand-name">
             Robin <span className="dot">Roy</span>

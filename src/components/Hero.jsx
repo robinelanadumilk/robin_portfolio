@@ -113,7 +113,7 @@ const Hero = ({ onOpenResume }) => {
         <div className="hero-visual">
           <div className="hero-logo-display glass-panel">
             <div className="logo-glow-ring"></div>
-            <img src={logoImg} alt="Robin Roy Monogram Logo" className="hero-metallic-logo" />
+            <img src={logoImg} alt="Robin Roy Monogram Logo" className="hero-metallic-logo" style={{ maxWidth: '100%', maxHeight: '200px', width: 'auto', height: 'auto', objectFit: 'contain' }} />
           </div>
 
           <div className="code-card glass-panel floating-anim">

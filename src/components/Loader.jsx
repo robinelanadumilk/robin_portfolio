@@ -29,8 +29,8 @@ const Loader = ({ onFinish }) => {
     <div className={`page-loader ${isFading ? 'fade-out' : ''}`}>
       <div className="loader-content">
         <div className="loader-logo-wrapper">
-          <div className="loader-glow-ring" style={{ borderImageSource: `linear-gradient(${progress * 3.6}deg, #06b6d4, #6366f1)` }}></div>
-          <img src={logoImg} alt="Robin Roy Logo" className="loader-logo-img" />
+          <div className="loader-glow-ring"></div>
+          <img src={logoImg} alt="Robin Roy Logo" className="loader-logo-img" style={{ width: '80px', height: '80px', maxWidth: '80px', maxHeight: '80px', borderRadius: '16px', objectFit: 'cover' }} />
         </div>
 
         <div className="loader-brand-title">

@@ -30,7 +30,7 @@ const About = () => {
     { value: "3+ Years", label: "Professional Experience" },
     { value: "6+", label: "Production & Live Projects" },
     { value: "6", label: "Technical Certifications" },
-    { value: "MCA/BCA", label: "Academic Background" }
+    { value: "MCA", label: "Academic Background" }
   ];
 
   return (
