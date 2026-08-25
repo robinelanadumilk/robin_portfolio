@@ -1,124 +1,347 @@
+/* =========================================================
+   3D HOLOGRAPHIC GYROSCOPE LOADER
+   ========================================================= */
+
 .page-loader {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #070b14;
-  z-index: 999999;
+  background-color: #050811;
+  z-index: 9999999;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition: opacity 0.35s ease, visibility 0.35s ease;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s ease;
 }
 
 .page-loader.fade-out {
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
+  transform: scale(1.08) translateZ(100px);
 }
 
-.loader-content {
+/* 3D Cyber Background Grid */
+.loader-cyber-grid {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: 
+    linear-gradient(to right, rgba(99, 102, 241, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+  transform: rotateX(65deg) translateZ(-200px);
+  animation: gridDrift 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridDrift {
+  0% { transform: rotateX(65deg) translateZ(-200px) translateY(0); }
+  100% { transform: rotateX(65deg) translateZ(-200px) translateY(40px); }
+}
+
+.loader-glow-orb {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, rgba(99, 102, 241, 0.15) 45%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  animation: orbPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes orbPulse {
+  0% { transform: scale(0.85); opacity: 0.6; }
+  100% { transform: scale(1.15); opacity: 0.95; }
+}
+
+.loader-3d-wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  max-width: 380px;
+  justify-content: center;
+  z-index: 10;
+  transform-style: preserve-3d;
   width: 90%;
+  max-width: 420px;
 }
 
-.loader-logo-wrapper {
+/* =========================================
+   3D GYROSCOPE RINGS & CORE
+   ========================================= */
+.gyroscope-container {
   position: relative;
-  width: 80px;
-  height: 80px;
-  margin-bottom: 1.25rem;
+  width: 140px;
+  height: 140px;
+  margin-bottom: 2rem;
+  perspective: 800px;
+  transform-style: preserve-3d;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.loader-glow-ring {
+.gyro-ring {
   position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 50%, var(--accent) 100%);
-  filter: blur(8px);
-  opacity: 0.8;
-  animation: pulseGlow 2s infinite alternate;
+  border-radius: 50%;
+  border-style: solid;
+  transform-style: preserve-3d;
+  box-shadow: 0 0 15px currentColor;
 }
 
-@keyframes pulseGlow {
-  0% { opacity: 0.5; filter: blur(6px); }
-  100% { opacity: 1; filter: blur(12px); }
+.gyro-ring-outer {
+  width: 140px;
+  height: 140px;
+  border-width: 2px;
+  border-color: rgba(6, 182, 212, 0.85);
+  color: rgba(6, 182, 212, 0.4);
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  animation: spinRingOuter 4s linear infinite;
 }
 
-.loader-logo-img {
-  position: relative;
-  width: 80px;
-  height: 80px;
-  border-radius: 16px;
-  object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-  z-index: 2;
+.gyro-ring-middle {
+  width: 115px;
+  height: 115px;
+  border-width: 2px;
+  border-color: rgba(236, 72, 153, 0.85);
+  color: rgba(236, 72, 153, 0.4);
+  border-left-color: transparent;
+  border-right-color: transparent;
+  animation: spinRingMiddle 3s linear infinite reverse;
 }
 
-.loader-brand-title {
-  font-size: 1.65rem;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.2rem;
+.gyro-ring-inner {
+  width: 90px;
+  height: 90px;
+  border-width: 2px;
+  border-color: rgba(99, 102, 241, 0.9);
+  color: rgba(99, 102, 241, 0.5);
+  border-top-color: transparent;
+  animation: spinRingInner 2.2s linear infinite;
 }
 
-.loader-sub {
-  font-size: 0.825rem;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  margin-bottom: 1.75rem;
+@keyframes spinRingOuter {
+  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  100% { transform: rotateX(360deg) rotateY(180deg) rotateZ(360deg); }
 }
 
-.loader-progress-box {
+@keyframes spinRingMiddle {
+  0% { transform: rotateX(45deg) rotateY(0deg) rotateZ(0deg); }
+  100% { transform: rotateX(45deg) rotateY(360deg) rotateZ(360deg); }
+}
+
+@keyframes spinRingInner {
+  0% { transform: rotateX(70deg) rotateY(0deg) rotateZ(0deg); }
+  100% { transform: rotateX(70deg) rotateY(360deg) rotateZ(-360deg); }
+}
+
+/* Central 3D Core Cube */
+.core-3d {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  perspective: 500px;
+  transform-style: preserve-3d;
+}
+
+.core-cube {
   width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateCubeCore 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes rotateCubeCore {
+  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  50% { transform: rotateX(180deg) rotateY(270deg) rotateZ(90deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}
+
+.cube-face {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1.5px solid rgba(6, 182, 212, 0.7);
+  box-shadow: inset 0 0 12px rgba(99, 102, 241, 0.6), 0 0 15px rgba(6, 182, 212, 0.4);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  margin-bottom: 0.5rem;
+  justify-content: center;
+  border-radius: 6px;
 }
 
-.loader-bar-bg {
-  flex-grow: 1;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-full);
-  overflow: hidden;
+.cube-front  { transform: rotateY(0deg) translateZ(25px); }
+.cube-back   { transform: rotateY(180deg) translateZ(25px); }
+.cube-right  { transform: rotateY(90deg) translateZ(25px); }
+.cube-left   { transform: rotateY(-90deg) translateZ(25px); }
+.cube-top    { transform: rotateX(90deg) translateZ(25px); }
+.cube-bottom { transform: rotateX(-90deg) translateZ(25px); }
+
+.core-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  object-fit: cover;
 }
 
-.loader-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
-  border-radius: var(--radius-full);
-  transition: width 0.08s linear;
-  box-shadow: 0 0 10px var(--secondary);
+/* Orbiting Nodes */
+.orbit-track {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  transform-style: preserve-3d;
+  animation: spinTrack 5s linear infinite;
 }
 
-.loader-percent {
-  font-family: var(--font-mono);
+@keyframes spinTrack {
+  from { transform: rotateZ(0deg) rotateX(65deg); }
+  to { transform: rotateZ(360deg) rotateX(65deg); }
+}
+
+.orbit-node {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 10px #38bdf8, 0 0 20px #06b6d4;
+}
+
+.node-1 { top: 0; left: 50%; transform: translate(-50%, -50%); }
+.node-2 { bottom: 0; left: 50%; transform: translate(-50%, 50%); background: #ec4899; box-shadow: 0 0 10px #ec4899; }
+.node-3 { top: 50%; right: 0; transform: translate(50%, -50%); background: #818cf8; box-shadow: 0 0 10px #818cf8; }
+
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
+.loader-brand-box {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.loader-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 4px 20px rgba(99, 102, 241, 0.6);
+}
+
+.loader-subtitle {
   font-size: 0.85rem;
   color: var(--secondary);
-  font-weight: 700;
-  min-width: 40px;
-  text-align: right;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
 }
 
-.loader-status {
-  font-size: 0.75rem;
+/* =========================================
+   3D CIRCULAR HUD PROGRESS
+   ========================================= */
+.loader-hud-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.circular-progress-wrap {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.5));
+}
+
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+.progress-value-center {
+  position: absolute;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.percent-num {
   font-family: var(--font-mono);
-  color: var(--text-dim);
-  height: 1.2rem;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(6, 182, 212, 0.8);
+}
+
+.percent-symbol {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--secondary);
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+/* Terminal Status Bar */
+.loader-status-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status-terminal-line {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+  min-height: 1.2rem;
+}
+
+.terminal-prompt {
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+.terminal-cursor {
+  color: var(--primary-light);
+  animation: blink 0.8s infinite;
+}
+
+.loader-linear-bar-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.loader-linear-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #06b6d4 0%, #6366f1 50%, #ec4899 100%);
+  border-radius: 9999px;
+  transition: width 0.08s linear;
+  box-shadow: 0 0 12px #06b6d4;
 }

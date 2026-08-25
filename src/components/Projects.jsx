@@ -1,7 +1,62 @@
 import React, { useState } from 'react';
-import { FolderGit2, ExternalLink, Sparkles, Filter, X, CheckCircle2 } from 'lucide-react';
+import { FolderGit2, ExternalLink, Sparkles, Filter, X, CheckCircle2, Layers, ArrowUpRight } from 'lucide-react';
 import elanaduImg from '../assets/elanadu_milk_project.jpg';
+import use3DTilt from '../utils/use3DTilt';
 import './Projects.css';
+
+// Subcomponent with individual 3D tilt
+const ProjectCard = ({ project, onSelect }) => {
+  const cardRef = use3DTilt({ max: 12, perspective: 1100, scale: 1.025 });
+
+  return (
+    <div ref={cardRef} className="project-card glass-panel card-3d">
+      <div className="project-image-wrapper">
+        <img src={project.image} alt={project.title} className="project-image" />
+        <div className="project-overlay">
+          <button
+            className="btn btn-primary preview-btn btn-3d"
+            onClick={() => onSelect(project)}
+          >
+            Explore 3D Details <Sparkles size={16} />
+          </button>
+        </div>
+        <span className="project-tag tag-3d">{project.tag}</span>
+      </div>
+
+      <div className="project-info">
+        <div className="project-cat-row">
+          <span className="project-category">{project.category}</span>
+        </div>
+        
+        <h3 className="project-title">{project.title}</h3>
+        <p className="project-desc">{project.description}</p>
+
+        <div className="tech-tags">
+          {project.techStack.slice(0, 4).map((tech, idx) => (
+            <span key={idx} className="tech-pill tech-pill-3d">{tech}</span>
+          ))}
+          {project.techStack.length > 4 && (
+            <span className="tech-pill more tech-pill-3d">+{project.techStack.length - 4}</span>
+          )}
+        </div>
+
+        <div className="project-footer">
+          <button
+            className="details-link-3d"
+            onClick={() => onSelect(project)}
+          >
+            Full Architecture Spec &rarr;
+          </button>
+          <div className="external-links">
+            <a href={project.demoUrl} target="_blank" rel="noreferrer" className="icon-link-3d" aria-label="Live Demo" title="Open Live Project">
+              <ArrowUpRight size={18} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -120,18 +175,18 @@ const Projects = () => {
     : projectsData.filter(p => p.category === activeFilter);
 
   return (
-    <section id="projects" className="section projects-section">
+    <section id="projects" className="section projects-section perspective-viewport">
       <div className="container">
         <div className="section-header">
           <div className="section-subtitle">
-            <FolderGit2 size={14} /> My Portfolio
+            <FolderGit2 size={14} /> My Portfolio Showcase
           </div>
           <h2 className="section-title">
             Featured <span className="gradient-text">Projects & Applications</span>
           </h2>
         </div>
 
-        {/* Filter Controls */}
+        {/* Filter Controls with 3D Pills */}
         <div className="filter-wrapper">
           <div className="filter-label">
             <Filter size={16} /> Filter by Category:
@@ -140,7 +195,7 @@ const Projects = () => {
             {categories.map((cat) => (
               <button
                 key={cat}
-                className={`filter-btn ${activeFilter === cat ? 'active' : ''}`}
+                className={`filter-btn filter-btn-3d ${activeFilter === cat ? 'active' : ''}`}
                 onClick={() => setActiveFilter(cat)}
               >
                 {cat}
@@ -149,79 +204,43 @@ const Projects = () => {
           </div>
         </div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid with 3D Perspective */}
         <div className="projects-grid">
           {filteredProjects.map((project) => (
-            <div key={project.id} className="project-card glass-panel">
-              <div className="project-image-wrapper">
-                <img src={project.image} alt={project.title} className="project-image" />
-                <div className="project-overlay">
-                  <button
-                    className="btn btn-primary preview-btn"
-                    onClick={() => setSelectedProject(project)}
-                  >
-                    View Details <Sparkles size={16} />
-                  </button>
-                </div>
-                <span className="project-tag">{project.tag}</span>
-              </div>
-
-              <div className="project-info">
-                <span className="project-category">{project.category}</span>
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-desc">{project.description}</p>
-
-                <div className="tech-tags">
-                  {project.techStack.slice(0, 4).map((tech, idx) => (
-                    <span key={idx} className="tech-pill">{tech}</span>
-                  ))}
-                  {project.techStack.length > 4 && (
-                    <span className="tech-pill more">+{project.techStack.length - 4}</span>
-                  )}
-                </div>
-
-                <div className="project-footer">
-                  <button
-                    className="details-link"
-                    onClick={() => setSelectedProject(project)}
-                  >
-                    Read Details &rarr;
-                  </button>
-                  <div className="external-links">
-                    <a href={project.demoUrl} target="_blank" rel="noreferrer" className="icon-link" aria-label="Live Demo">
-                      <ExternalLink size={18} />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onSelect={setSelectedProject}
+            />
           ))}
         </div>
 
-        {/* Modal Popup */}
+        {/* 3D Modal Popup */}
         {selectedProject && (
-          <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-              <button className="close-btn" onClick={() => setSelectedProject(null)} aria-label="Close">
+          <div className="modal-overlay modal-overlay-3d" onClick={() => setSelectedProject(null)}>
+            <div className="modal-content modal-content-3d project-modal-3d" onClick={(e) => e.stopPropagation()}>
+              <button className="close-btn close-btn-3d" onClick={() => setSelectedProject(null)} aria-label="Close">
                 <X size={20} />
               </button>
 
               <div className="modal-header">
-                <span className="modal-category">{selectedProject.category}</span>
+                <span className="modal-category category-pill-3d">{selectedProject.category}</span>
                 <h2 className="modal-title">{selectedProject.title}</h2>
               </div>
 
-              <img src={selectedProject.image} alt={selectedProject.title} className="modal-image" />
+              <div className="modal-image-wrapper-3d">
+                <img src={selectedProject.image} alt={selectedProject.title} className="modal-image" />
+              </div>
 
               <div className="modal-body">
-                <h4 className="modal-subheading">Overview</h4>
+                <h4 className="modal-subheading">Architecture & System Overview</h4>
                 <p className="modal-text">{selectedProject.longDescription}</p>
 
                 <h4 className="modal-subheading">Key Technical Features</h4>
                 <ul className="modal-features">
                   {selectedProject.features.map((feat, i) => (
-                    <li key={i} className="feature-item">
-                      <CheckCircle2 size={16} className="feat-check" />
+                    <li key={i} className="feature-item feature-item-3d">
+                      <CheckCircle2 size={17} className="feat-check pulse-anim" />
                       <span>{feat}</span>
                     </li>
                   ))}
@@ -230,13 +249,13 @@ const Projects = () => {
                 <h4 className="modal-subheading">Technologies Used</h4>
                 <div className="modal-tech-pills">
                   {selectedProject.techStack.map((tech, i) => (
-                    <span key={i} className="tech-pill modal-pill">{tech}</span>
+                    <span key={i} className="tech-pill tech-pill-3d modal-pill">{tech}</span>
                   ))}
                 </div>
 
                 <div className="modal-actions">
-                  <a href={selectedProject.demoUrl} target="_blank" rel="noreferrer" className="btn btn-primary">
-                    <ExternalLink size={16} /> Live Demo Preview
+                  <a href={selectedProject.demoUrl} target="_blank" rel="noreferrer" className="btn btn-primary btn-3d">
+                    <ExternalLink size={16} /> Launch Live Production Preview
                   </a>
                 </div>
               </div>

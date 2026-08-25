@@ -1,5 +1,6 @@
-import React from 'react';
-import { X, ExternalLink, FileText, Download } from 'lucide-react';
+import React, { useRef } from 'react';
+import { X, FileText, Download, Sparkles, ExternalLink } from 'lucide-react';
+import use3DTilt from '../utils/use3DTilt';
 import './ResumeModal.css';
 
 const ResumeModal = ({ isOpen, onClose }) => {
@@ -9,12 +10,16 @@ const ResumeModal = ({ isOpen, onClose }) => {
   const previewUrl = "https://drive.google.com/file/d/1mcMgupcAwyecDaLfgIkWa4MlFGbVCM6E/preview";
 
   return (
-    <div className="modal-overlay resume-modal-overlay" onClick={onClose}>
-      <div className="modal-content resume-modal-content" onClick={(e) => e.stopPropagation()}>
+    <div className="modal-overlay modal-overlay-3d resume-modal-overlay" onClick={onClose}>
+      <div 
+        className="modal-content modal-content-3d resume-modal-content" 
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="resume-modal-actions no-print">
           <div className="modal-header-info">
             <h3 className="modal-cv-title">
-              <FileText size={18} className="title-icon" /> Robin Roy — Official Curriculum Vitae
+              <Sparkles size={18} className="title-icon pulse-anim" /> 
+              <span>Robin Roy — Official Curriculum Vitae</span>
             </h3>
           </div>
 
@@ -23,18 +28,18 @@ const ResumeModal = ({ isOpen, onClose }) => {
               href={driveUrl}
               target="_blank"
               rel="noreferrer"
-              className="btn btn-primary drive-btn"
+              className="btn btn-primary btn-3d drive-btn"
               title="Download Original Resume PDF"
             >
-              <Download size={16} /> Download Original CV
+              <Download size={16} /> Download Original PDF
             </a>
-            <button className="close-btn" onClick={onClose} aria-label="Close">
+            <button className="close-btn close-btn-3d" onClick={onClose} aria-label="Close">
               <X size={20} />
             </button>
           </div>
         </div>
 
-        <div className="pdf-viewer-wrapper">
+        <div className="pdf-viewer-wrapper pdf-viewer-3d">
           <iframe
             src={previewUrl}
             title="Robin Roy Official Resume PDF"

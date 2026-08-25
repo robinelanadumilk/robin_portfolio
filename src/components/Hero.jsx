@@ -1,23 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Download, Mail, Code, Zap, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Download, Mail, Zap, ShieldCheck, Sparkles, Box, Code2, Database } from 'lucide-react';
 import logoImg from '../assets/logo.jpg';
 import ParticlesBg from './ParticlesBg';
+import ThreeHeroCanvas from './ThreeHeroCanvas';
+import use3DTilt from '../utils/use3DTilt';
 import './Hero.css';
-
-const GithubIcon = ({ size = 20 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-    <path d="M9 18c-4.51 2-5-2-7-2" />
-  </svg>
-);
-
-const LinkedinIcon = ({ size = 20 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect width="4" height="12" x="2" y="9" />
-    <circle cx="4" cy="4" r="2" />
-  </svg>
-);
 
 const Hero = ({ onOpenResume }) => {
   const roles = [
@@ -30,6 +17,10 @@ const Hero = ({ onOpenResume }) => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+
+  const codeCardRef = use3DTilt({ max: 12, perspective: 1200, scale: 1.02 });
+  const logoCardRef = use3DTilt({ max: 14, perspective: 1000, scale: 1.04 });
+  const statCardRef = use3DTilt({ max: 16, perspective: 800, scale: 1.05 });
 
   useEffect(() => {
     const targetText = roles[currentRoleIndex];
@@ -55,16 +46,19 @@ const Hero = ({ onOpenResume }) => {
 
   return (
     <section id="hero" className="hero-section">
-      <ParticlesBg />
+      {/* 3D Ambient Glowing Mesh Background */}
+      <div className="hero-3d-glow-bg"></div>
+
       <div className="container hero-container">
+        {/* Left Column: Hero Content */}
         <div className="hero-content">
-          <div className="hero-badge">
-            <Zap size={14} className="badge-icon" />
-            <span>Enterprise Web Apps & RESTful APIs</span>
+          <div className="hero-badge badge-3d">
+            <Sparkles size={15} className="badge-icon pulse-anim" />
+            <span>Enterprise Web Apps & 3D Interactive Architecture</span>
           </div>
 
           <h1 className="hero-title">
-            Hi, I'm <span className="gradient-text">Robin Roy</span> 👋
+            Hi, I'm <span className="gradient-text hero-name-3d">Robin Roy</span> 👋
           </h1>
 
           <div className="hero-role-wrapper">
@@ -77,22 +71,22 @@ const Hero = ({ onOpenResume }) => {
             An enthusiastic Jr. Python Full Stack Developer ready to construct and maintain high-quality enterprise web applications, RESTful APIs, and scalable ERP systems using Python, Django, React.js, and MSSQL.
           </p>
 
-          {/* Quick Core Tech Badges */}
+          {/* Quick Core Tech Badges with 3D Pop */}
           <div className="hero-tech-badges">
-            <span className="hero-tech-pill">🐍 Python & Django</span>
-            <span className="hero-tech-pill">⚡ REST APIs</span>
-            <span className="hero-tech-pill">🗄️ MSSQL & MySQL</span>
-            <span className="hero-tech-pill">⚛️ React.js</span>
+            <span className="hero-tech-pill tech-pill-3d"><Code2 size={13} /> Python & Django</span>
+            <span className="hero-tech-pill tech-pill-3d"><Zap size={13} /> REST APIs</span>
+            <span className="hero-tech-pill tech-pill-3d"><Database size={13} /> MSSQL & MySQL</span>
+            <span className="hero-tech-pill tech-pill-3d"><Box size={13} /> React.js & 3D UI</span>
           </div>
 
           <div className="hero-actions">
-            <a href="#projects" className="btn btn-primary">
+            <a href="#projects" className="btn btn-primary btn-3d">
               View Showcase <ArrowRight size={18} />
             </a>
-            <button onClick={onOpenResume} className="btn btn-secondary cv-btn">
+            <button onClick={onOpenResume} className="btn btn-secondary cv-btn btn-3d">
               <Download size={18} /> View / Print CV
             </button>
-            <a href="#contact" className="btn btn-secondary">
+            <a href="#contact" className="btn btn-secondary btn-3d">
               <Mail size={18} /> Contact Me
             </a>
           </div>
@@ -100,57 +94,61 @@ const Hero = ({ onOpenResume }) => {
           <div className="social-links-wrapper">
             <span className="social-label">Direct Contacts:</span>
             <div className="social-icons">
-              <a href="mailto:robinroy1225@gmail.com" aria-label="Email" className="social-btn" title="robinroy1225@gmail.com">
+              <a href="mailto:robinroy1225@gmail.com" aria-label="Email" className="social-btn social-btn-3d" title="robinroy1225@gmail.com">
                 <Mail size={20} />
               </a>
-              <a href="tel:8281189244" aria-label="Phone" className="social-btn" title="+91 8281189244">
+              <a href="tel:8281189244" aria-label="Phone" className="social-btn social-btn-3d" title="+91 8281189244">
                 <Zap size={20} />
               </a>
             </div>
           </div>
         </div>
 
+        {/* Right Column: 3D Interactive Canvas & 3D Layered Cards */}
         <div className="hero-visual">
-          <div className="hero-logo-display glass-panel">
-            <div className="logo-glow-ring"></div>
-            <img src={logoImg} alt="Robin Roy Monogram Logo" className="hero-metallic-logo" style={{ maxWidth: '100%', maxHeight: '200px', width: 'auto', height: 'auto', objectFit: 'contain' }} />
+          {/* Interactive Three.js 3D Holographic Core */}
+          <div className="hero-3d-model-wrapper">
+            <ThreeHeroCanvas />
+            <div className="model-helper-tag">
+              <Box size={12} /> Interactive 3D Model • Move Mouse to Orbit
+            </div>
           </div>
 
-          <div className="code-card glass-panel floating-anim">
+          {/* 3D Code Window with Perspective Tilt */}
+          <div ref={codeCardRef} className="code-card glass-panel tilt-card-3d">
             <div className="code-header">
               <div className="window-dots">
                 <span className="dot red"></span>
                 <span className="dot yellow"></span>
                 <span className="dot green"></span>
               </div>
-              <span className="code-title">RobinRoy_profile.py</span>
+              <span className="code-title">RobinRoy_EnterpriseCore.py</span>
             </div>
             <div className="code-body">
               <pre>
                 <code>
-<span className="keyword">class</span> <span className="function">PythonDjangoDeveloper</span>:<br/>
+<span className="keyword">class</span> <span className="function">RobinRoyEnterpriseDev</span>:<br/>
 &nbsp;&nbsp;<span className="keyword">def</span> <span className="function">__init__</span>(self):<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;self.name = <span className="string">"Robin Roy"</span><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;self.role = <span className="string">"Python Django Full Stack Developer"</span><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;self.company = <span className="string">"Elanadu Milk Private Limited"</span><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;self.stack = [<span className="string">"Python"</span>, <span className="string">"Django"</span>, <span className="string">"DRF"</span>, <span className="string">"MSSQL"</span>, <span className="string">"React"</span>]<br/><br/>
-&nbsp;&nbsp;<span className="keyword">def</span> <span className="function">build_solutions</span>(self):<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span className="keyword">return</span> <span className="string">"Delivering high-performance enterprise ERPs"</span><br/><br/>
-<span className="function">dev</span> = PythonDjangoDeveloper()<br/>
-<span className="method">print</span>(dev.build_solutions())
+&nbsp;&nbsp;&nbsp;&nbsp;self.stack = [<span className="string">"Python"</span>, <span className="string">"Django"</span>, <span className="string">"MSSQL"</span>, <span className="string">"React"</span>]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;self.status = <span className="string">"Ready for high-impact roles"</span><br/><br/>
+&nbsp;&nbsp;<span className="keyword">def</span> <span className="function">deliver_solution</span>(self):<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span className="keyword">return</span> <span className="string">"High-concurrency ERPs & 3D experiences"</span><br/><br/>
+<span className="function">robin</span> = RobinRoyEnterpriseDev()<br/>
+<span className="method">print</span>(robin.deliver_solution())
                 </code>
               </pre>
             </div>
           </div>
 
-          {/* Quick Floating Metric Badge */}
-          <div className="hero-floating-stat glass-panel">
-            <div className="stat-icon-wrapper">
-              <ShieldCheck size={24} className="stat-icon" />
+          {/* 3D Floating Stat Badge */}
+          <div ref={statCardRef} className="hero-floating-stat glass-panel tilt-card-3d">
+            <div className="stat-icon-wrapper stat-3d-glow">
+              <ShieldCheck size={26} className="stat-icon" />
             </div>
             <div>
-              <div className="stat-number">3+ Years</div>
-              <div className="stat-desc">Enterprise Full Stack & Backend</div>
+              <div className="stat-number">3+ Years Experience</div>
+              <div className="stat-desc">Enterprise Python, Django & REST APIs</div>
             </div>
           </div>
         </div>

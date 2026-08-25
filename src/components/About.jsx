@@ -1,8 +1,23 @@
 import React from 'react';
-import { User, Award, Code, Cpu, Database, Layers, CheckCircle2 } from 'lucide-react';
+import { User, Award, Code, Cpu, Database, Layers, CheckCircle2, Sparkles, Terminal } from 'lucide-react';
+import use3DTilt from '../utils/use3DTilt';
 import './About.css';
 
+const HighlightCard = ({ item }) => {
+  const tiltRef = use3DTilt({ max: 15, perspective: 900, scale: 1.04 });
+
+  return (
+    <div ref={tiltRef} className="highlight-card glass-panel card-3d">
+      <div className="hl-icon-box hl-icon-3d">{item.icon}</div>
+      <h4 className="hl-title">{item.title}</h4>
+      <p className="hl-desc">{item.desc}</p>
+    </div>
+  );
+};
+
 const About = () => {
+  const bioRef = use3DTilt({ max: 8, perspective: 1400, scale: 1.01 });
+
   const highlights = [
     {
       icon: <Code size={24} className="hl-icon" />,
@@ -16,7 +31,7 @@ const About = () => {
     },
     {
       icon: <Cpu size={24} className="hl-icon" />,
-      title: "Full-Stack Integration",
+      title: "Full-Stack & 3D Integration",
       desc: "Developing responsive interfaces using HTML, CSS, JavaScript, React.js, and Flutter API endpoints."
     },
     {
@@ -30,11 +45,11 @@ const About = () => {
     { value: "3+ Years", label: "Professional Experience" },
     { value: "6+", label: "Production & Live Projects" },
     { value: "6", label: "Technical Certifications" },
-    { value: "MCA", label: "Academic Background" }
+    { value: "MCA", label: "Master of Computer Applications" }
   ];
 
   return (
-    <section id="about" className="section about-section">
+    <section id="about" className="section about-section perspective-viewport">
       <div className="container">
         <div className="section-header">
           <div className="section-subtitle">
@@ -46,7 +61,10 @@ const About = () => {
         </div>
 
         <div className="about-grid">
-          <div className="about-bio-card glass-panel">
+          <div ref={bioRef} className="about-bio-card glass-panel card-3d">
+            <div className="bio-header-badge">
+              <Terminal size={14} /> Full Stack Professional
+            </div>
             <h3 className="bio-title">Hello! I'm Robin Roy.</h3>
             <p className="bio-paragraph">
               An enthusiastic Jr. Python Full Stack Developer who is ever ready to construct and maintain high-quality web applications for over a year. Strong knowledge of Django and Python in collaboration with interdisciplinary teams in creating solutions for the needs of the client.
@@ -56,20 +74,20 @@ const About = () => {
             </p>
 
             <div className="key-points">
-              <div className="point-item">
-                <CheckCircle2 size={18} className="check-icon" />
+              <div className="point-item point-item-3d">
+                <CheckCircle2 size={18} className="check-icon pulse-anim" />
                 <span>Python, Django & Django REST Framework</span>
               </div>
-              <div className="point-item">
-                <CheckCircle2 size={18} className="check-icon" />
+              <div className="point-item point-item-3d">
+                <CheckCircle2 size={18} className="check-icon pulse-anim" />
                 <span>Microsoft SQL Server (MSSQL) & MySQL</span>
               </div>
-              <div className="point-item">
-                <CheckCircle2 size={18} className="check-icon" />
+              <div className="point-item point-item-3d">
+                <CheckCircle2 size={18} className="check-icon pulse-anim" />
                 <span>React.js, HTML5, CSS3, JavaScript</span>
               </div>
-              <div className="point-item">
-                <CheckCircle2 size={18} className="check-icon" />
+              <div className="point-item point-item-3d">
+                <CheckCircle2 size={18} className="check-icon pulse-anim" />
                 <span>ReportLab (PDF) & OpenPyXL (Excel)</span>
               </div>
             </div>
@@ -77,19 +95,15 @@ const About = () => {
 
           <div className="about-highlights-grid">
             {highlights.map((item, idx) => (
-              <div key={idx} className="highlight-card glass-panel">
-                <div className="hl-icon-box">{item.icon}</div>
-                <h4 className="hl-title">{item.title}</h4>
-                <p className="hl-desc">{item.desc}</p>
-              </div>
+              <HighlightCard key={idx} item={item} />
             ))}
           </div>
         </div>
 
-        {/* Stats Row */}
-        <div className="stats-row glass-panel">
+        {/* 3D Stats Row */}
+        <div className="stats-row glass-panel stats-3d">
           {stats.map((stat, i) => (
-            <div key={i} className="stat-item">
+            <div key={i} className="stat-item stat-item-3d">
               <span className="stat-value gradient-text">{stat.value}</span>
               <span className="stat-label">{stat.label}</span>
             </div>

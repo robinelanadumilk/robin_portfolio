@@ -9,6 +9,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ResumeModal from './components/ResumeModal';
 import Loader from './components/Loader';
+import Global3DBackground from './components/Global3DBackground';
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
@@ -39,9 +40,12 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* Immersive 3D Global Space Background */}
+      <Global3DBackground />
+
       {isLoading && <Loader onFinish={() => setIsLoading(false)} />}
       <Navbar activeSection={activeSection} onOpenResume={() => setIsResumeOpen(true)} />
-      <main>
+      <main style={{ position: 'relative', zIndex: 1 }}>
         <Hero onOpenResume={() => setIsResumeOpen(true)} />
         <About />
         <Projects />

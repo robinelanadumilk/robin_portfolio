@@ -1,6 +1,51 @@
 import React from 'react';
-import { Briefcase, Calendar, MapPin, Award, ChevronRight } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, Award, ChevronRight, Sparkles } from 'lucide-react';
+import use3DTilt from '../utils/use3DTilt';
 import './Experience.css';
+
+const TimelineCard = ({ exp }) => {
+  const cardRef = use3DTilt({ max: 8, perspective: 1200, scale: 1.015 });
+
+  return (
+    <div ref={cardRef} className="timeline-content glass-panel card-3d">
+      <div className="exp-header">
+        <div>
+          <span className="exp-type exp-type-3d">{exp.type}</span>
+          <h3 className="exp-role">{exp.role}</h3>
+          <h4 className="exp-company">{exp.company}</h4>
+        </div>
+        <div className="exp-meta">
+          <span className="exp-period">
+            <Calendar size={14} /> {exp.period}
+          </span>
+          <span className="exp-location">
+            <MapPin size={14} /> {exp.location}
+          </span>
+        </div>
+      </div>
+
+      <p className="exp-desc">{exp.description}</p>
+
+      <div className="exp-achievements">
+        <h5 className="achievements-title">Key Engineering Highlights:</h5>
+        <ul>
+          {exp.achievements.map((item, i) => (
+            <li key={i} className="achieve-item-3d">
+              <ChevronRight size={14} className="achieve-icon pulse-anim" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="exp-skills">
+        {exp.skills.map((s, idx) => (
+          <span key={idx} className="tech-pill tech-pill-3d">{s}</span>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const Experience = () => {
   const experiences = [
@@ -9,7 +54,7 @@ const Experience = () => {
       company: "Elanadu Milk Private Limited",
       location: "Thrissur",
       period: "09/2025 – Present",
-      type: "Full-Time",
+      type: "Full-Time Enterprise Role",
       description: "Develop and maintain enterprise-grade web applications, RESTful APIs, and core backend services using Python and Django.",
       achievements: [
         "Develop and maintain enterprise-grade web applications and RESTful APIs using Python and Django.",
@@ -32,7 +77,7 @@ const Experience = () => {
       company: "MGUIF",
       location: "Ettumanoor, Kottayam",
       period: "06/2024 – 09/2025",
-      type: "Full-Time",
+      type: "Full-Time Role",
       description: "Developed dynamic and responsive web applications and integrated RESTful APIs across multiple live projects.",
       achievements: [
         "Developed dynamic and responsive web applications using Django, React.js, and JavaScript.",
@@ -48,7 +93,7 @@ const Experience = () => {
       company: "Santhisoft Technologies",
       location: "Thodupuzha, Idukki",
       period: "11/2023 – 05/2024",
-      type: "Full-Time",
+      type: "Full-Time Role",
       description: "Built and integrated modular components for scalable single-page applications.",
       achievements: [
         "Built and integrated modular components for scalable single-page applications using Angular.",
@@ -62,7 +107,7 @@ const Experience = () => {
       company: "Luminar Technolab",
       location: "Kochi",
       period: "11/2020 – 06/2021",
-      type: "Full-Time",
+      type: "Full-Time Role",
       description: "Hands-on software application development and web engineering training.",
       achievements: [
         "Built core Python application modules and learned web technology engineering practices.",
@@ -73,7 +118,7 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="section experience-section">
+    <section id="experience" className="section experience-section perspective-viewport">
       <div className="container">
         <div className="section-header">
           <div className="section-subtitle">
@@ -87,47 +132,10 @@ const Experience = () => {
         <div className="timeline-wrapper">
           {experiences.map((exp, index) => (
             <div key={index} className="timeline-item">
-              <div className="timeline-dot">
+              <div className="timeline-dot timeline-dot-3d">
                 <Briefcase size={16} />
               </div>
-
-              <div className="timeline-content glass-panel">
-                <div className="exp-header">
-                  <div>
-                    <span className="exp-type">{exp.type}</span>
-                    <h3 className="exp-role">{exp.role}</h3>
-                    <h4 className="exp-company">{exp.company}</h4>
-                  </div>
-                  <div className="exp-meta">
-                    <span className="exp-period">
-                      <Calendar size={14} /> {exp.period}
-                    </span>
-                    <span className="exp-location">
-                      <MapPin size={14} /> {exp.location}
-                    </span>
-                  </div>
-                </div>
-
-                <p className="exp-desc">{exp.description}</p>
-
-                <div className="exp-achievements">
-                  <h5 className="achievements-title">Key Highlights:</h5>
-                  <ul>
-                    {exp.achievements.map((item, i) => (
-                      <li key={i}>
-                        <ChevronRight size={14} className="achieve-icon" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="exp-skills">
-                  {exp.skills.map((s, idx) => (
-                    <span key={idx} className="tech-pill">{s}</span>
-                  ))}
-                </div>
-              </div>
+              <TimelineCard exp={exp} />
             </div>
           ))}
         </div>

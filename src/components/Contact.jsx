@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, MessageSquare, Copy, Check } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, MessageSquare, Copy, Check, Sparkles } from 'lucide-react';
+import use3DTilt from '../utils/use3DTilt';
 import './Contact.css';
 
 const Contact = () => {
@@ -14,6 +15,9 @@ const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
+
+  const infoCardRef = use3DTilt({ max: 8, perspective: 1300, scale: 1.015 });
+  const formCardRef = use3DTilt({ max: 8, perspective: 1300, scale: 1.015 });
 
   const copyToClipboard = (text, label) => {
     navigator.clipboard.writeText(text);
@@ -67,10 +71,10 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section contact-section">
+    <section id="contact" className="section contact-section perspective-viewport">
       {toastMessage && (
-        <div className="contact-toast glass-panel">
-          <Check size={16} className="toast-icon" />
+        <div className="contact-toast glass-panel toast-3d">
+          <Check size={16} className="toast-icon pulse-anim" />
           <span>{toastMessage}</span>
         </div>
       )}
@@ -86,15 +90,16 @@ const Contact = () => {
         </div>
 
         <div className="contact-grid">
-          <div className="contact-info-card glass-panel">
-            <h3 className="info-title">Contact Information</h3>
+          {/* Info Card with 3D Tilt */}
+          <div ref={infoCardRef} className="contact-info-card glass-panel card-3d">
+            <h3 className="info-title">Direct Contact Channels</h3>
             <p className="info-desc">
               Looking for a dedicated Python Django Full Stack Developer? Feel free to reach out directly via email, phone, or send a message using the form!
             </p>
 
             <div className="info-items">
-              <div className="info-item">
-                <div className="info-icon">
+              <div className="info-item info-item-3d">
+                <div className="info-icon icon-3d">
                   <Mail size={20} />
                 </div>
                 <div className="info-details-wrap">
@@ -102,7 +107,7 @@ const Contact = () => {
                   <a href="mailto:robinroy1225@gmail.com" className="info-value">robinroy1225@gmail.com</a>
                 </div>
                 <button 
-                  className="copy-btn"
+                  className="copy-btn copy-btn-3d"
                   onClick={() => copyToClipboard('robinroy1225@gmail.com', 'Email address')}
                   title="Copy email"
                 >
@@ -110,8 +115,8 @@ const Contact = () => {
                 </button>
               </div>
 
-              <div className="info-item">
-                <div className="info-icon">
+              <div className="info-item info-item-3d">
+                <div className="info-icon icon-3d">
                   <Phone size={20} />
                 </div>
                 <div className="info-details-wrap">
@@ -119,7 +124,7 @@ const Contact = () => {
                   <a href="tel:8281189244" className="info-value">+91 8281189244</a>
                 </div>
                 <button 
-                  className="copy-btn"
+                  className="copy-btn copy-btn-3d"
                   onClick={() => copyToClipboard('+918281189244', 'Phone number')}
                   title="Copy phone"
                 >
@@ -127,8 +132,8 @@ const Contact = () => {
                 </button>
               </div>
 
-              <div className="info-item">
-                <div className="info-icon">
+              <div className="info-item info-item-3d">
+                <div className="info-icon icon-3d">
                   <MapPin size={20} />
                 </div>
                 <div className="info-details-wrap">
@@ -153,24 +158,25 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="response-guarantee" style={{ marginTop: '1.25rem' }}>
-              <CheckCircle2 size={18} className="guarantee-icon" />
+            <div className="response-guarantee response-guarantee-3d">
+              <CheckCircle2 size={18} className="guarantee-icon pulse-anim" />
               <span>Available for Python Django Backend & Full-Stack Roles.</span>
             </div>
           </div>
 
-          <div className="contact-form-card glass-panel">
+          {/* Form Card with 3D Tilt */}
+          <div ref={formCardRef} className="contact-form-card glass-panel card-3d">
             {submitted ? (
               <div className="success-banner">
-                <div className="success-icon-box">
-                  <CheckCircle2 size={40} />
+                <div className="success-icon-box success-icon-3d">
+                  <CheckCircle2 size={40} className="pulse-anim" />
                 </div>
-                <h3 className="success-title">Message Sent Successfully!</h3>
+                <h3 className="success-title">Message Dispatched!</h3>
                 <p className="success-desc">
-                  Thank you for reaching out, Robin has received your note and will get back to you shortly.
+                  Thank you for reaching out. Robin has received your transmission and will get back to you shortly.
                 </p>
                 <button
-                  className="btn btn-primary"
+                  className="btn btn-primary btn-3d"
                   onClick={() => setSubmitted(false)}
                 >
                   Send Another Message
@@ -178,7 +184,7 @@ const Contact = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="contact-form" noValidate>
-                <div className="form-group">
+                <div className="form-group form-group-3d">
                   <label htmlFor="name">Your Name</label>
                   <input
                     type="text"
@@ -187,7 +193,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="e.g. Alex Morgan"
-                    className={errors.name ? 'input-error' : ''}
+                    className={`input-3d ${errors.name ? 'input-error' : ''}`}
                   />
                   {errors.name && (
                     <span className="error-text">
@@ -196,7 +202,7 @@ const Contact = () => {
                   )}
                 </div>
 
-                <div className="form-group">
+                <div className="form-group form-group-3d">
                   <label htmlFor="email">Email Address</label>
                   <input
                     type="email"
@@ -205,7 +211,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="e.g. alex@company.com"
-                    className={errors.email ? 'input-error' : ''}
+                    className={`input-3d ${errors.email ? 'input-error' : ''}`}
                   />
                   {errors.email && (
                     <span className="error-text">
@@ -214,7 +220,7 @@ const Contact = () => {
                   )}
                 </div>
 
-                <div className="form-group">
+                <div className="form-group form-group-3d">
                   <label htmlFor="subject">Subject</label>
                   <input
                     type="text"
@@ -223,7 +229,7 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     placeholder="e.g. Full-Stack Project Inquiry"
-                    className={errors.subject ? 'input-error' : ''}
+                    className={`input-3d ${errors.subject ? 'input-error' : ''}`}
                   />
                   {errors.subject && (
                     <span className="error-text">
@@ -232,7 +238,7 @@ const Contact = () => {
                   )}
                 </div>
 
-                <div className="form-group">
+                <div className="form-group form-group-3d">
                   <label htmlFor="message">Message</label>
                   <textarea
                     id="message"
@@ -241,7 +247,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Describe your project, timeline, or requirements..."
-                    className={errors.message ? 'input-error' : ''}
+                    className={`input-3d ${errors.message ? 'input-error' : ''}`}
                   ></textarea>
                   {errors.message && (
                     <span className="error-text">
@@ -250,7 +256,7 @@ const Contact = () => {
                   )}
                 </div>
 
-                <button type="submit" className="btn btn-primary submit-btn" disabled={loading}>
+                <button type="submit" className="btn btn-primary btn-3d submit-btn" disabled={loading}>
                   {loading ? 'Sending...' : (
                     <>
                       Send Message <Send size={16} />
