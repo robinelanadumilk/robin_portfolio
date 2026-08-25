@@ -1,14 +1,15 @@
 import React from 'react';
-import { User, Award, Code, Cpu, Database, Layers, CheckCircle2, Sparkles, Terminal } from 'lucide-react';
+import { Terminal, Award, Code2, Cpu, Database, Layers, CheckCircle2, ShieldCheck, FileText } from 'lucide-react';
 import use3DTilt from '../utils/use3DTilt';
 import './About.css';
 
 const HighlightCard = ({ item }) => {
-  const tiltRef = use3DTilt({ max: 15, perspective: 900, scale: 1.04 });
+  const tiltRef = use3DTilt({ max: 14, perspective: 900, scale: 1.03 });
 
   return (
-    <div ref={tiltRef} className="highlight-card glass-panel card-3d">
-      <div className="hl-icon-box hl-icon-3d">{item.icon}</div>
+    <div ref={tiltRef} className="highlight-card glass-panel card-3d hacker-card">
+      <div className="card-top-tag">{item.tag}</div>
+      <div className="hl-icon-box hl-icon-hacker">{item.icon}</div>
       <h4 className="hl-title">{item.title}</h4>
       <p className="hl-desc">{item.desc}</p>
     </div>
@@ -20,79 +21,96 @@ const About = () => {
 
   const highlights = [
     {
-      icon: <Code size={24} className="hl-icon" />,
-      title: "Django & Python Backend",
-      desc: "Constructing enterprise-grade web applications and RESTful APIs with Python, Django, and DRF."
+      tag: "SYS_MODULE: 0x01",
+      icon: <Code2 size={24} className="hl-icon" />,
+      title: "Django & Python Core",
+      desc: "Architecting high-throughput backend services, MVC controllers, and RESTful API endpoints with Python & DRF."
     },
     {
+      tag: "SYS_MODULE: 0x02",
       icon: <Database size={24} className="hl-icon" />,
-      title: "MSSQL & Database Design",
-      desc: "Designing and optimizing MSSQL & MySQL schemas, stored procedures, views, triggers, and queries."
+      title: "MSSQL & Schema Engineering",
+      desc: "Optimizing relational database engines, stored procedures, triggers, execution plans, and complex transactional queries."
     },
     {
+      tag: "SYS_MODULE: 0x03",
       icon: <Cpu size={24} className="hl-icon" />,
-      title: "Full-Stack & 3D Integration",
-      desc: "Developing responsive interfaces using HTML, CSS, JavaScript, React.js, and Flutter API endpoints."
+      title: "Full-Stack Integration",
+      desc: "Developing responsive frontend architectures with React.js, JavaScript (ES6+), and seamless Flutter API integration."
     },
     {
+      tag: "SYS_MODULE: 0x04",
       icon: <Layers size={24} className="hl-icon" />,
-      title: "PDF & Excel Reporting",
-      desc: "Generating automated business reports in PDF and Excel formats using ReportLab and OpenPyXL."
+      title: "Automated Document Engines",
+      desc: "Generating business-critical enterprise reports in PDF (ReportLab) and Excel (OpenPyXL) with automated pipelines."
     }
   ];
 
   const stats = [
-    { value: "3+ Years", label: "Professional Experience" },
-    { value: "6+", label: "Production & Live Projects" },
-    { value: "6", label: "Technical Certifications" },
+    { value: "03+", label: "Years Professional Experience" },
+    { value: "06+", label: "Live Production Systems" },
+    { value: "06", label: "Technical Certifications" },
     { value: "MCA", label: "Master of Computer Applications" }
   ];
 
   return (
-    <section id="about" className="section about-section perspective-viewport">
+    <section id="about" className="section about-section">
       <div className="container">
         <div className="section-header">
           <div className="section-subtitle">
-            <User size={14} /> Get to know me
+            <Terminal size={14} /> $ cat /proc/developer_info
           </div>
           <h2 className="section-title">
-            Passionate About Crafting <span className="gradient-text">Enterprise Solutions</span>
+            Engineering High-Impact <span className="gradient-text">Enterprise Solutions</span>
           </h2>
         </div>
 
         <div className="about-grid">
-          <div ref={bioRef} className="about-bio-card glass-panel card-3d">
-            <div className="bio-header-badge">
-              <Terminal size={14} /> Full Stack Professional
+          {/* Main Bio Terminal Panel */}
+          <div ref={bioRef} className="about-bio-card glass-panel card-3d hacker-bio-panel">
+            <div className="terminal-panel-header">
+              <span className="dot red"></span>
+              <span className="dot yellow"></span>
+              <span className="dot green"></span>
+              <span className="terminal-panel-title">profile_specification.json</span>
             </div>
-            <h3 className="bio-title">Hello! I'm Robin Roy.</h3>
+
+            <div className="bio-header-badge">
+              <Terminal size={13} /> STATUS: ACTIVE • PYTHON_DJANGO_SPECIALIST
+            </div>
+
+            <h3 className="bio-title">
+              <span className="hacker-green-icon">&gt;</span> Whoami: Robin Roy
+            </h3>
+
             <p className="bio-paragraph">
-              An enthusiastic Jr. Python Full Stack Developer who is ever ready to construct and maintain high-quality web applications for over a year. Strong knowledge of Django and Python in collaboration with interdisciplinary teams in creating solutions for the needs of the client.
+              An enthusiastic Jr. Python Full Stack Developer ready to construct and maintain high-quality web applications. Equipped with deep knowledge of Django and Python to design scalable architectures, collaborate across interdisciplinary teams, and deliver robust software.
             </p>
             <p className="bio-paragraph">
-              Experienced with RESTful APIs while adapting agile methodologies to deliver based on timeline and application capacity. Passionate about continuous improvement, performance refactoring, and maintaining code review culture to nurture extraordinary work.
+              Experienced in building RESTful APIs while adapting agile methodologies to ship on schedule. Dedicated to continuous performance profiling, database query optimization, and code review culture.
             </p>
 
             <div className="key-points">
-              <div className="point-item point-item-3d">
-                <CheckCircle2 size={18} className="check-icon pulse-anim" />
-                <span>Python, Django & Django REST Framework</span>
+              <div className="point-item point-item-hacker">
+                <CheckCircle2 size={16} className="check-icon" />
+                <span>[STACK] Python 3.x, Django Framework &amp; DRF</span>
               </div>
-              <div className="point-item point-item-3d">
-                <CheckCircle2 size={18} className="check-icon pulse-anim" />
-                <span>Microsoft SQL Server (MSSQL) & MySQL</span>
+              <div className="point-item point-item-hacker">
+                <CheckCircle2 size={16} className="check-icon" />
+                <span>[DB] Microsoft SQL Server (MSSQL) &amp; MySQL</span>
               </div>
-              <div className="point-item point-item-3d">
-                <CheckCircle2 size={18} className="check-icon pulse-anim" />
-                <span>React.js, HTML5, CSS3, JavaScript</span>
+              <div className="point-item point-item-hacker">
+                <CheckCircle2 size={16} className="check-icon" />
+                <span>[UI] React.js, Modern JavaScript, HTML5 &amp; CSS3</span>
               </div>
-              <div className="point-item point-item-3d">
-                <CheckCircle2 size={18} className="check-icon pulse-anim" />
-                <span>ReportLab (PDF) & OpenPyXL (Excel)</span>
+              <div className="point-item point-item-hacker">
+                <CheckCircle2 size={16} className="check-icon" />
+                <span>[DOC] ReportLab (PDF Generation) &amp; OpenPyXL (Excel)</span>
               </div>
             </div>
           </div>
 
+          {/* Highlights Grid */}
           <div className="about-highlights-grid">
             {highlights.map((item, idx) => (
               <HighlightCard key={idx} item={item} />
@@ -100,11 +118,11 @@ const About = () => {
           </div>
         </div>
 
-        {/* 3D Stats Row */}
-        <div className="stats-row glass-panel stats-3d">
+        {/* 3D Hacker Stats Row */}
+        <div className="stats-row glass-panel stats-hacker">
           {stats.map((stat, i) => (
-            <div key={i} className="stat-item stat-item-3d">
-              <span className="stat-value gradient-text">{stat.value}</span>
+            <div key={i} className="stat-item stat-item-hacker">
+              <span className="stat-value hacker-glow-text">{stat.value}</span>
               <span className="stat-label">{stat.label}</span>
             </div>
           ))}

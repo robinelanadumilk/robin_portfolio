@@ -15,9 +15,10 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--matrix-green);
+  font-weight: 700;
+  font-family: var(--font-mono);
 }
 
 .filter-buttons {
@@ -26,55 +27,74 @@
   flex-wrap: wrap;
 }
 
-.filter-btn-3d {
-  padding: 0.5rem 1.25rem;
-  border-radius: var(--radius-full);
-  background: rgba(18, 25, 41, 0.7);
-  border: 1px solid var(--border-glass);
+.filter-btn-hacker {
+  padding: 0.45rem 1.15rem;
+  border-radius: var(--radius-sm);
+  background: rgba(4, 10, 16, 0.8);
+  border: 1px solid rgba(0, 255, 136, 0.25);
   color: var(--text-muted);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
+  font-family: var(--font-mono);
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease;
 }
 
-.filter-btn-3d:hover {
-  color: #fff;
-  border-color: rgba(6, 182, 212, 0.4);
-  transform: translateY(-2px);
+.filter-btn-hacker:hover {
+  color: var(--matrix-green);
+  border-color: var(--matrix-green);
+  background: rgba(0, 255, 136, 0.08);
 }
 
-.filter-btn-3d.active {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  color: #fff;
-  border-color: transparent;
-  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
-  transform: translateY(-2px) scale(1.05);
+.filter-btn-hacker.active {
+  background: var(--matrix-green);
+  color: #020508;
+  border-color: var(--matrix-green);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
 }
 
 /* =========================================
-   3D PROJECTS GRID
+   HACKER PROJECTS GRID
    ========================================= */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
   perspective: 1400px;
 }
 
-.project-card {
+.hacker-project-card {
   padding: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(14, 20, 35, 0.8);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 255, 136, 0.25);
+  background: rgba(4, 10, 16, 0.88);
   backdrop-filter: blur(14px);
   transform-style: preserve-3d;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
   position: relative;
+}
+
+.project-terminal-bar {
+  background: rgba(2, 6, 10, 0.95);
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.15);
+}
+
+.project-port-tag {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--cyber-cyan);
+  background: rgba(0, 240, 255, 0.08);
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 240, 255, 0.2);
 }
 
 .project-image-wrapper {
@@ -90,10 +110,12 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  filter: contrast(1.05) brightness(0.9);
 }
 
 .project-card:hover .project-image {
   transform: scale(1.08);
+  filter: contrast(1.1) brightness(1);
 }
 
 .project-overlay {
@@ -102,7 +124,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(5, 8, 17, 0.75);
+  background: rgba(2, 6, 10, 0.85);
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
@@ -115,25 +137,24 @@
   opacity: 1;
 }
 
-.tag-3d {
+.tag-hacker {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(10, 15, 29, 0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(6, 182, 212, 0.4);
-  color: var(--secondary);
+  top: 0.85rem;
+  right: 0.85rem;
+  background: rgba(2, 6, 10, 0.9);
+  border: 1px solid var(--matrix-green);
+  color: var(--matrix-green);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  padding: 0.3rem 0.75rem;
-  border-radius: var(--radius-full);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-  transform: translateZ(25px);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+  transform: translateZ(20px);
 }
 
 .project-info {
-  padding: 1.75rem;
+  padding: 1.6rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -141,32 +162,33 @@
 }
 
 .project-cat-row {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .project-category {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-family: var(--font-mono);
-  color: var(--primary-light);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  color: var(--cyber-cyan);
+  letter-spacing: 0.05em;
 }
 
 .project-title {
-  font-size: 1.28rem;
+  font-size: 1.22rem;
   font-weight: 700;
   color: #fff;
   margin-bottom: 0.75rem;
   line-height: 1.35;
+  font-family: var(--font-mono);
   transform: translateZ(10px);
 }
 
 .project-desc {
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   color: var(--text-muted);
   margin-bottom: 1.25rem;
   line-height: 1.6;
   flex-grow: 1;
+  font-family: var(--font-mono);
 }
 
 .tech-tags {
@@ -177,27 +199,39 @@
   transform: translateZ(8px);
 }
 
-.tech-pill.more {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-muted);
+.tech-pill-hacker {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--matrix-green);
+  background: rgba(0, 255, 136, 0.06);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+}
+
+.tech-pill-hacker.more {
+  background: rgba(0, 240, 255, 0.08);
+  border-color: rgba(0, 240, 255, 0.25);
+  color: var(--cyber-cyan);
 }
 
 .project-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(0, 255, 136, 0.15);
   padding-top: 1rem;
   margin-top: auto;
   transform: translateZ(12px);
 }
 
-.details-link-3d {
+.details-link-hacker {
   background: none;
   border: none;
-  color: var(--secondary);
-  font-size: 0.88rem;
-  font-weight: 600;
+  color: var(--matrix-green);
+  font-size: 0.82rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -206,89 +240,124 @@
   padding: 0;
 }
 
-.details-link-3d:hover {
+.details-link-hacker:hover {
   color: #fff;
   transform: translateX(4px);
-  text-shadow: 0 0 10px rgba(6, 182, 212, 0.8);
+  text-shadow: 0 0 10px var(--matrix-green);
 }
 
-.icon-link-3d {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-glass);
-  color: var(--text-muted);
+.icon-link-hacker {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 255, 136, 0.06);
+  border: 1px solid rgba(0, 255, 136, 0.25);
+  color: var(--matrix-green);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: all 0.25s ease;
   text-decoration: none;
 }
 
-.icon-link-3d:hover {
-  color: #fff;
-  background: var(--primary);
-  border-color: var(--primary);
-  transform: scale(1.1) rotate(45deg);
-  box-shadow: 0 0 15px rgba(99, 102, 241, 0.6);
+.icon-link-hacker:hover {
+  color: #020508;
+  background: var(--matrix-green);
+  border-color: var(--matrix-green);
+  box-shadow: 0 0 12px var(--matrix-green);
 }
 
 /* =========================================
-   3D DETAIL MODAL
+   3D HACKER DETAIL MODAL
    ========================================= */
-.project-modal-3d {
-  max-width: 780px;
+.hacker-project-modal {
+  max-width: 800px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--matrix-green);
+  padding: 0;
 }
 
-.category-pill-3d {
+.modal-terminal-top {
+  background: rgba(2, 6, 10, 0.95);
+  padding: 0.65rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.modal-terminal-file {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--matrix-green);
+  margin-left: 0.5rem;
+}
+
+.close-btn-top-hacker {
+  margin-left: auto;
+  background: rgba(0, 255, 136, 0.08);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  color: var(--matrix-green);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.close-btn-top-hacker:hover {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: var(--hacker-red);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+.hacker-project-modal .modal-header {
+  padding: 1.5rem 2rem 0.5rem 2rem;
+}
+
+.category-pill-hacker {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--secondary);
-  background: rgba(6, 182, 212, 0.12);
-  border: 1px solid rgba(6, 182, 212, 0.3);
-  padding: 0.25rem 0.85rem;
-  border-radius: var(--radius-full);
-  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--cyber-cyan);
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  padding: 0.2rem 0.75rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.4rem;
 }
 
-.modal-header {
-  margin-bottom: 1.5rem;
-}
-
-.modal-title {
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: #fff;
-}
-
-.modal-image-wrapper-3d {
-  border-radius: var(--radius-md);
+.modal-image-wrapper-hacker {
+  margin: 0 2rem 1.5rem 2rem;
+  border-radius: var(--radius-sm);
   overflow: hidden;
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-  margin-bottom: 1.75rem;
+  border: 1px solid rgba(0, 255, 136, 0.25);
 }
 
-.modal-image {
-  width: 100%;
-  max-height: 320px;
-  object-fit: cover;
-  display: block;
+.modal-body {
+  padding: 0 2rem 2rem 2rem;
 }
 
 .modal-subheading {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  color: var(--primary-light);
+  font-family: var(--font-mono);
+  color: var(--matrix-green);
   margin: 1.5rem 0 0.75rem 0;
+  letter-spacing: 0.05em;
 }
 
 .modal-text {
   color: var(--text-muted);
   line-height: 1.7;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
 }
 
 .modal-features {
@@ -299,21 +368,22 @@
   margin-bottom: 1.5rem;
 }
 
-.feature-item-3d {
+.feature-item-hacker {
   display: flex;
   align-items: flex-start;
   gap: 0.65rem;
   color: var(--text-main);
-  font-size: 0.9rem;
+  font-size: 0.86rem;
+  font-family: var(--font-mono);
   line-height: 1.5;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(0, 255, 136, 0.03);
   padding: 0.6rem 1rem;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 136, 0.12);
 }
 
 .feat-check {
-  color: var(--secondary);
+  color: var(--matrix-green);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -325,11 +395,6 @@
   margin-bottom: 2rem;
 }
 
-.modal-pill {
-  font-size: 0.85rem;
-  padding: 0.4rem 0.9rem;
-}
-
 .modal-actions {
   display: flex;
   gap: 1rem;
@@ -338,5 +403,37 @@
 @media (max-width: 768px) {
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .hacker-project-modal .modal-header,
+  .modal-image-wrapper-hacker,
+  .modal-body {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .modal-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .filter-buttons {
+    width: 100%;
+  }
+  .filter-btn-hacker {
+    flex-grow: 1;
+    text-align: center;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.75rem;
+  }
+  .hacker-project-modal {
+    width: 95vw;
   }
 }

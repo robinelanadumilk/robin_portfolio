@@ -1,25 +1,31 @@
 import React from 'react';
-import { Briefcase, Calendar, MapPin, Award, ChevronRight, Sparkles } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, Award, ChevronRight, Terminal, GitCommit, GitBranch } from 'lucide-react';
 import use3DTilt from '../utils/use3DTilt';
 import './Experience.css';
 
-const TimelineCard = ({ exp }) => {
+const TimelineCard = ({ exp, commitHash }) => {
   const cardRef = use3DTilt({ max: 8, perspective: 1200, scale: 1.015 });
 
   return (
-    <div ref={cardRef} className="timeline-content glass-panel card-3d">
+    <div ref={cardRef} className="timeline-content glass-panel card-3d hacker-exp-card">
+      <div className="exp-terminal-bar">
+        <GitBranch size={13} className="git-branch-icon" />
+        <span className="commit-hash">commit {commitHash}</span>
+        <span className="commit-branch">[main/production]</span>
+      </div>
+
       <div className="exp-header">
         <div>
-          <span className="exp-type exp-type-3d">{exp.type}</span>
+          <span className="exp-type exp-type-hacker">{exp.type}</span>
           <h3 className="exp-role">{exp.role}</h3>
-          <h4 className="exp-company">{exp.company}</h4>
+          <h4 className="exp-company hacker-glow-text">@ {exp.company}</h4>
         </div>
         <div className="exp-meta">
           <span className="exp-period">
-            <Calendar size={14} /> {exp.period}
+            <Calendar size={13} /> {exp.period}
           </span>
           <span className="exp-location">
-            <MapPin size={14} /> {exp.location}
+            <MapPin size={13} /> {exp.location}
           </span>
         </div>
       </div>
@@ -27,11 +33,11 @@ const TimelineCard = ({ exp }) => {
       <p className="exp-desc">{exp.description}</p>
 
       <div className="exp-achievements">
-        <h5 className="achievements-title">Key Engineering Highlights:</h5>
+        <h5 className="achievements-title">// ENGINEERING &amp; AUDIT CHANGELOG:</h5>
         <ul>
           {exp.achievements.map((item, i) => (
-            <li key={i} className="achieve-item-3d">
-              <ChevronRight size={14} className="achieve-icon pulse-anim" />
+            <li key={i} className="achieve-item-hacker">
+              <ChevronRight size={14} className="achieve-icon" />
               <span>{item}</span>
             </li>
           ))}
@@ -40,7 +46,7 @@ const TimelineCard = ({ exp }) => {
 
       <div className="exp-skills">
         {exp.skills.map((s, idx) => (
-          <span key={idx} className="tech-pill tech-pill-3d">{s}</span>
+          <span key={idx} className="tech-pill tech-pill-hacker">{s}</span>
         ))}
       </div>
     </div>
@@ -50,11 +56,12 @@ const TimelineCard = ({ exp }) => {
 const Experience = () => {
   const experiences = [
     {
+      commitHash: "78193a9",
       role: "Python Backend Developer",
       company: "Elanadu Milk Private Limited",
       location: "Thrissur",
       period: "09/2025 – Present",
-      type: "Full-Time Enterprise Role",
+      type: "Full-Time Production",
       description: "Develop and maintain enterprise-grade web applications, RESTful APIs, and core backend services using Python and Django.",
       achievements: [
         "Develop and maintain enterprise-grade web applications and RESTful APIs using Python and Django.",
@@ -70,14 +77,15 @@ const Experience = () => {
         "Contribute to the development and backend integration of Flutter-based mobile applications.",
         "Participate in version control, code reviews, testing, deployment, and ongoing system maintenance using Git."
       ],
-      skills: ["Python", "Django", "Django REST Framework", "Microsoft SQL Server (MSSQL)", "HTML", "CSS", "JavaScript", "REST APIs", "Flutter (Backend Integration)", "ReportLab", "OpenPyXL", "Git"]
+      skills: ["Python", "Django", "Django REST Framework", "Microsoft SQL Server (MSSQL)", "HTML", "CSS", "JavaScript", "REST APIs", "Flutter API", "ReportLab", "OpenPyXL", "Git"]
     },
     {
+      commitHash: "4fe8210",
       role: "Jr. Python Django Full Stack Developer",
       company: "MGUIF",
       location: "Ettumanoor, Kottayam",
       period: "06/2024 – 09/2025",
-      type: "Full-Time Role",
+      type: "Full-Time Deployment",
       description: "Developed dynamic and responsive web applications and integrated RESTful APIs across multiple live projects.",
       achievements: [
         "Developed dynamic and responsive web applications using Django, React.js, and JavaScript.",
@@ -89,11 +97,12 @@ const Experience = () => {
       skills: ["Django", "React.js", "JavaScript", "Django REST Framework", "HTML", "CSS", "Bootstrap", "Git", "MySQL"]
     },
     {
+      commitHash: "2b9a712",
       role: "Software Engineer",
       company: "Santhisoft Technologies",
       location: "Thodupuzha, Idukki",
       period: "11/2023 – 05/2024",
-      type: "Full-Time Role",
+      type: "Full-Time Deployment",
       description: "Built and integrated modular components for scalable single-page applications.",
       achievements: [
         "Built and integrated modular components for scalable single-page applications using Angular.",
@@ -103,11 +112,12 @@ const Experience = () => {
       skills: ["Angular", "Single-Page Applications", "UI/UX Design", "Scalability", "Git"]
     },
     {
+      commitHash: "109f3e5",
       role: "Jr. Software Developer",
       company: "Luminar Technolab",
       location: "Kochi",
       period: "11/2020 – 06/2021",
-      type: "Full-Time Role",
+      type: "Software Apprenticeship",
       description: "Hands-on software application development and web engineering training.",
       achievements: [
         "Built core Python application modules and learned web technology engineering practices.",
@@ -118,24 +128,24 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="section experience-section perspective-viewport">
+    <section id="experience" className="section experience-section">
       <div className="container">
         <div className="section-header">
           <div className="section-subtitle">
-            <Briefcase size={14} /> Career Journey
+            <Terminal size={14} /> $ git log --graph --decorate --oneline
           </div>
           <h2 className="section-title">
-            Professional <span className="gradient-text">Experience</span>
+            Operational Career <span className="gradient-text">Audit Trail</span>
           </h2>
         </div>
 
         <div className="timeline-wrapper">
           {experiences.map((exp, index) => (
             <div key={index} className="timeline-item">
-              <div className="timeline-dot timeline-dot-3d">
-                <Briefcase size={16} />
+              <div className="timeline-dot timeline-dot-hacker">
+                <GitCommit size={16} />
               </div>
-              <TimelineCard exp={exp} />
+              <TimelineCard exp={exp} commitHash={exp.commitHash} />
             </div>
           ))}
         </div>

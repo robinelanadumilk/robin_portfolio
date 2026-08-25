@@ -1,22 +1,7 @@
 import React from 'react';
-import { ArrowUp, Mail, Heart } from 'lucide-react';
+import { ArrowUp, Mail, Terminal, Shield, Zap, Code2 } from 'lucide-react';
 import logoImg from '../assets/logo.jpg';
 import './Footer.css';
-
-const GithubIcon = ({ size = 18 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-    <path d="M9 18c-4.51 2-5-2-7-2" />
-  </svg>
-);
-
-const LinkedinIcon = ({ size = 18 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect width="4" height="12" x="2" y="9" />
-    <circle cx="4" cy="4" r="2" />
-  </svg>
-);
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -24,7 +9,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="footer">
+    <footer className="footer hacker-footer">
       <div className="container footer-container">
         <div className="footer-top">
           <div className="footer-brand">
@@ -32,32 +17,38 @@ const Footer = () => {
               <div className="logo-icon-img-wrapper">
                 <img src={logoImg} alt="Robin Roy Logo" className="brand-logo-img" />
               </div>
-              <span className="brand-name">
-                Robin <span className="dot">Roy</span>
-              </span>
+              <div className="brand-text-wrap">
+                <span className="brand-name">
+                  <span className="terminal-prefix">root@</span>robinroy<span className="terminal-suffix">:~$</span>
+                </span>
+                <span className="brand-status-sub">PYTHON_DJANGO_ENGINEER</span>
+              </div>
             </a>
             <p className="footer-bio">
-              Python Django Full Stack Developer constructing enterprise web applications, RESTful APIs, and scalable ERP systems.
+              Constructing and maintaining high-throughput enterprise web architectures, RESTful API gateways, and scalable MSSQL ERP systems.
             </p>
           </div>
 
           <div className="footer-links">
-            <h4 className="footer-heading">Navigation</h4>
+            <h4 className="footer-heading">// SYSTEM_NAVIGATION</h4>
             <ul>
-              <li><a href="#hero">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#skills">Skills</a></li>
-              <li><a href="#experience">Experience</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#hero">&gt; ./home</a></li>
+              <li><a href="#about">&gt; ./about</a></li>
+              <li><a href="#projects">&gt; ./projects</a></li>
+              <li><a href="#skills">&gt; ./skills</a></li>
+              <li><a href="#experience">&gt; ./experience</a></li>
+              <li><a href="#contact">&gt; ./contact</a></li>
             </ul>
           </div>
 
           <div className="footer-socials">
-            <h4 className="footer-heading">Connect</h4>
+            <h4 className="footer-heading">// SECURE_CHANNELS</h4>
             <div className="footer-social-icons">
-              <a href="mailto:robinroy1225@gmail.com" className="social-btn" aria-label="Email">
-                <Mail size={18} />
+              <a href="mailto:robinroy1225@gmail.com" className="social-btn social-btn-hacker" aria-label="Email" title="robinroy1225@gmail.com">
+                <Mail size={16} />
+              </a>
+              <a href="tel:8281189244" className="social-btn social-btn-hacker" aria-label="Phone" title="+91 8281189244">
+                <Zap size={16} />
               </a>
             </div>
           </div>
@@ -65,11 +56,11 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p className="copyright">
-            &copy; {new Date().getFullYear()} Robin Portfolio. Engineered with <Heart size={14} className="heart-icon" /> using React & Vite.
+            &copy; {new Date().getFullYear()} Robin Roy // Engineered with Python &amp; React. [SYSTEM INTEGRITY: 100%]
           </p>
 
-          <button className="back-to-top" onClick={scrollToTop} aria-label="Back to top">
-            <ArrowUp size={18} /> Top
+          <button className="back-to-top back-to-top-hacker" onClick={scrollToTop} aria-label="Back to top">
+            <ArrowUp size={16} /> ^TOP
           </button>
         </div>
       </div>

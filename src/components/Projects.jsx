@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FolderGit2, ExternalLink, Sparkles, Filter, X, CheckCircle2, Layers, ArrowUpRight } from 'lucide-react';
+import { FolderGit2, ExternalLink, Sparkles, Filter, X, CheckCircle2, Terminal, Code2, ArrowUpRight, Cpu } from 'lucide-react';
 import elanaduImg from '../assets/elanadu_milk_project.jpg';
 import use3DTilt from '../utils/use3DTilt';
 import './Projects.css';
@@ -9,23 +9,30 @@ const ProjectCard = ({ project, onSelect }) => {
   const cardRef = use3DTilt({ max: 12, perspective: 1100, scale: 1.025 });
 
   return (
-    <div ref={cardRef} className="project-card glass-panel card-3d">
+    <div ref={cardRef} className="project-card glass-panel card-3d hacker-project-card">
+      <div className="project-terminal-bar">
+        <span className="dot red"></span>
+        <span className="dot yellow"></span>
+        <span className="dot green"></span>
+        <span className="project-port-tag">{project.portTag}</span>
+      </div>
+
       <div className="project-image-wrapper">
         <img src={project.image} alt={project.title} className="project-image" />
         <div className="project-overlay">
           <button
-            className="btn btn-primary preview-btn btn-3d"
+            className="btn btn-primary preview-btn btn-hacker"
             onClick={() => onSelect(project)}
           >
-            Explore 3D Details <Sparkles size={16} />
+            <Terminal size={15} /> ./inspect_module
           </button>
         </div>
-        <span className="project-tag tag-3d">{project.tag}</span>
+        <span className="project-tag tag-hacker">{project.tag}</span>
       </div>
 
       <div className="project-info">
         <div className="project-cat-row">
-          <span className="project-category">{project.category}</span>
+          <span className="project-category">// {project.category}</span>
         </div>
         
         <h3 className="project-title">{project.title}</h3>
@@ -33,23 +40,23 @@ const ProjectCard = ({ project, onSelect }) => {
 
         <div className="tech-tags">
           {project.techStack.slice(0, 4).map((tech, idx) => (
-            <span key={idx} className="tech-pill tech-pill-3d">{tech}</span>
+            <span key={idx} className="tech-pill tech-pill-hacker">{tech}</span>
           ))}
           {project.techStack.length > 4 && (
-            <span className="tech-pill more tech-pill-3d">+{project.techStack.length - 4}</span>
+            <span className="tech-pill more tech-pill-hacker">+{project.techStack.length - 4}</span>
           )}
         </div>
 
         <div className="project-footer">
           <button
-            className="details-link-3d"
+            className="details-link-hacker"
             onClick={() => onSelect(project)}
           >
-            Full Architecture Spec &rarr;
+            &gt; Read Spec &amp; Architecture &rarr;
           </button>
           <div className="external-links">
-            <a href={project.demoUrl} target="_blank" rel="noreferrer" className="icon-link-3d" aria-label="Live Demo" title="Open Live Project">
-              <ArrowUpRight size={18} />
+            <a href={project.demoUrl} target="_blank" rel="noreferrer" className="icon-link-hacker" aria-label="Live Demo" title="Launch Production URL">
+              <ArrowUpRight size={17} />
             </a>
           </div>
         </div>
@@ -67,7 +74,8 @@ const Projects = () => {
       id: 1,
       title: "Elanadu Milk Website & Mobile App",
       category: "ERP & Live",
-      tag: "Live ERP Backend",
+      tag: "Live Production Cluster",
+      portTag: "PORT: 443 [MSSQL/DRF]",
       image: elanaduImg,
       description: "Developed and maintained an enterprise ERP system using Python, Django, and MSSQL to manage inventory, sales, distribution, attendance, and RESTful APIs.",
       longDescription: "Comprehensive enterprise ERP platform built for Elanadu Milk Private Limited. Manages inventory, milk procurement, sales, distribution, stock transfers, employee attendance, trip management, automated PDF/Excel report generation, and RESTful API endpoints for Flutter mobile applications.",
@@ -85,7 +93,8 @@ const Projects = () => {
       id: 2,
       title: "MGUIF Mainsite",
       category: "Full Stack",
-      tag: "Live MGUIF Project",
+      tag: "Live Portal",
+      portTag: "PORT: 8080 [REACT/DRF]",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
       description: "Scalable interactive web application with React.js frontend and Django REST API integration.",
       longDescription: "Developed a scalable and responsive frontend web application using React.js to support interactive user workflows. Integrated RESTful APIs for real-time data retrieval and submission with a Django backend.",
@@ -102,7 +111,8 @@ const Projects = () => {
       id: 3,
       title: "MGUIF HPC Platform",
       category: "Full Stack",
-      tag: "Live MGUIF Project",
+      tag: "HPC Computing Node",
+      portTag: "PORT: 9000 [HPC/API]",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
       description: "High-performance computing web interface built with React.js and Django REST Framework.",
       longDescription: "Developed a scalable frontend application using React.js to support complex HPC workflows. Integrated RESTful APIs for seamless, real-time data communication with the Django backend.",
@@ -119,7 +129,8 @@ const Projects = () => {
       id: 4,
       title: "MGUIF Incubation Site",
       category: "Full Stack",
-      tag: "Live MGUIF Project",
+      tag: "Incubation Platform",
+      portTag: "PORT: 4000 [REACT/DRF]",
       image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
       description: "Startup incubation platform featuring mentor coordination modules and automated UI workflows.",
       longDescription: "Developed a startup incubation platform frontend using React.js with secure API integration. Designed mentor coordination modules, automated UI workflows, dynamic onboarding forms, and resource management tools.",
@@ -136,7 +147,8 @@ const Projects = () => {
       id: 5,
       title: "ICSG Website",
       category: "Full Stack",
-      tag: "Live MGUIF Project",
+      tag: "ICSG Production",
+      portTag: "PORT: 3000 [REACT/API]",
       image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
       description: "Interactive web platform with optimized rendering state management and Django REST API integration.",
       longDescription: "Developed a scalable and responsive frontend using React.js for interactive user engagement. Integrated RESTful APIs for real-time data operations with a Django backend.",
@@ -153,7 +165,8 @@ const Projects = () => {
       id: 6,
       title: "Campuzine Platform",
       category: "Frontend",
-      tag: "Ongoing MGUIF Project",
+      tag: "Live Pipeline",
+      portTag: "PORT: 5000 [REACT/JS]",
       image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80",
       description: "Digital campus publication app built with React.js and real-time Django REST API integration.",
       longDescription: "Ongoing live project of MGUIF. Developed a scalable frontend application using React.js for interactive user workflows, real-time data streaming, dynamic UI rendering, and secure user authentication.",
@@ -174,37 +187,47 @@ const Projects = () => {
     ? projectsData
     : projectsData.filter(p => p.category === activeFilter);
 
+  React.useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setSelectedProject(null);
+    };
+    if (selectedProject) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedProject]);
+
   return (
-    <section id="projects" className="section projects-section perspective-viewport">
+    <section id="projects" className="section projects-section">
       <div className="container">
         <div className="section-header">
           <div className="section-subtitle">
-            <FolderGit2 size={14} /> My Portfolio Showcase
+            <Terminal size={14} /> $ ls -la /var/www/production_deployments/
           </div>
           <h2 className="section-title">
-            Featured <span className="gradient-text">Projects & Applications</span>
+            Enterprise Deployments &amp; <span className="gradient-text">Applications</span>
           </h2>
         </div>
 
-        {/* Filter Controls with 3D Pills */}
+        {/* Filter Controls with Terminal Buttons */}
         <div className="filter-wrapper">
           <div className="filter-label">
-            <Filter size={16} /> Filter by Category:
+            <Terminal size={15} /> // Filter Cluster:
           </div>
           <div className="filter-buttons">
             {categories.map((cat) => (
               <button
                 key={cat}
-                className={`filter-btn filter-btn-3d ${activeFilter === cat ? 'active' : ''}`}
+                className={`filter-btn filter-btn-hacker ${activeFilter === cat ? 'active' : ''}`}
                 onClick={() => setActiveFilter(cat)}
               >
-                {cat}
+                [{cat}]
               </button>
             ))}
           </div>
         </div>
 
-        {/* Projects Grid with 3D Perspective */}
+        {/* Projects Grid */}
         <div className="projects-grid">
           {filteredProjects.map((project) => (
             <ProjectCard
@@ -215,47 +238,53 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* 3D Modal Popup */}
+        {/* 3D Hacker Detail Modal */}
         {selectedProject && (
           <div className="modal-overlay modal-overlay-3d" onClick={() => setSelectedProject(null)}>
-            <div className="modal-content modal-content-3d project-modal-3d" onClick={(e) => e.stopPropagation()}>
-              <button className="close-btn close-btn-3d" onClick={() => setSelectedProject(null)} aria-label="Close">
-                <X size={20} />
-              </button>
-
-              <div className="modal-header">
-                <span className="modal-category category-pill-3d">{selectedProject.category}</span>
-                <h2 className="modal-title">{selectedProject.title}</h2>
+            <div className="modal-content modal-content-3d hacker-project-modal" onClick={(e) => e.stopPropagation()}>
+              <div className="modal-terminal-top">
+                <span className="dot red"></span>
+                <span className="dot yellow"></span>
+                <span className="dot green"></span>
+                <span className="modal-terminal-file">spec_{selectedProject.id}.sh --verbose</span>
+                <button className="close-btn-top-hacker" onClick={() => setSelectedProject(null)} aria-label="Close">
+                  <X size={16} /> [ESC]
+                </button>
               </div>
 
-              <div className="modal-image-wrapper-3d">
+              <div className="modal-header">
+                <span className="modal-category category-pill-hacker">{selectedProject.portTag}</span>
+                <h2 className="modal-title hacker-glow-text">{selectedProject.title}</h2>
+              </div>
+
+              <div className="modal-image-wrapper-hacker">
                 <img src={selectedProject.image} alt={selectedProject.title} className="modal-image" />
               </div>
 
               <div className="modal-body">
-                <h4 className="modal-subheading">Architecture & System Overview</h4>
+                <h4 className="modal-subheading">// SYSTEM &amp; ARCHITECTURE OVERVIEW</h4>
                 <p className="modal-text">{selectedProject.longDescription}</p>
 
-                <h4 className="modal-subheading">Key Technical Features</h4>
+                <h4 className="modal-subheading">// KEY TECHNICAL CAPABILITIES</h4>
                 <ul className="modal-features">
                   {selectedProject.features.map((feat, i) => (
-                    <li key={i} className="feature-item feature-item-3d">
-                      <CheckCircle2 size={17} className="feat-check pulse-anim" />
+                    <li key={i} className="feature-item feature-item-hacker">
+                      <CheckCircle2 size={16} className="feat-check" />
                       <span>{feat}</span>
                     </li>
                   ))}
                 </ul>
 
-                <h4 className="modal-subheading">Technologies Used</h4>
+                <h4 className="modal-subheading">// DEPLOYED TECH STACK</h4>
                 <div className="modal-tech-pills">
                   {selectedProject.techStack.map((tech, i) => (
-                    <span key={i} className="tech-pill tech-pill-3d modal-pill">{tech}</span>
+                    <span key={i} className="tech-pill tech-pill-hacker modal-pill">{tech}</span>
                   ))}
                 </div>
 
                 <div className="modal-actions">
-                  <a href={selectedProject.demoUrl} target="_blank" rel="noreferrer" className="btn btn-primary btn-3d">
-                    <ExternalLink size={16} /> Launch Live Production Preview
+                  <a href={selectedProject.demoUrl} target="_blank" rel="noreferrer" className="btn btn-primary btn-hacker">
+                    <ExternalLink size={15} /> ./open_production_endpoint
                   </a>
                 </div>
               </div>

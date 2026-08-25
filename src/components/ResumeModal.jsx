@@ -1,9 +1,18 @@
-import React, { useRef } from 'react';
-import { X, FileText, Download, Sparkles, ExternalLink } from 'lucide-react';
-import use3DTilt from '../utils/use3DTilt';
+import React, { useEffect } from 'react';
+import { X, FileCode, Download, Terminal, ShieldCheck } from 'lucide-react';
 import './ResumeModal.css';
 
 const ResumeModal = ({ isOpen, onClose }) => {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const driveUrl = "https://drive.google.com/file/d/1mcMgupcAwyecDaLfgIkWa4MlFGbVCM6E/view?usp=sharing";
@@ -12,14 +21,24 @@ const ResumeModal = ({ isOpen, onClose }) => {
   return (
     <div className="modal-overlay modal-overlay-3d resume-modal-overlay" onClick={onClose}>
       <div 
-        className="modal-content modal-content-3d resume-modal-content" 
+        className="modal-content modal-content-3d hacker-resume-modal" 
         onClick={(e) => e.stopPropagation()}
       >
+        <div className="resume-terminal-top">
+          <span className="dot red"></span>
+          <span className="dot yellow"></span>
+          <span className="dot green"></span>
+          <span className="resume-terminal-title">$ gpg --decrypt robin_roy_curriculum_vitae.pdf.asc [AUTH: 0x7F]</span>
+          <button className="close-btn-top-hacker" onClick={onClose} aria-label="Close">
+            <X size={16} /> [ESC]
+          </button>
+        </div>
+
         <div className="resume-modal-actions no-print">
           <div className="modal-header-info">
             <h3 className="modal-cv-title">
-              <Sparkles size={18} className="title-icon pulse-anim" /> 
-              <span>Robin Roy — Official Curriculum Vitae</span>
+              <Terminal size={17} className="title-icon" /> 
+              <span>Robin Roy // Official Curriculum Vitae</span>
             </h3>
           </div>
 
@@ -28,18 +47,15 @@ const ResumeModal = ({ isOpen, onClose }) => {
               href={driveUrl}
               target="_blank"
               rel="noreferrer"
-              className="btn btn-primary btn-3d drive-btn"
+              className="btn btn-primary btn-hacker drive-btn"
               title="Download Original Resume PDF"
             >
-              <Download size={16} /> Download Original PDF
+              <Download size={15} /> [DOWNLOAD_PDF]
             </a>
-            <button className="close-btn close-btn-3d" onClick={onClose} aria-label="Close">
-              <X size={20} />
-            </button>
           </div>
         </div>
 
-        <div className="pdf-viewer-wrapper pdf-viewer-3d">
+        <div className="pdf-viewer-wrapper pdf-viewer-hacker">
           <iframe
             src={previewUrl}
             title="Robin Roy Official Resume PDF"

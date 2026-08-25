@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, Layout, Server, Database, Wrench, CheckCircle2, GraduationCap, Award, Sparkles } from 'lucide-react';
+import { Cpu, Layout, Server, Database, Wrench, CheckCircle2, GraduationCap, Award, Terminal, ShieldAlert } from 'lucide-react';
 import use3DTilt from '../utils/use3DTilt';
 import './Skills.css';
 
@@ -7,10 +7,13 @@ const SkillCategoryCard = ({ category }) => {
   const tiltRef = use3DTilt({ max: 10, perspective: 1100, scale: 1.02 });
 
   return (
-    <div ref={tiltRef} className="skill-category-card glass-panel card-3d">
+    <div ref={tiltRef} className="skill-category-card glass-panel card-3d hacker-skill-card">
       <div className="category-header">
-        <div className="cat-icon cat-icon-3d">{category.icon}</div>
-        <h3 className="cat-title">{category.title}</h3>
+        <div className="cat-icon cat-icon-hacker">{category.icon}</div>
+        <div>
+          <span className="cat-prefix">// ARSENAL_CATEGORY</span>
+          <h3 className="cat-title">{category.title}</h3>
+        </div>
       </div>
 
       <div className="skill-list">
@@ -18,14 +21,14 @@ const SkillCategoryCard = ({ category }) => {
           <div key={idx} className="skill-item">
             <div className="skill-meta">
               <span className="skill-name">
-                <CheckCircle2 size={14} className="skill-bullet pulse-anim" />
+                <CheckCircle2 size={13} className="skill-bullet" />
                 {skill.name}
               </span>
               <span className="skill-percent">{skill.level}%</span>
             </div>
-            <div className="progress-bar-bg progress-bar-3d">
+            <div className="progress-bar-bg progress-bar-hacker">
               <div
-                className="progress-bar-fill progress-fill-3d"
+                className="progress-bar-fill progress-fill-hacker"
                 style={{ width: `${skill.level}%` }}
               ></div>
             </div>
@@ -43,29 +46,29 @@ const Skills = () => {
   const skillCategories = [
     {
       title: "Backend & Python Frameworks",
-      icon: <Server size={22} />,
+      icon: <Server size={20} />,
       skills: [
-        { name: "Python", level: 95 },
+        { name: "Python 3.x", level: 95 },
         { name: "Django Framework", level: 92 },
-        { name: "Django REST Framework", level: 90 },
-        { name: "REST API Architecture", level: 95 },
+        { name: "Django REST Framework (DRF)", level: 90 },
+        { name: "RESTful API Architecture", level: 95 },
         { name: "ReportLab & OpenPyXL", level: 88 }
       ]
     },
     {
-      title: "Frontend & 3D Engineering",
-      icon: <Layout size={22} />,
+      title: "Frontend Engineering",
+      icon: <Layout size={20} />,
       skills: [
-        { name: "HTML5 & CSS3", level: 95 },
-        { name: "JavaScript (ES6+)", level: 92 },
-        { name: "React.js & Three.js", level: 90 },
-        { name: "3D UI & WebGL Shaders", level: 88 },
+        { name: "HTML5 & Semantic UI", level: 95 },
+        { name: "CSS3 & Modern Animations", level: 92 },
+        { name: "JavaScript (ES6+)", level: 90 },
+        { name: "React.js & Three.js 3D", level: 88 },
         { name: "Bootstrap & Responsive UI", level: 88 }
       ]
     },
     {
-      title: "Databases & Security",
-      icon: <Database size={22} />,
+      title: "Databases & Security Architecture",
+      icon: <Database size={20} />,
       skills: [
         { name: "Microsoft SQL Server (MSSQL)", level: 90 },
         { name: "MySQL Optimization", level: 88 },
@@ -74,24 +77,24 @@ const Skills = () => {
       ]
     },
     {
-      title: "Tools & Integration",
-      icon: <Wrench size={22} />,
+      title: "DevOps & Integration Tools",
+      icon: <Wrench size={20} />,
       skills: [
         { name: "GIT (Version Control)", level: 95 },
         { name: "Flutter (Backend Integration)", level: 85 },
-        { name: "Agile Development Processes", level: 90 },
-        { name: "Production Debugging", level: 90 }
+        { name: "Agile Development & Sprints", level: 90 },
+        { name: "Production Debugging & Profiling", level: 90 }
       ]
     }
   ];
 
   const certificates = [
-    { name: "Database Management System", issuer: "NPTEL" },
-    { name: "Python Basics", issuer: "Coursera" },
-    { name: "MEAN STACK Web Development", issuer: "National Council for Technology and Training" },
-    { name: "Python and Data Visualization", issuer: "7-day Bootcamp Certificate by ShapeAI" },
-    { name: "Introduction to Python and Open CV", issuer: "PRODDEC College of Engineering, Chengannur" },
-    { name: "C for Everyone: Programming Fundamentals", issuer: "Coursera" }
+    { name: "Database Management System", issuer: "NPTEL Verified" },
+    { name: "Python Basics", issuer: "Coursera Verified" },
+    { name: "MEAN STACK Web Development", issuer: "National Council for Tech & Training" },
+    { name: "Python and Data Visualization", issuer: "ShapeAI 7-Day Bootcamp" },
+    { name: "Introduction to Python & OpenCV", issuer: "PRODDEC College of Eng" },
+    { name: "C for Everyone: Programming", issuer: "Coursera Verified" }
   ];
 
   const education = [
@@ -110,14 +113,14 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="section skills-section perspective-viewport">
+    <section id="skills" className="section skills-section">
       <div className="container">
         <div className="section-header">
           <div className="section-subtitle">
-            <Cpu size={14} /> Technical Profile
+            <Terminal size={14} /> $ python -m inspect_capabilities
           </div>
           <h2 className="section-title">
-            Programming Skills & <span className="gradient-text">Qualifications</span>
+            Technical Arsenal &amp; <span className="gradient-text">Proficiencies</span>
           </h2>
         </div>
 
@@ -128,26 +131,29 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Education & Certifications Row with 3D Tilt */}
+        {/* Education & Certifications Row */}
         <div className="credentials-row">
           {/* Education Card */}
-          <div ref={eduRef} className="credentials-card glass-panel card-3d">
+          <div ref={eduRef} className="credentials-card glass-panel card-3d hacker-cred-card">
             <div className="credentials-header">
-              <div className="cat-icon edu-icon cat-icon-3d">
-                <GraduationCap size={22} />
+              <div className="cat-icon edu-icon cat-icon-hacker">
+                <GraduationCap size={20} />
               </div>
-              <h3 className="cat-title">Education Background</h3>
+              <div>
+                <span className="cat-prefix">// ACADEMIC_QUALIFICATIONS</span>
+                <h3 className="cat-title">Education Background</h3>
+              </div>
             </div>
             <div className="credentials-list">
               {education.map((edu, idx) => (
-                <div key={idx} className="cred-item cred-item-3d">
+                <div key={idx} className="cred-item cred-item-hacker">
                   <div className="cred-main">
                     <h4 className="cred-title">{edu.degree}</h4>
                     <p className="cred-sub">{edu.institution}</p>
                   </div>
                   <div className="cred-badge-wrap">
                     <span className="cred-period">{edu.period}</span>
-                    <span className="cred-score score-3d">Score: {edu.score}</span>
+                    <span className="cred-score score-hacker">SCORE: {edu.score}</span>
                   </div>
                 </div>
               ))}
@@ -155,17 +161,20 @@ const Skills = () => {
           </div>
 
           {/* Certifications Card */}
-          <div ref={certRef} className="credentials-card glass-panel card-3d">
+          <div ref={certRef} className="credentials-card glass-panel card-3d hacker-cred-card">
             <div className="credentials-header">
-              <div className="cat-icon cert-icon cat-icon-3d">
-                <Award size={22} />
+              <div className="cat-icon cert-icon cat-icon-hacker">
+                <Award size={20} />
               </div>
-              <h3 className="cat-title">Certifications & Honors</h3>
+              <div>
+                <span className="cat-prefix">// CRYPTOGRAPHIC_CREDENTIALS</span>
+                <h3 className="cat-title">Verified Certifications</h3>
+              </div>
             </div>
             <div className="cert-grid">
               {certificates.map((cert, idx) => (
-                <div key={idx} className="cert-item cert-item-3d">
-                  <CheckCircle2 size={16} className="cert-check pulse-anim" />
+                <div key={idx} className="cert-item cert-item-hacker">
+                  <CheckCircle2 size={15} className="cert-check" />
                   <div>
                     <h4 className="cert-title">{cert.name}</h4>
                     <span className="cert-issuer">{cert.issuer}</span>

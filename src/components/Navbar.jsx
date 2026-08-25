@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sparkles, FileText } from 'lucide-react';
+import { Menu, X, Terminal, FileCode, ShieldAlert, Download, Sparkles } from 'lucide-react';
 import logoImg from '../assets/logo.jpg';
 import './Navbar.css';
 
@@ -16,11 +16,11 @@ const Navbar = ({ activeSection, onOpenResume }) => {
   }, []);
 
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Contact', href: '#contact' },
+    { name: './about', href: '#about' },
+    { name: './projects', href: '#projects' },
+    { name: './skills', href: '#skills' },
+    { name: './experience', href: '#experience' },
+    { name: './contact', href: '#contact' },
   ];
 
   return (
@@ -28,11 +28,16 @@ const Navbar = ({ activeSection, onOpenResume }) => {
       <div className="container nav-container">
         <a href="#hero" className="brand-logo">
           <div className="logo-icon-img-wrapper">
-            <img src={logoImg} alt="Robin Roy Logo" className="brand-logo-img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src={logoImg} alt="Robin Roy Logo" className="brand-logo-img" />
           </div>
-          <span className="brand-name">
-            Robin <span className="dot">Roy</span>
-          </span>
+          <div className="brand-text-wrap">
+            <span className="brand-name">
+              <span className="terminal-prefix">root@</span>robinroy<span className="terminal-suffix">:~$</span>
+            </span>
+            <span className="brand-status-sub">
+              <span className="status-blink-dot"></span> DEV_STATION [ONLINE]
+            </span>
+          </div>
         </a>
 
         <nav className="desktop-nav">
@@ -49,11 +54,11 @@ const Navbar = ({ activeSection, onOpenResume }) => {
 
         <div className="nav-actions">
           <button onClick={onOpenResume} className="btn btn-secondary nav-cv-btn">
-            <FileText size={15} /> Resume CV
+            <FileCode size={15} /> cat resume.pdf
           </button>
 
           <a href="#contact" className="btn btn-primary nav-cta">
-            <Sparkles size={16} /> Connect
+            <Terminal size={15} /> ./connect
           </a>
 
           <button
@@ -88,7 +93,7 @@ const Navbar = ({ activeSection, onOpenResume }) => {
               className="btn btn-secondary mobile-cv-btn"
               style={{ width: '100%', marginTop: '0.5rem' }}
             >
-              <FileText size={16} /> View / Download CV
+              <FileCode size={16} /> View / Download CV
             </button>
             <a
               href="#contact"
@@ -96,7 +101,7 @@ const Navbar = ({ activeSection, onOpenResume }) => {
               style={{ width: '100%' }}
               onClick={() => setMobileMenuOpen(false)}
             >
-              Let's Talk
+              ./execute_contact
             </a>
           </nav>
         </div>

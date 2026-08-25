@@ -1,5 +1,5 @@
 /* =========================================================
-   GLOBAL 3D BACKGROUND STYLING
+   HACKER / MATRIX 3D BACKGROUND STYLING
    ========================================================= */
 
 .global-3d-bg-root {
@@ -11,7 +11,7 @@
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  background-color: #040711;
+  background-color: #03070b;
 }
 
 .global-3d-canvas-container {
@@ -24,92 +24,77 @@
 }
 
 /* =========================================
-   3D AURORA GLOW ORBS
+   MATRIX NEON GLOW LIGHTS
    ========================================= */
-.aurora-orb {
+.matrix-glow-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(85px);
-  opacity: 0.55;
+  filter: blur(90px);
+  opacity: 0.45;
   will-change: transform;
   pointer-events: none;
   z-index: 0;
 }
 
-/* Top-Left Cyan Glow */
-.aurora-orb-1 {
+/* Matrix Neon Green Top Glow */
+.matrix-glow-1 {
   top: -10%;
-  left: 5%;
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.35) 0%, rgba(6, 182, 212, 0.08) 55%, transparent 75%);
-  animation: floatOrb1 18s ease-in-out infinite alternate;
+  left: 10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.28) 0%, rgba(0, 255, 136, 0.05) 55%, transparent 75%);
+  animation: floatMatrix1 16s ease-in-out infinite alternate;
 }
 
-/* Bottom-Right Indigo Glow */
-.aurora-orb-2 {
-  bottom: 5%;
+/* Cyber Cyan Bottom Glow */
+.matrix-glow-2 {
+  bottom: 0%;
   right: -5%;
   width: 650px;
   height: 650px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.38) 0%, rgba(99, 102, 241, 0.1) 50%, transparent 75%);
-  animation: floatOrb2 22s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.25) 0%, rgba(0, 240, 255, 0.05) 50%, transparent 75%);
+  animation: floatMatrix2 20s ease-in-out infinite alternate;
 }
 
-/* Center-Right Magenta / Violet Glow */
-.aurora-orb-3 {
-  top: 40%;
-  right: 15%;
-  width: 480px;
-  height: 480px;
-  background: radial-gradient(circle, rgba(236, 72, 153, 0.22) 0%, rgba(129, 140, 248, 0.08) 60%, transparent 80%);
-  animation: floatOrb3 15s ease-in-out infinite alternate;
+/* Deep Emerald Mid Glow */
+.matrix-glow-3 {
+  top: 45%;
+  right: 25%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, rgba(0, 59, 30, 0.08) 60%, transparent 80%);
+  animation: floatMatrix3 18s ease-in-out infinite alternate;
 }
 
-/* Bottom-Left Emerald / Sky Glow */
-.aurora-orb-4 {
-  bottom: -15%;
-  left: 20%;
-  width: 520px;
-  height: 520px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(6, 182, 212, 0.08) 55%, transparent 75%);
-  animation: floatOrb4 20s ease-in-out infinite alternate;
-}
-
-@keyframes floatOrb1 {
+@keyframes floatMatrix1 {
   0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(80px, 60px) scale(1.15); }
-  100% { transform: translate(-40px, 90px) scale(0.95); }
+  50% { transform: translate(60px, 50px) scale(1.15); }
+  100% { transform: translate(-30px, 70px) scale(0.95); }
 }
 
-@keyframes floatOrb2 {
+@keyframes floatMatrix2 {
   0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-90px, -70px) scale(1.1); }
-  100% { transform: translate(40px, -50px) scale(0.9); }
+  50% { transform: translate(-70px, -60px) scale(1.1); }
+  100% { transform: translate(30px, -40px) scale(0.9); }
 }
 
-@keyframes floatOrb3 {
+@keyframes floatMatrix3 {
   0% { transform: translate(0, 0) scale(0.9); }
-  50% { transform: translate(-60px, 80px) scale(1.2); }
-  100% { transform: translate(70px, -40px) scale(1); }
+  50% { transform: translate(-50px, 60px) scale(1.2); }
+  100% { transform: translate(50px, -30px) scale(1); }
 }
 
-@keyframes floatOrb4 {
-  0% { transform: translate(0, 0) scale(1.1); }
-  50% { transform: translate(70px, -60px) scale(0.95); }
-  100% { transform: translate(-50px, 40px) scale(1.15); }
-}
-
-/* =========================================
-   CYBER VIGNETTE & SCANLINES
-   ========================================= */
-.cyber-vignette-overlay {
+/* Matrix Hex Grid Pattern Overlay */
+.matrix-hex-grid {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 50% 50%, transparent 60%, rgba(3, 6, 15, 0.75) 100%);
+  background-image: 
+    linear-gradient(to right, rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
   z-index: 2;
   pointer-events: none;
 }

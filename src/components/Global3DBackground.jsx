@@ -17,7 +17,7 @@ const Global3DBackground = () => {
       0.1,
       1000
     );
-    camera.position.z = 30;
+    camera.position.z = 32;
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -25,104 +25,100 @@ const Global3DBackground = () => {
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     container.appendChild(renderer.domElement);
 
-    // Group for all floating background elements
     const bgGroup = new THREE.Group();
     scene.add(bgGroup);
 
-    // 1. Deep 3D Starfield & Particle Constellation
-    const particleCount = 450;
+    // 1. Matrix Cyber Digital Particles (Green & Cyan Starfield Stream)
+    const particleCount = 600;
     const particleGeo = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
-    const scales = new Float32Array(particleCount);
+    const velocities = [];
 
-    const colorPalette = [
-      new THREE.Color('#06b6d4'), // Cyan
-      new THREE.Color('#6366f1'), // Indigo
-      new THREE.Color('#ec4899'), // Magenta
-      new THREE.Color('#38bdf8'), // Sky blue
-      new THREE.Color('#818cf8'), // Light purple
+    const matrixColors = [
+      new THREE.Color('#00ff88'), // Matrix Neon Green
+      new THREE.Color('#00f0ff'), // Cyber Cyan
+      new THREE.Color('#38ef7d'), // Toxic Green
+      new THREE.Color('#10b981'), // Emerald
+      new THREE.Color('#f59e0b'), // Terminal Amber
     ];
 
     for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 80;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 80;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 50;
+      positions[i * 3] = (Math.random() - 0.5) * 90;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 90;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 60;
 
-      const col = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+      const col = matrixColors[Math.floor(Math.random() * matrixColors.length)];
       colors[i * 3] = col.r;
       colors[i * 3 + 1] = col.g;
       colors[i * 3 + 2] = col.b;
 
-      scales[i] = Math.random() * 0.8 + 0.3;
+      // Downward falling speed like matrix code rain
+      velocities.push({
+        y: 0.05 + Math.random() * 0.08,
+        x: (Math.random() - 0.5) * 0.01,
+      });
     }
 
     particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
     const particleMat = new THREE.PointsMaterial({
-      size: 0.18,
+      size: 0.22,
       vertexColors: true,
       transparent: true,
-      opacity: 0.65,
+      opacity: 0.8,
       blending: THREE.AdditiveBlending,
     });
 
     const particles = new THREE.Points(particleGeo, particleMat);
     bgGroup.add(particles);
 
-    // 2. Floating 3D Geometric Wireframe Shapes in Parallax Space
+    // 2. Floating Hacker Polyhedra Wireframes with Matrix Neon Glow
     const floatingShapes = [];
     const geometries = [
-      new THREE.IcosahedronGeometry(2.5, 0),
+      new THREE.IcosahedronGeometry(2.6, 0),
+      new THREE.OctahedronGeometry(2.4, 0),
       new THREE.TetrahedronGeometry(2.8, 0),
-      new THREE.OctahedronGeometry(2.2, 0),
-      new THREE.TorusGeometry(2.0, 0.25, 8, 24),
-      new THREE.DodecahedronGeometry(1.8, 0),
+      new THREE.TorusGeometry(2.2, 0.2, 8, 28),
+      new THREE.DodecahedronGeometry(2.0, 0),
     ];
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 8; i++) {
       const geo = geometries[i % geometries.length];
       const mat = new THREE.MeshBasicMaterial({
-        color: i % 2 === 0 ? 0x06b6d4 : 0x6366f1,
+        color: i % 2 === 0 ? 0x00ff88 : 0x00f0ff,
         wireframe: true,
         transparent: true,
-        opacity: 0.15 + (i % 3) * 0.08,
+        opacity: 0.18 + (i % 3) * 0.06,
       });
 
       const mesh = new THREE.Mesh(geo, mat);
       mesh.position.set(
-        (Math.random() - 0.5) * 60,
-        (Math.random() - 0.5) * 60,
-        (Math.random() - 0.5) * 30 - 5
-      );
-      
-      mesh.rotation.set(
-        Math.random() * Math.PI,
-        Math.random() * Math.PI,
-        Math.random() * Math.PI
+        (Math.random() - 0.5) * 70,
+        (Math.random() - 0.5) * 70,
+        (Math.random() - 0.5) * 40 - 5
       );
 
       bgGroup.add(mesh);
       floatingShapes.push({
         mesh,
-        rotSpeedX: (Math.random() - 0.5) * 0.006,
-        rotSpeedY: (Math.random() - 0.5) * 0.008,
-        rotSpeedZ: (Math.random() - 0.5) * 0.005,
-        floatSpeed: 0.001 + Math.random() * 0.002,
+        rotSpeedX: (Math.random() - 0.5) * 0.007,
+        rotSpeedY: (Math.random() - 0.5) * 0.009,
+        rotSpeedZ: (Math.random() - 0.5) * 0.006,
         initialY: mesh.position.y,
       });
     }
 
-    // 3. 3D Cyber Wave Grid at the bottom plane
-    const gridHelper = new THREE.GridHelper(90, 45, 0x06b6d4, 0x1e293b);
-    gridHelper.position.y = -18;
+    // 3. Cyber Matrix Grid Floor
+    const gridHelper = new THREE.GridHelper(100, 50, 0x00ff88, 0x064e3b);
+    gridHelper.position.y = -19;
     gridHelper.position.z = 0;
-    gridHelper.material.opacity = 0.25;
+    gridHelper.material.opacity = 0.35;
     gridHelper.material.transparent = true;
     bgGroup.add(gridHelper);
 
-    // Mouse & Scroll Parallax
+    // Mouse & Scroll Parallax Tracking
     let targetX = 0;
     let targetY = 0;
     let targetScrollY = 0;
@@ -157,25 +153,35 @@ const Global3DBackground = () => {
       animationFrameId = requestAnimationFrame(animate);
       const elapsedTime = clock.getElapsedTime();
 
-      // Smooth camera parallax
+      // Camera Parallax with smooth lerp
       camera.position.x += (targetX - camera.position.x) * 0.03;
       camera.position.y += (targetY - targetScrollY - camera.position.y) * 0.03;
       camera.lookAt(0, -targetScrollY, 0);
 
-      // Rotate particle starfield slowly
-      particles.rotation.y = elapsedTime * 0.015;
-      particles.rotation.x = elapsedTime * 0.008;
+      // Matrix Digital Rain Particle Stream Downward Animation
+      const posArray = particleGeo.attributes.position.array;
+      for (let i = 0; i < particleCount; i++) {
+        posArray[i * 3 + 1] -= velocities[i].y;
+        posArray[i * 3] += velocities[i].x;
 
-      // Animate floating wireframe 3D polyhedrons
+        // Wrap around when falling below viewport
+        if (posArray[i * 3 + 1] < -45) {
+          posArray[i * 3 + 1] = 45;
+          posArray[i * 3] = (Math.random() - 0.5) * 90;
+        }
+      }
+      particleGeo.attributes.position.needsUpdate = true;
+
+      // Animate floating wireframes
       floatingShapes.forEach((shape, index) => {
         shape.mesh.rotation.x += shape.rotSpeedX;
         shape.mesh.rotation.y += shape.rotSpeedY;
         shape.mesh.rotation.z += shape.rotSpeedZ;
-        shape.mesh.position.y = shape.initialY + Math.sin(elapsedTime * 0.8 + index) * 2.5;
+        shape.mesh.position.y = shape.initialY + Math.sin(elapsedTime * 0.8 + index) * 2.2;
       });
 
       // Animate grid drift
-      gridHelper.position.z = (elapsedTime * 2) % 2;
+      gridHelper.position.z = (elapsedTime * 2.5) % 2;
 
       renderer.render(scene, camera);
     };
@@ -196,17 +202,16 @@ const Global3DBackground = () => {
 
   return (
     <div className="global-3d-bg-root">
-      {/* Three.js 3D WebGL Canvas Layer */}
+      {/* 3D WebGL Canvas Layer */}
       <div ref={containerRef} className="global-3d-canvas-container" />
 
-      {/* Dynamic 3D Aurora Glow Lighting Orbs */}
-      <div className="aurora-orb aurora-orb-1"></div>
-      <div className="aurora-orb aurora-orb-2"></div>
-      <div className="aurora-orb aurora-orb-3"></div>
-      <div className="aurora-orb aurora-orb-4"></div>
+      {/* Cyber Green Matrix Glow Orbs */}
+      <div className="matrix-glow-orb matrix-glow-1"></div>
+      <div className="matrix-glow-orb matrix-glow-2"></div>
+      <div className="matrix-glow-orb matrix-glow-3"></div>
 
-      {/* Cyber Noise & Vignette Overlay */}
-      <div className="cyber-vignette-overlay"></div>
+      {/* Matrix Hex Grid Pattern Overlay */}
+      <div className="matrix-hex-grid"></div>
     </div>
   );
 };

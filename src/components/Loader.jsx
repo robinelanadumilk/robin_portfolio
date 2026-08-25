@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import logoImg from '../assets/logo.jpg';
+import { Terminal, Shield, Cpu, Lock } from 'lucide-react';
 import './Loader.css';
 
 const Loader = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
   const [isFading, setIsFading] = useState(false);
-  const [statusText, setStatusText] = useState('Booting Neural Kernel...');
+  const [statusText, setStatusText] = useState('root@robinroy:~$ init_kernel.sh');
 
   useEffect(() => {
     const statuses = [
-      { at: 0, text: 'Initializing 3D Matrix & Environment...' },
-      { at: 25, text: 'Loading Python & Django Enterprise Modules...' },
-      { at: 50, text: 'Connecting MSSQL & RESTful API Gateways...' },
-      { at: 75, text: 'Compiling React.js 3D Viewports & Shaders...' },
-      { at: 95, text: 'System Online! Launching Portfolio...' }
+      { at: 0, text: 'root@robin:~$ ./boot_system.sh --target=production' },
+      { at: 20, text: '[OK] Loaded Python 3.12 & Django Enterprise Modules' },
+      { at: 45, text: '[OK] RESTful API Endpoints & Auth Gateways Mounted' },
+      { at: 70, text: '[OK] MSSQL Database Cluster Synchronized [0x7F]' },
+      { at: 90, text: '[ACCESS GRANTED] Launching Developer Console...' }
     ];
 
     const interval = setInterval(() => {
@@ -42,19 +43,23 @@ const Loader = ({ onFinish }) => {
     return () => clearInterval(interval);
   }, [onFinish]);
 
-  // Radius for circular SVG progress
   const radius = 64;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
     <div className={`page-loader ${isFading ? 'fade-out' : ''}`}>
-      {/* 3D Cyber Grid Background */}
-      <div className="loader-cyber-grid"></div>
+      <div className="loader-matrix-grid"></div>
       <div className="loader-glow-orb"></div>
 
       <div className="loader-3d-wrapper">
-        {/* 3D Holographic Gyroscope */}
+        {/* Terminal Status Tag */}
+        <div className="loader-bios-tag">
+          <Terminal size={14} className="hacker-green-icon" />
+          <span>ROBIN_OS_v3.2 [SECURE SHELL]</span>
+        </div>
+
+        {/* 3D Hacker Gyroscope Rings */}
         <div className="gyroscope-container">
           <div className="gyro-ring gyro-ring-outer"></div>
           <div className="gyro-ring gyro-ring-middle"></div>
@@ -74,7 +79,7 @@ const Loader = ({ onFinish }) => {
             </div>
           </div>
 
-          {/* Orbiting 3D Nodes */}
+          {/* Orbiting Matrix Nodes */}
           <div className="orbit-track">
             <div className="orbit-node node-1"></div>
             <div className="orbit-node node-2"></div>
@@ -82,12 +87,12 @@ const Loader = ({ onFinish }) => {
           </div>
         </div>
 
-        {/* Brand & 3D Typography */}
+        {/* Hacker Typography */}
         <div className="loader-brand-box">
           <h1 className="loader-title">
-            ROBIN <span className="gradient-text">ROY</span>
+            ROBIN <span className="matrix-gradient-text">ROY</span>
           </h1>
-          <p className="loader-subtitle">Python Django Full Stack Developer</p>
+          <p className="loader-subtitle">&lt;Python / Django Full-Stack Developer /&gt;</p>
         </div>
 
         {/* 3D Circular HUD Progress */}
@@ -96,7 +101,7 @@ const Loader = ({ onFinish }) => {
             <svg className="progress-ring" width="150" height="150">
               <circle
                 className="progress-ring-bg"
-                stroke="rgba(255, 255, 255, 0.08)"
+                stroke="rgba(0, 255, 136, 0.12)"
                 strokeWidth="4"
                 fill="transparent"
                 r={radius}
@@ -105,7 +110,7 @@ const Loader = ({ onFinish }) => {
               />
               <circle
                 className="progress-ring-circle"
-                stroke="url(#loaderGradient)"
+                stroke="url(#matrixLoaderGradient)"
                 strokeWidth="5"
                 strokeDasharray={`${circumference} ${circumference}`}
                 style={{ strokeDashoffset }}
@@ -116,10 +121,10 @@ const Loader = ({ onFinish }) => {
                 cy="75"
               />
               <defs>
-                <linearGradient id="loaderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#06b6d4" />
-                  <stop offset="50%" stopColor="#6366f1" />
-                  <stop offset="100%" stopColor="#ec4899" />
+                <linearGradient id="matrixLoaderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#00ff88" />
+                  <stop offset="50%" stopColor="#00f0ff" />
+                  <stop offset="100%" stopColor="#4ade80" />
                 </linearGradient>
               </defs>
             </svg>
@@ -130,7 +135,7 @@ const Loader = ({ onFinish }) => {
             </div>
           </div>
 
-          {/* Dynamic Cyber Status Bar */}
+          {/* Hacker Terminal Prompt Feed */}
           <div className="loader-status-container">
             <div className="status-terminal-line">
               <span className="terminal-prompt">&gt;</span>
