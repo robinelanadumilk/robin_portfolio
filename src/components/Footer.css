@@ -5,9 +5,10 @@
 .jarvis-footer {
   background: #01040d;
   border-top: 1px solid rgba(0, 240, 255, 0.25);
-  padding: 4.5rem 0 2rem 0;
+  padding: clamp(3rem, 6vw, 4.5rem) 0 2rem 0;
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 .jarvis-footer::before {
@@ -24,8 +25,8 @@
 .footer-top {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  gap: 3.5rem;
-  margin-bottom: 3.5rem;
+  gap: clamp(1.5rem, 3.5vw, 3.5rem);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
 }
 
 .footer-brand {
@@ -35,7 +36,7 @@
 
 .footer-bio {
   color: var(--text-muted);
-  font-size: 0.92rem;
+  font-size: clamp(0.85rem, 1.2vw, 0.92rem);
   line-height: 1.65;
   margin-top: 1.25rem;
   max-width: 420px;
@@ -43,7 +44,7 @@
 }
 
 .footer-heading {
-  font-size: 0.88rem;
+  font-size: clamp(0.8rem, 1.3vw, 0.88rem);
   font-weight: 800;
   color: var(--stark-gold);
   margin-bottom: 1.25rem;
@@ -61,10 +62,11 @@
 .footer-links a {
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.82rem;
+  font-size: clamp(0.76rem, 1.1vw, 0.82rem);
   font-family: var(--font-hud);
   transition: all 0.2s ease;
   letter-spacing: 0.04em;
+  word-break: break-word;
 }
 
 .footer-links a:hover {
@@ -96,10 +98,11 @@
 }
 
 .copyright {
-  font-size: 0.82rem;
+  font-size: clamp(0.74rem, 1.1vw, 0.82rem);
   color: var(--text-dim);
   font-family: var(--font-hud);
   letter-spacing: 0.04em;
+  line-height: 1.5;
 }
 
 .back-to-top-jarvis {
@@ -132,7 +135,7 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 640px) {
   .footer-top {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -140,5 +143,6 @@
   .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
+    gap: 1.25rem;
   }
 }

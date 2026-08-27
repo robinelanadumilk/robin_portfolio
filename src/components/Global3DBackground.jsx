@@ -17,7 +17,7 @@ const Global3DBackground = () => {
       0.1,
       1000
     );
-    camera.position.z = 32;
+    camera.position.z = 30;
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -28,8 +28,8 @@ const Global3DBackground = () => {
     const bgGroup = new THREE.Group();
     scene.add(bgGroup);
 
-    // 1. J.A.R.V.I.S. Arc Holographic Particle Constellation (Cyan, Electric Blue, Stark Gold)
-    const particleCount = 650;
+    // 1. Subtle J.A.R.V.I.S. Ambient Constellation Particles
+    const particleCount = 500;
     const particleGeo = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
@@ -40,13 +40,12 @@ const Global3DBackground = () => {
       new THREE.Color('#0099ff'), // Electric Blue
       new THREE.Color('#70f4ff'), // Ice Cyan
       new THREE.Color('#ffb700'), // Stark Gold
-      new THREE.Color('#38bdf8'), // Sky Blue
     ];
 
     for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 95;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 95;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 65;
+      positions[i * 3] = (Math.random() - 0.5) * 110;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 110;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 70 - 10;
 
       const col = jarvisColors[Math.floor(Math.random() * jarvisColors.length)];
       colors[i * 3] = col.r;
@@ -54,8 +53,8 @@ const Global3DBackground = () => {
       colors[i * 3 + 2] = col.b;
 
       velocities.push({
-        y: 0.03 + Math.random() * 0.05,
-        x: (Math.random() - 0.5) * 0.015,
+        y: 0.02 + Math.random() * 0.04,
+        x: (Math.random() - 0.5) * 0.01,
       });
     }
 
@@ -63,57 +62,58 @@ const Global3DBackground = () => {
     particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
     const particleMat = new THREE.PointsMaterial({
-      size: 0.22,
+      size: 0.16,
       vertexColors: true,
       transparent: true,
-      opacity: 0.85,
+      opacity: 0.65,
       blending: THREE.AdditiveBlending,
     });
 
     const particles = new THREE.Points(particleGeo, particleMat);
     bgGroup.add(particles);
 
-    // 2. Floating Stark Tech Hologram Polyhedra & HUD Rings
+    // 2. Subtle Background Depth Wireframes (placed in periphery)
     const floatingShapes = [];
     const geometries = [
-      new THREE.IcosahedronGeometry(2.6, 0),
-      new THREE.OctahedronGeometry(2.4, 0),
-      new THREE.TetrahedronGeometry(2.8, 0),
-      new THREE.TorusGeometry(2.2, 0.18, 8, 30),
-      new THREE.DodecahedronGeometry(2.0, 0),
+      new THREE.IcosahedronGeometry(2.0, 0),
+      new THREE.OctahedronGeometry(1.8, 0),
+      new THREE.TetrahedronGeometry(2.2, 0),
+      new THREE.TorusGeometry(1.8, 0.1, 8, 24),
     ];
 
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 6; i++) {
       const geo = geometries[i % geometries.length];
       const mat = new THREE.MeshBasicMaterial({
-        color: i % 3 === 0 ? 0xffb700 : 0x00f0ff,
+        color: i % 2 === 0 ? 0x00f0ff : 0xffb700,
         wireframe: true,
         transparent: true,
-        opacity: 0.2 + (i % 3) * 0.06,
+        opacity: 0.09,
       });
 
       const mesh = new THREE.Mesh(geo, mat);
+      // Place outside center viewport
+      const xSide = i % 2 === 0 ? 1 : -1;
       mesh.position.set(
-        (Math.random() - 0.5) * 75,
-        (Math.random() - 0.5) * 75,
-        (Math.random() - 0.5) * 45 - 5
+        xSide * (28 + Math.random() * 25),
+        (Math.random() - 0.5) * 60,
+        -15 - Math.random() * 20
       );
 
       bgGroup.add(mesh);
       floatingShapes.push({
         mesh,
-        rotSpeedX: (Math.random() - 0.5) * 0.007,
-        rotSpeedY: (Math.random() - 0.5) * 0.009,
-        rotSpeedZ: (Math.random() - 0.5) * 0.006,
+        rotSpeedX: (Math.random() - 0.5) * 0.005,
+        rotSpeedY: (Math.random() - 0.5) * 0.006,
+        rotSpeedZ: (Math.random() - 0.5) * 0.004,
         initialY: mesh.position.y,
       });
     }
 
-    // 3. Cyber Arc HUD Grid Floor
-    const gridHelper = new THREE.GridHelper(100, 50, 0x00f0ff, 0x072242);
-    gridHelper.position.y = -19;
-    gridHelper.position.z = 0;
-    gridHelper.material.opacity = 0.35;
+    // 3. Cyber Arc HUD Grid Floor (Lowered for depth)
+    const gridHelper = new THREE.GridHelper(120, 40, 0x00f0ff, 0x041830);
+    gridHelper.position.y = -25;
+    gridHelper.position.z = -10;
+    gridHelper.material.opacity = 0.2;
     gridHelper.material.transparent = true;
     bgGroup.add(gridHelper);
 
@@ -125,12 +125,12 @@ const Global3DBackground = () => {
     const handleMouseMove = (e) => {
       const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
       const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-      targetX = mouseX * 2.5;
-      targetY = mouseY * 2.5;
+      targetX = mouseX * 1.8;
+      targetY = mouseY * 1.8;
     };
 
     const handleScroll = () => {
-      targetScrollY = window.scrollY * 0.015;
+      targetScrollY = window.scrollY * 0.012;
     };
 
     const handleResize = () => {
@@ -152,7 +152,6 @@ const Global3DBackground = () => {
       animationFrameId = requestAnimationFrame(animate);
       const elapsedTime = clock.getElapsedTime();
 
-      // Camera Parallax with smooth lerp
       camera.position.x += (targetX - camera.position.x) * 0.03;
       camera.position.y += (targetY - targetScrollY - camera.position.y) * 0.03;
       camera.lookAt(0, -targetScrollY, 0);
@@ -163,9 +162,9 @@ const Global3DBackground = () => {
         posArray[i * 3 + 1] -= velocities[i].y;
         posArray[i * 3] += velocities[i].x;
 
-        if (posArray[i * 3 + 1] < -45) {
-          posArray[i * 3 + 1] = 45;
-          posArray[i * 3] = (Math.random() - 0.5) * 95;
+        if (posArray[i * 3 + 1] < -50) {
+          posArray[i * 3 + 1] = 50;
+          posArray[i * 3] = (Math.random() - 0.5) * 110;
         }
       }
       particleGeo.attributes.position.needsUpdate = true;
@@ -175,11 +174,11 @@ const Global3DBackground = () => {
         shape.mesh.rotation.x += shape.rotSpeedX;
         shape.mesh.rotation.y += shape.rotSpeedY;
         shape.mesh.rotation.z += shape.rotSpeedZ;
-        shape.mesh.position.y = shape.initialY + Math.sin(elapsedTime * 0.8 + index) * 2.2;
+        shape.mesh.position.y = shape.initialY + Math.sin(elapsedTime * 0.6 + index) * 1.5;
       });
 
       // Animate grid drift
-      gridHelper.position.z = (elapsedTime * 2.5) % 2;
+      gridHelper.position.z = -10 + (elapsedTime * 1.8) % 3;
 
       renderer.render(scene, camera);
     };
@@ -203,24 +202,10 @@ const Global3DBackground = () => {
       {/* 3D WebGL Canvas Layer */}
       <div ref={containerRef} className="global-3d-canvas-container" />
 
-      {/* J.A.R.V.I.S. Arc Cyan Glow Orbs */}
+      {/* J.A.R.V.I.S. Ambient Glow Orbs */}
       <div className="jarvis-glow-orb jarvis-glow-1"></div>
       <div className="jarvis-glow-orb jarvis-glow-2"></div>
       <div className="jarvis-glow-orb jarvis-glow-3"></div>
-
-      {/* Holographic Arc HUD Circular Reticle Overlays */}
-      <div className="jarvis-hud-reticle reticle-top-right">
-        <div className="reticle-outer-ring"></div>
-        <div className="reticle-inner-ring"></div>
-        <div className="reticle-cross"></div>
-        <span className="reticle-label">TELEMETRY_LAT_10.5</span>
-      </div>
-
-      <div className="jarvis-hud-reticle reticle-bottom-left">
-        <div className="reticle-outer-ring"></div>
-        <div className="reticle-inner-ring"></div>
-        <span className="reticle-label">ARC_CORE_99.8%</span>
-      </div>
 
       {/* Stark Tech Hex Grid Overlay */}
       <div className="jarvis-hex-grid"></div>

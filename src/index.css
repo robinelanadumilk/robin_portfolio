@@ -4,7 +4,7 @@
   /* JARVIS / Stark Industries Cybernetic Arc Theme */
   --bg-dark: #020612;
   --bg-darker: #01040a;
-  --bg-card: rgba(4, 13, 27, 0.82);
+  --bg-card: rgba(4, 13, 27, 0.85);
   --bg-card-hover: rgba(6, 20, 42, 0.95);
   
   --border-glass: rgba(0, 240, 255, 0.22);
@@ -37,7 +37,7 @@
   --font-hud: 'Orbitron', -apple-system, sans-serif;
   --font-tech: 'Rajdhani', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --font-sans: 'Rajdhani', 'Plus Jakarta Sans', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
   
   --radius-xs: 2px;
   --radius-sm: 4px;
@@ -58,19 +58,22 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: var(--font-tech);
+  font-family: var(--font-sans);
   background-color: var(--bg-dark);
   color: var(--text-main);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
   overflow-x: hidden;
   background-color: var(--bg-dark);
   min-height: 100vh;
-  line-height: 1.6;
+  line-height: 1.65;
   position: relative;
-  font-family: var(--font-tech);
+  font-family: var(--font-sans);
+  width: 100%;
 }
 
 /* JARVIS Holographic HUD Scanline & Grid Effect Overlay */
@@ -114,7 +117,7 @@ body::after {
 }
 
 .section {
-  padding: 5.5rem 0;
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0;
   position: relative;
 }
 
@@ -172,7 +175,7 @@ body::after {
 /* Section Header Bar */
 .section-header {
   text-align: center;
-  margin-bottom: 3.5rem;
+  margin-bottom: clamp(2rem, 4.5vw, 3.5rem);
   position: relative;
 }
 
@@ -181,20 +184,21 @@ body::after {
   align-items: center;
   gap: 0.55rem;
   font-family: var(--font-hud);
-  font-size: clamp(0.72rem, 1.4vw, 0.82rem);
+  font-size: clamp(0.68rem, 1.3vw, 0.82rem);
   color: var(--arc-cyan);
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   background: rgba(0, 240, 255, 0.08);
   border: 1px solid rgba(0, 240, 255, 0.35);
-  padding: 0.4rem 1.1rem;
+  padding: 0.4rem clamp(0.65rem, 1.5vw, 1.1rem);
   border-radius: var(--radius-xs);
-  margin-bottom: 1.1rem;
+  margin-bottom: 1rem;
   box-shadow: 0 0 18px rgba(0, 240, 255, 0.18), inset 0 0 10px rgba(0, 240, 255, 0.05);
   max-width: 95%;
   flex-wrap: wrap;
   justify-content: center;
   position: relative;
+  word-break: break-word;
 }
 
 .section-subtitle::before {
@@ -204,7 +208,7 @@ body::after {
 }
 
 .section-title {
-  font-size: clamp(1.85rem, 4.2vw, 3rem);
+  font-size: clamp(1.65rem, 4.5vw, 3rem);
   font-family: var(--font-hud);
   font-weight: 800;
   letter-spacing: 0.03em;
@@ -212,6 +216,7 @@ body::after {
   text-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
   line-height: 1.25;
   text-transform: uppercase;
+  word-break: break-word;
 }
 
 .gradient-text {
@@ -238,10 +243,10 @@ body::after {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  padding: 0.85rem 1.85rem;
+  padding: 0.8rem 1.65rem;
   border-radius: var(--radius-xs);
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: clamp(0.82rem, 1.4vw, 0.95rem);
   font-family: var(--font-hud);
   cursor: pointer;
   transition: var(--transition);
@@ -251,6 +256,7 @@ body::after {
   text-transform: uppercase;
   position: relative;
   overflow: hidden;
+  min-height: 44px;
 }
 
 .btn-primary {
@@ -328,6 +334,8 @@ body::after {
   background: var(--arc-cyan);
   box-shadow: 0 0 12px var(--arc-cyan);
   animation: jarvisPulse 1.6s infinite;
+  display: inline-block;
+  flex-shrink: 0;
 }
 
 @keyframes jarvisPulse {
@@ -426,15 +434,19 @@ body::after {
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-hud);
-  font-size: 0.85rem;
+  font-size: clamp(0.72rem, 1.8vw, 0.85rem);
   color: var(--arc-cyan);
   text-shadow: 0 0 15px var(--arc-cyan);
-  background: rgba(2, 8, 20, 0.9);
-  padding: 0.8rem 1.75rem;
+  background: rgba(2, 8, 20, 0.92);
+  padding: 0.75rem clamp(1rem, 3vw, 1.75rem);
   border: 1px solid var(--arc-cyan);
   border-radius: var(--radius-xs);
   box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
   animation: textFlash 0.8s infinite alternate;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 @keyframes textFlash {
@@ -449,13 +461,13 @@ body::after {
 
 @media (max-width: 768px) {
   .section {
-    padding: 4rem 0;
+    padding: 3.5rem 0;
   }
   .section-title {
-    font-size: 2.1rem;
+    font-size: 2rem;
   }
   .section-header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2.25rem;
   }
 }
 
@@ -465,7 +477,7 @@ body::after {
     padding: 0 0.5rem;
   }
   .section-title {
-    font-size: 1.75rem;
+    font-size: 1.65rem;
   }
   .modal-overlay {
     padding: 0.5rem;

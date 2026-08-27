@@ -5,10 +5,10 @@ import use3DTilt from '../utils/use3DTilt';
 import './Hero.css';
 
 const roles = [
-  "Python_Django_Backend_Engineer",
-  "Enterprise_ERP_System_Architect",
-  "RESTful_API_Specialist",
-  "Full_Stack_Web_Engineer"
+  "Python Django Backend Engineer",
+  "Enterprise ERP System Architect",
+  "RESTful API Specialist",
+  "Full Stack Web Engineer"
 ];
 
 const Hero = ({ onOpenResume }) => {
@@ -16,7 +16,7 @@ const Hero = ({ onOpenResume }) => {
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const statCardRef = use3DTilt({ max: 14, perspective: 800, scale: 1.05 });
+  const statCardRef = use3DTilt({ max: 12, perspective: 800, scale: 1.03 });
 
   useEffect(() => {
     const targetText = roles[currentRoleIndex];
@@ -49,19 +49,17 @@ const Hero = ({ onOpenResume }) => {
         <div className="hero-content">
           <div className="hero-badge badge-jarvis">
             <Zap size={14} className="jarvis-icon pulse-anim" />
-            <span>J.A.R.V.I.S. INTERFACE • PROTOCOL MARK-LXXXV ONLINE</span>
+            <span>J.A.R.V.I.S. INTERFACE • MARK-LXXXV ONLINE</span>
           </div>
 
           <h1 className="hero-title">
-            <span className="jarvis-bracket">[</span>
-            <span className="jarvis-name">Robin Roy</span>
-            <span className="jarvis-bracket">]</span>
+            Robin <span className="jarvis-gradient-text">Roy</span>
           </h1>
 
           <div className="hero-role-wrapper">
-            <span className="jarvis-cli-prompt">DIRECTIVE // SPEC:</span>
+            <span className="jarvis-cli-prompt">&gt; SPEC:</span>
             <span className="role-dynamic jarvis-glow-text">"{displayText}"</span>
-            <span className="cursor-block">█</span>
+            <span className="cursor-block">_</span>
           </div>
 
           <p className="hero-description">
@@ -78,24 +76,24 @@ const Hero = ({ onOpenResume }) => {
 
           <div className="hero-actions">
             <a href="#projects" className="btn btn-primary btn-jarvis">
-              <ChevronRight size={17} /> ACCESS BLUEPRINTS
+              <ChevronRight size={16} /> ACCESS BLUEPRINTS
             </a>
             <button onClick={onOpenResume} className="btn btn-secondary btn-jarvis">
-              <FileText size={16} /> DECRYPT DOSSIER
+              <FileText size={15} /> DECRYPT DOSSIER
             </button>
             <a href="#contact" className="btn btn-secondary btn-jarvis">
-              <Mail size={16} /> TRANSMIT COMMS
+              <Mail size={15} /> TRANSMIT COMMS
             </a>
           </div>
 
           <div className="social-links-wrapper">
-            <span className="social-label">// QUANTUM RELAY CHANNELS:</span>
+            <span className="social-label">// QUANTUM RELAY:</span>
             <div className="social-icons">
               <a href="mailto:robinroy1225@gmail.com" aria-label="Email" className="social-btn social-btn-jarvis" title="robinroy1225@gmail.com">
-                <Mail size={18} />
+                <Mail size={16} />
               </a>
               <a href="tel:8281189244" aria-label="Phone" className="social-btn social-btn-jarvis" title="+91 8281189244">
-                <Zap size={18} />
+                <Zap size={16} />
               </a>
             </div>
           </div>
@@ -110,7 +108,7 @@ const Hero = ({ onOpenResume }) => {
           {/* 3D Floating Stark Telemetry Metric Badge */}
           <div ref={statCardRef} className="hero-floating-stat glass-panel tilt-card-3d jarvis-stat-badge hud-corner-brackets">
             <div className="stat-icon-wrapper stat-jarvis-glow">
-              <Shield size={24} className="stat-icon" />
+              <Shield size={22} className="stat-icon" />
             </div>
             <div>
               <div className="stat-number jarvis-glow-text">3+ YEARS ARCHITECTURE</div>

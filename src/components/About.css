@@ -5,8 +5,8 @@
 .about-grid {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
-  gap: 2.5rem;
-  margin-bottom: 3.5rem;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
 }
 
 .jarvis-bio-panel {
@@ -32,10 +32,13 @@
   color: var(--arc-cyan);
   margin-left: 0.5rem;
   letter-spacing: 0.06em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .bio-inner-pad {
-  padding: 2.25rem;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
 }
 
 .bio-header-badge {
@@ -43,7 +46,7 @@
   align-items: center;
   gap: 0.45rem;
   font-family: var(--font-hud);
-  font-size: 0.72rem;
+  font-size: clamp(0.65rem, 1.3vw, 0.72rem);
   color: var(--stark-gold);
   background: rgba(255, 183, 0, 0.08);
   border: 1px solid rgba(255, 183, 0, 0.3);
@@ -51,20 +54,22 @@
   border-radius: var(--radius-xs);
   margin-bottom: 1.25rem;
   letter-spacing: 0.05em;
+  flex-wrap: wrap;
 }
 
 .bio-title {
-  font-size: 1.85rem;
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
   font-weight: 800;
   color: #fff;
   margin-bottom: 1.25rem;
   font-family: var(--font-hud);
   letter-spacing: 0.03em;
+  word-break: break-word;
 }
 
 .bio-paragraph {
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: clamp(0.88rem, 1.3vw, 0.95rem);
   line-height: 1.75;
   margin-bottom: 1.25rem;
   font-family: var(--font-tech);
@@ -81,7 +86,7 @@
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  font-size: 0.88rem;
+  font-size: clamp(0.78rem, 1.3vw, 0.88rem);
   font-family: var(--font-hud);
   color: var(--text-main);
   background: rgba(0, 240, 255, 0.04);
@@ -90,6 +95,7 @@
   border: 1px solid rgba(0, 240, 255, 0.18);
   transition: all 0.25s ease;
   letter-spacing: 0.04em;
+  word-break: break-word;
 }
 
 .point-item-jarvis:hover {
@@ -107,12 +113,12 @@
 /* J.A.R.V.I.S. Highlights Grid */
 .about-highlights-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .jarvis-card {
-  padding: 1.75rem;
+  padding: clamp(1.25rem, 2vw, 1.75rem);
   display: flex;
   flex-direction: column;
   border-radius: var(--radius-xs);
@@ -137,8 +143,8 @@
 }
 
 .hl-icon-jarvis {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   border-radius: var(--radius-xs);
   background: rgba(0, 240, 255, 0.12);
   border: 1px solid rgba(0, 240, 255, 0.4);
@@ -152,7 +158,7 @@
 }
 
 .hl-title {
-  font-size: 1.1rem;
+  font-size: clamp(0.98rem, 1.5vw, 1.1rem);
   font-weight: 800;
   color: #fff;
   margin-bottom: 0.5rem;
@@ -172,7 +178,7 @@
 .stats-jarvis {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  padding: 2rem 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem) 1rem;
   text-align: center;
   border: 1px solid rgba(0, 240, 255, 0.35);
   background: rgba(4, 14, 30, 0.88);
@@ -185,7 +191,7 @@
   flex-direction: column;
   align-items: center;
   border-right: 1px solid rgba(0, 240, 255, 0.2);
-  padding: 0 1rem;
+  padding: 0 clamp(0.5rem, 1.5vw, 1rem);
   transform: translateZ(10px);
   transition: transform 0.3s ease;
 }
@@ -199,7 +205,7 @@
 }
 
 .stat-value {
-  font-size: 2.3rem;
+  font-size: clamp(1.65rem, 3.5vw, 2.3rem);
   font-weight: 900;
   line-height: 1.1;
   margin-bottom: 0.35rem;
@@ -208,11 +214,11 @@
 }
 
 .stat-label {
-  font-size: 0.82rem;
+  font-size: clamp(0.72rem, 1.2vw, 0.82rem);
   color: var(--text-muted);
   font-family: var(--font-hud);
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
 }
 
 @media (max-width: 992px) {
@@ -221,7 +227,7 @@
   }
   .stats-jarvis {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 1.5rem;
   }
   .stat-item-jarvis:nth-child(2) {
     border-right: none;
@@ -233,16 +239,16 @@
     grid-template-columns: 1fr;
   }
   .bio-inner-pad {
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
   .stats-jarvis {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
   .stat-item-jarvis {
     border-right: none;
     border-bottom: 1px solid rgba(0, 240, 255, 0.2);
-    padding-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
   }
   .stat-item-jarvis:last-child {
     border-bottom: none;

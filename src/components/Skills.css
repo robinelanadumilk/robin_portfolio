@@ -4,13 +4,13 @@
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
 }
 
 .jarvis-skill-card {
-  padding: 2rem;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
   display: flex;
   flex-direction: column;
   border-radius: var(--radius-xs);
@@ -36,8 +36,8 @@
 }
 
 .cat-icon-jarvis {
-  width: 46px;
-  height: 46px;
+  width: 44px;
+  height: 44px;
   border-radius: var(--radius-xs);
   background: rgba(0, 240, 255, 0.12);
   border: 1px solid rgba(0, 240, 255, 0.35);
@@ -46,14 +46,16 @@
   justify-content: center;
   color: var(--arc-cyan);
   box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+  flex-shrink: 0;
 }
 
 .cat-title {
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
   font-weight: 800;
   color: #fff;
   font-family: var(--font-hud);
   letter-spacing: 0.03em;
+  word-break: break-word;
 }
 
 .skill-list {
@@ -68,7 +70,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.4rem;
-  font-size: 0.85rem;
+  font-size: clamp(0.8rem, 1.2vw, 0.85rem);
   font-family: var(--font-tech);
 }
 
@@ -78,10 +80,12 @@
   align-items: center;
   gap: 0.45rem;
   font-weight: 600;
+  word-break: break-word;
 }
 
 .skill-bullet {
   color: var(--arc-cyan);
+  flex-shrink: 0;
 }
 
 .skill-percent {
@@ -89,6 +93,8 @@
   font-size: 0.78rem;
   color: var(--stark-gold);
   font-weight: 800;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
 }
 
 .progress-bar-jarvis {
@@ -114,11 +120,11 @@
 .credentials-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2.25rem;
+  gap: clamp(1.25rem, 2.5vw, 2.25rem);
 }
 
 .jarvis-cred-card {
-  padding: 2rem;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
   border-radius: var(--radius-xs);
   transform-style: preserve-3d;
   background: rgba(4, 14, 30, 0.88);
@@ -143,7 +149,7 @@
   background: rgba(0, 240, 255, 0.03);
   border: 1px solid rgba(0, 240, 255, 0.18);
   border-radius: var(--radius-xs);
-  padding: 1rem 1.15rem;
+  padding: clamp(0.75rem, 1.5vw, 1.15rem);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -160,7 +166,7 @@
 }
 
 .cred-title {
-  font-size: 0.98rem;
+  font-size: clamp(0.88rem, 1.4vw, 0.98rem);
   font-weight: 700;
   color: #fff;
   margin-bottom: 0.2rem;
@@ -200,7 +206,7 @@
 
 .cert-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
   gap: 0.85rem;
 }
 
