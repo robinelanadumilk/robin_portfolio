@@ -1,6 +1,10 @@
+/* =========================================================
+   J.A.R.V.I.S. / STARK TECH EXPERIENCE SECTION
+   ========================================================= */
+
 .timeline-wrapper {
   position: relative;
-  max-width: 920px;
+  max-width: 940px;
   margin: 0 auto;
   padding-left: 2.5rem;
 }
@@ -12,9 +16,9 @@
   bottom: 0;
   left: 14px;
   width: 2px;
-  background: linear-gradient(180deg, #00ff88 0%, #00f0ff 50%, #10b981 100%);
-  border-radius: var(--radius-sm);
-  box-shadow: 0 0 12px rgba(0, 255, 136, 0.6);
+  background: linear-gradient(180deg, #00f0ff 0%, #0084ff 50%, #ffb700 100%);
+  border-radius: var(--radius-xs);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.7);
 }
 
 .timeline-item {
@@ -26,67 +30,68 @@
   margin-bottom: 0;
 }
 
-.timeline-dot-hacker {
+.timeline-dot-jarvis {
   position: absolute;
   top: 1.5rem;
   left: -2.5rem;
   width: 32px;
   height: 32px;
-  border-radius: var(--radius-sm);
-  background: #02060a;
-  border: 1.5px solid var(--matrix-green);
+  border-radius: var(--radius-xs);
+  background: #020612;
+  border: 1.5px solid var(--arc-cyan);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--matrix-green);
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.7);
+  color: var(--arc-cyan);
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.75);
   z-index: 2;
   transition: all 0.3s ease;
 }
 
-.timeline-item:hover .timeline-dot-hacker {
+.timeline-item:hover .timeline-dot-jarvis {
   transform: scale(1.15) rotate(15deg);
-  background: var(--matrix-green);
-  color: #02060a;
-  box-shadow: 0 0 25px var(--matrix-green);
+  background: var(--arc-cyan);
+  color: #020612;
+  box-shadow: 0 0 25px var(--arc-cyan);
 }
 
-.hacker-exp-card {
+.jarvis-exp-card {
   padding: 0;
   overflow: hidden;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   transform-style: preserve-3d;
-  background: rgba(4, 10, 16, 0.88);
-  border: 1px solid rgba(0, 255, 136, 0.25);
+  background: rgba(4, 14, 30, 0.88);
+  border: 1px solid rgba(0, 240, 255, 0.25);
 }
 
 .exp-terminal-bar {
-  background: rgba(2, 6, 10, 0.95);
+  background: rgba(2, 8, 18, 0.95);
   padding: 0.5rem 1.25rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  border-bottom: 1px solid rgba(0, 255, 136, 0.15);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.2);
 }
 
-.git-branch-icon {
-  color: var(--cyber-cyan);
+.jarvis-branch-icon {
+  color: var(--stark-gold);
 }
 
 .commit-hash {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--matrix-green);
-  font-weight: 700;
+  font-family: var(--font-hud);
+  font-size: 0.7rem;
+  color: var(--arc-cyan);
+  font-weight: 800;
+  letter-spacing: 0.05em;
 }
 
 .commit-branch {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-family: var(--font-hud);
+  font-size: 0.65rem;
   color: var(--text-dim);
 }
 
-.timeline-content {
+.exp-inner-pad {
   padding: 2rem 2.25rem;
 }
 
@@ -100,30 +105,33 @@
   transform: translateZ(15px);
 }
 
-.exp-type-hacker {
+.exp-type-jarvis {
   display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--cyber-cyan);
-  background: rgba(0, 240, 255, 0.08);
-  border: 1px solid rgba(0, 240, 255, 0.25);
+  font-family: var(--font-hud);
+  font-size: 0.7rem;
+  color: var(--stark-gold);
+  background: rgba(255, 183, 0, 0.08);
+  border: 1px solid rgba(255, 183, 0, 0.3);
   padding: 0.2rem 0.65rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   margin-bottom: 0.35rem;
+  letter-spacing: 0.04em;
 }
 
 .exp-role {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 800;
   color: #fff;
-  font-family: var(--font-mono);
+  font-family: var(--font-hud);
+  letter-spacing: 0.02em;
 }
 
 .exp-company {
-  font-size: 1rem;
-  color: var(--matrix-green);
-  font-weight: 600;
-  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: var(--arc-cyan);
+  font-weight: 700;
+  font-family: var(--font-hud);
+  margin-top: 0.15rem;
 }
 
 .exp-meta {
@@ -131,9 +139,9 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 0.3rem;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
-  font-family: var(--font-mono);
+  font-family: var(--font-tech);
 }
 
 .exp-period, .exp-location {
@@ -144,10 +152,10 @@
 
 .exp-desc {
   color: var(--text-main);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.7;
   margin-bottom: 1.5rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-tech);
 }
 
 .exp-achievements {
@@ -155,11 +163,11 @@
 }
 
 .achievements-title {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--cyber-cyan);
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: var(--stark-gold);
   margin-bottom: 0.75rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-hud);
   letter-spacing: 0.05em;
 }
 
@@ -170,18 +178,18 @@
   gap: 0.6rem;
 }
 
-.achieve-item-hacker {
+.achieve-item-jarvis {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
-  font-size: 0.84rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
   line-height: 1.5;
-  font-family: var(--font-mono);
+  font-family: var(--font-tech);
 }
 
 .achieve-icon {
-  color: var(--matrix-green);
+  color: var(--arc-cyan);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -196,7 +204,7 @@
   .timeline-wrapper {
     padding-left: 2rem;
   }
-  .timeline-dot-hacker {
+  .timeline-dot-jarvis {
     left: -2rem;
     width: 28px;
     height: 28px;
@@ -204,7 +212,7 @@
   .exp-meta {
     align-items: flex-start;
   }
-  .timeline-content {
+  .exp-inner-pad {
     padding: 1.5rem;
   }
 }
@@ -216,19 +224,19 @@
   .timeline-wrapper::before {
     left: 8px;
   }
-  .timeline-dot-hacker {
+  .timeline-dot-jarvis {
     left: -1.5rem;
     width: 22px;
     height: 22px;
   }
-  .timeline-dot-hacker svg {
+  .timeline-dot-jarvis svg {
     width: 12px;
     height: 12px;
   }
-  .timeline-content {
+  .exp-inner-pad {
     padding: 1.15rem;
   }
   .exp-role {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
   }
 }

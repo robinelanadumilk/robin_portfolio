@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FolderGit2, ExternalLink, Sparkles, Filter, X, CheckCircle2, Terminal, Code2, ArrowUpRight, Cpu } from 'lucide-react';
+import { ExternalLink, X, CheckCircle2, Zap, ArrowUpRight } from 'lucide-react';
 import elanaduImg from '../assets/elanadu_milk_project.jpg';
 import use3DTilt from '../utils/use3DTilt';
 import './Projects.css';
@@ -9,7 +9,7 @@ const ProjectCard = ({ project, onSelect }) => {
   const cardRef = use3DTilt({ max: 12, perspective: 1100, scale: 1.025 });
 
   return (
-    <div ref={cardRef} className="project-card glass-panel card-3d hacker-project-card">
+    <div ref={cardRef} className="project-card glass-panel card-3d jarvis-project-card hud-corner-brackets">
       <div className="project-terminal-bar">
         <span className="dot red"></span>
         <span className="dot yellow"></span>
@@ -21,13 +21,13 @@ const ProjectCard = ({ project, onSelect }) => {
         <img src={project.image} alt={project.title} className="project-image" />
         <div className="project-overlay">
           <button
-            className="btn btn-primary preview-btn btn-hacker"
+            className="btn btn-primary preview-btn btn-jarvis"
             onClick={() => onSelect(project)}
           >
-            <Terminal size={15} /> ./inspect_module
+            <Zap size={15} /> INSPECT BLUEPRINT
           </button>
         </div>
-        <span className="project-tag tag-hacker">{project.tag}</span>
+        <span className="project-tag tag-jarvis">{project.tag}</span>
       </div>
 
       <div className="project-info">
@@ -40,22 +40,22 @@ const ProjectCard = ({ project, onSelect }) => {
 
         <div className="tech-tags">
           {project.techStack.slice(0, 4).map((tech, idx) => (
-            <span key={idx} className="tech-pill tech-pill-hacker">{tech}</span>
+            <span key={idx} className="tech-pill tech-pill-jarvis">{tech}</span>
           ))}
           {project.techStack.length > 4 && (
-            <span className="tech-pill more tech-pill-hacker">+{project.techStack.length - 4}</span>
+            <span className="tech-pill more tech-pill-jarvis">+{project.techStack.length - 4}</span>
           )}
         </div>
 
         <div className="project-footer">
           <button
-            className="details-link-hacker"
+            className="details-link-jarvis"
             onClick={() => onSelect(project)}
           >
-            &gt; Read Spec &amp; Architecture &rarr;
+            &gt; View Architecture &amp; Spec &rarr;
           </button>
           <div className="external-links">
-            <a href={project.demoUrl} target="_blank" rel="noreferrer" className="icon-link-hacker" aria-label="Live Demo" title="Launch Production URL">
+            <a href={project.demoUrl} target="_blank" rel="noreferrer" className="icon-link-jarvis" aria-label="Live Demo" title="Launch Production URL">
               <ArrowUpRight size={17} />
             </a>
           </div>
@@ -72,12 +72,12 @@ const Projects = () => {
   const projectsData = [
     {
       id: 1,
-      title: "Elanadu Milk Website & Mobile App",
+      title: "Elanadu Milk Enterprise ERP & Mobile App",
       category: "ERP & Live",
       tag: "Live Production Cluster",
       portTag: "PORT: 443 [MSSQL/DRF]",
       image: elanaduImg,
-      description: "Developed and maintained an enterprise ERP system using Python, Django, and MSSQL to manage inventory, sales, distribution, attendance, and RESTful APIs.",
+      description: "Developed and maintained an enterprise ERP platform using Python, Django, and MSSQL to manage procurement, inventory, sales, distribution, attendance, and RESTful APIs.",
       longDescription: "Comprehensive enterprise ERP platform built for Elanadu Milk Private Limited. Manages inventory, milk procurement, sales, distribution, stock transfers, employee attendance, trip management, automated PDF/Excel report generation, and RESTful API endpoints for Flutter mobile applications.",
       techStack: ["Python", "Django", "Django REST Framework", "MSSQL", "ReportLab", "OpenPyXL", "Flutter API"],
       features: [
@@ -91,7 +91,7 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "MGUIF Mainsite",
+      title: "MGUIF Mainsite Portal",
       category: "Full Stack",
       tag: "Live Portal",
       portTag: "PORT: 8080 [REACT/DRF]",
@@ -109,7 +109,7 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: "MGUIF HPC Platform",
+      title: "MGUIF High-Performance Computing (HPC)",
       category: "Full Stack",
       tag: "HPC Computing Node",
       portTag: "PORT: 9000 [HPC/API]",
@@ -127,7 +127,7 @@ const Projects = () => {
     },
     {
       id: 4,
-      title: "MGUIF Incubation Site",
+      title: "MGUIF Startup Incubation Platform",
       category: "Full Stack",
       tag: "Incubation Platform",
       portTag: "PORT: 4000 [REACT/DRF]",
@@ -145,7 +145,7 @@ const Projects = () => {
     },
     {
       id: 5,
-      title: "ICSG Website",
+      title: "ICSG Global Web Platform",
       category: "Full Stack",
       tag: "ICSG Production",
       portTag: "PORT: 3000 [REACT/API]",
@@ -163,7 +163,7 @@ const Projects = () => {
     },
     {
       id: 6,
-      title: "Campuzine Platform",
+      title: "Campuzine Publication System",
       category: "Frontend",
       tag: "Live Pipeline",
       portTag: "PORT: 5000 [REACT/JS]",
@@ -202,23 +202,23 @@ const Projects = () => {
       <div className="container">
         <div className="section-header">
           <div className="section-subtitle">
-            <Terminal size={14} /> $ ls -la /var/www/production_deployments/
+            <Zap size={14} /> J.A.R.V.I.S. // CLASSIFIED BLUEPRINTS
           </div>
           <h2 className="section-title">
             Enterprise Deployments &amp; <span className="gradient-text">Applications</span>
           </h2>
         </div>
 
-        {/* Filter Controls with Terminal Buttons */}
+        {/* Filter Controls with Stark Buttons */}
         <div className="filter-wrapper">
           <div className="filter-label">
-            <Terminal size={15} /> // Filter Cluster:
+            <Zap size={15} /> // FILTER CLUSTER:
           </div>
           <div className="filter-buttons">
             {categories.map((cat) => (
               <button
                 key={cat}
-                className={`filter-btn filter-btn-hacker ${activeFilter === cat ? 'active' : ''}`}
+                className={`filter-btn filter-btn-jarvis ${activeFilter === cat ? 'active' : ''}`}
                 onClick={() => setActiveFilter(cat)}
               >
                 [{cat}]
@@ -238,53 +238,53 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* 3D Hacker Detail Modal */}
+        {/* 3D Stark Detail Modal */}
         {selectedProject && (
           <div className="modal-overlay modal-overlay-3d" onClick={() => setSelectedProject(null)}>
-            <div className="modal-content modal-content-3d hacker-project-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-content modal-content-3d jarvis-project-modal hud-corner-brackets" onClick={(e) => e.stopPropagation()}>
               <div className="modal-terminal-top">
                 <span className="dot red"></span>
                 <span className="dot yellow"></span>
                 <span className="dot green"></span>
-                <span className="modal-terminal-file">spec_{selectedProject.id}.sh --verbose</span>
-                <button className="close-btn-top-hacker" onClick={() => setSelectedProject(null)} aria-label="Close">
+                <span className="modal-terminal-file">blueprint_{selectedProject.id}.spec // J.A.R.V.I.S. DIAGNOSTICS</span>
+                <button className="close-btn-top-jarvis" onClick={() => setSelectedProject(null)} aria-label="Close">
                   <X size={16} /> [ESC]
                 </button>
               </div>
 
               <div className="modal-header">
-                <span className="modal-category category-pill-hacker">{selectedProject.portTag}</span>
-                <h2 className="modal-title hacker-glow-text">{selectedProject.title}</h2>
+                <span className="modal-category category-pill-jarvis">{selectedProject.portTag}</span>
+                <h2 className="modal-title jarvis-glow-text">{selectedProject.title}</h2>
               </div>
 
-              <div className="modal-image-wrapper-hacker">
+              <div className="modal-image-wrapper-jarvis">
                 <img src={selectedProject.image} alt={selectedProject.title} className="modal-image" />
               </div>
 
               <div className="modal-body">
-                <h4 className="modal-subheading">// SYSTEM &amp; ARCHITECTURE OVERVIEW</h4>
+                <h4 className="modal-subheading">// ARCHITECTURE &amp; DEPLOYMENT SPEC</h4>
                 <p className="modal-text">{selectedProject.longDescription}</p>
 
-                <h4 className="modal-subheading">// KEY TECHNICAL CAPABILITIES</h4>
+                <h4 className="modal-subheading">// SYSTEM CAPABILITIES &amp; INTEGRATIONS</h4>
                 <ul className="modal-features">
                   {selectedProject.features.map((feat, i) => (
-                    <li key={i} className="feature-item feature-item-hacker">
+                    <li key={i} className="feature-item feature-item-jarvis">
                       <CheckCircle2 size={16} className="feat-check" />
                       <span>{feat}</span>
                     </li>
                   ))}
                 </ul>
 
-                <h4 className="modal-subheading">// DEPLOYED TECH STACK</h4>
+                <h4 className="modal-subheading">// ACTIVE TECH STACK</h4>
                 <div className="modal-tech-pills">
                   {selectedProject.techStack.map((tech, i) => (
-                    <span key={i} className="tech-pill tech-pill-hacker modal-pill">{tech}</span>
+                    <span key={i} className="tech-pill tech-pill-jarvis modal-pill">{tech}</span>
                   ))}
                 </div>
 
                 <div className="modal-actions">
-                  <a href={selectedProject.demoUrl} target="_blank" rel="noreferrer" className="btn btn-primary btn-hacker">
-                    <ExternalLink size={15} /> ./open_production_endpoint
+                  <a href={selectedProject.demoUrl} target="_blank" rel="noreferrer" className="btn btn-primary btn-jarvis">
+                    <ExternalLink size={15} /> LAUNCH LIVE PRODUCTION URL
                   </a>
                 </div>
               </div>

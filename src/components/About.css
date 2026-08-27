@@ -1,3 +1,7 @@
+/* =========================================================
+   J.A.R.V.I.S. / STARK TECH ABOUT SECTION
+   ========================================================= */
+
 .about-grid {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
@@ -5,63 +9,65 @@
   margin-bottom: 3.5rem;
 }
 
-.hacker-bio-panel {
+.jarvis-bio-panel {
   padding: 0;
   overflow: hidden;
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(0, 255, 136, 0.3);
-  background: rgba(4, 10, 16, 0.88);
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  background: rgba(4, 14, 30, 0.88);
 }
 
-.terminal-panel-header {
-  background: rgba(2, 6, 10, 0.95);
+.jarvis-panel-header {
+  background: rgba(2, 8, 18, 0.95);
   padding: 0.65rem 1.25rem;
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.25);
 }
 
 .terminal-panel-title {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--matrix-green);
+  font-family: var(--font-hud);
+  font-size: 0.76rem;
+  color: var(--arc-cyan);
   margin-left: 0.5rem;
+  letter-spacing: 0.06em;
 }
 
-.about-bio-card {
+.bio-inner-pad {
   padding: 2.25rem;
-  transform-style: preserve-3d;
 }
 
 .bio-header-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--matrix-green);
-  background: rgba(0, 255, 136, 0.08);
-  border: 1px solid rgba(0, 255, 136, 0.25);
-  padding: 0.3rem 0.8rem;
-  border-radius: var(--radius-sm);
+  gap: 0.45rem;
+  font-family: var(--font-hud);
+  font-size: 0.72rem;
+  color: var(--stark-gold);
+  background: rgba(255, 183, 0, 0.08);
+  border: 1px solid rgba(255, 183, 0, 0.3);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-xs);
   margin-bottom: 1.25rem;
+  letter-spacing: 0.05em;
 }
 
 .bio-title {
-  font-size: 1.75rem;
+  font-size: 1.85rem;
   font-weight: 800;
   color: #fff;
   margin-bottom: 1.25rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-hud);
+  letter-spacing: 0.03em;
 }
 
 .bio-paragraph {
   color: var(--text-muted);
-  font-size: 0.94rem;
+  font-size: 0.95rem;
   line-height: 1.75;
   margin-bottom: 1.25rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-tech);
 }
 
 .key-points {
@@ -71,47 +77,48 @@
   margin-top: 1.75rem;
 }
 
-.point-item-hacker {
+.point-item-jarvis {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  font-size: 0.85rem;
-  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-family: var(--font-hud);
   color: var(--text-main);
-  background: rgba(0, 255, 136, 0.04);
-  padding: 0.65rem 1rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(0, 255, 136, 0.15);
+  background: rgba(0, 240, 255, 0.04);
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(0, 240, 255, 0.18);
   transition: all 0.25s ease;
+  letter-spacing: 0.04em;
 }
 
-.point-item-hacker:hover {
+.point-item-jarvis:hover {
   transform: translateX(6px);
-  border-color: var(--matrix-green);
-  background: rgba(0, 255, 136, 0.1);
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+  border-color: var(--arc-cyan);
+  background: rgba(0, 240, 255, 0.12);
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.25);
 }
 
 .check-icon {
-  color: var(--matrix-green);
+  color: var(--arc-cyan);
   flex-shrink: 0;
 }
 
-/* Hacker Highlights Grid */
+/* J.A.R.V.I.S. Highlights Grid */
 .about-highlights-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
 }
 
-.hacker-card {
+.jarvis-card {
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   transform-style: preserve-3d;
-  border: 1px solid rgba(0, 255, 136, 0.2);
-  background: rgba(4, 10, 16, 0.82);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  background: rgba(4, 14, 30, 0.85);
   position: relative;
 }
 
@@ -119,100 +126,104 @@
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--cyber-cyan);
-  background: rgba(0, 240, 255, 0.08);
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(0, 240, 255, 0.2);
+  font-family: var(--font-hud);
+  font-size: 0.65rem;
+  color: var(--stark-gold);
+  background: rgba(255, 183, 0, 0.08);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(255, 183, 0, 0.3);
+  letter-spacing: 0.05em;
 }
 
-.hl-icon-hacker {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-sm);
-  background: rgba(0, 255, 136, 0.12);
-  border: 1px solid rgba(0, 255, 136, 0.35);
+.hl-icon-jarvis {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-xs);
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(0, 240, 255, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.25rem;
-  color: var(--matrix-green);
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+  color: var(--arc-cyan);
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.35);
   transform: translateZ(15px);
 }
 
 .hl-title {
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 800;
   color: #fff;
   margin-bottom: 0.5rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-hud);
   transform: translateZ(10px);
+  letter-spacing: 0.03em;
 }
 
 .hl-desc {
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
   line-height: 1.6;
-  font-family: var(--font-mono);
+  font-family: var(--font-tech);
 }
 
-/* 3D Hacker Stats Row */
-.stats-hacker {
+/* 3D Stark Stats Row */
+.stats-jarvis {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 2rem 1.5rem;
   text-align: center;
-  border: 1px solid rgba(0, 255, 136, 0.3);
-  background: rgba(4, 10, 16, 0.85);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 255, 136, 0.15);
-  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  background: rgba(4, 14, 30, 0.88);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.85), 0 0 30px rgba(0, 240, 255, 0.2);
+  border-radius: var(--radius-xs);
 }
 
-.stat-item-hacker {
+.stat-item-jarvis {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: 1px solid rgba(0, 255, 136, 0.15);
+  border-right: 1px solid rgba(0, 240, 255, 0.2);
   padding: 0 1rem;
   transform: translateZ(10px);
   transition: transform 0.3s ease;
 }
 
-.stat-item-hacker:hover {
+.stat-item-jarvis:hover {
   transform: translateZ(25px) scale(1.05);
 }
 
-.stat-item-hacker:last-child {
+.stat-item-jarvis:last-child {
   border-right: none;
 }
 
 .stat-value {
-  font-size: 2.2rem;
-  font-weight: 800;
+  font-size: 2.3rem;
+  font-weight: 900;
   line-height: 1.1;
   margin-bottom: 0.35rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-hud);
+  letter-spacing: 0.05em;
 }
 
 .stat-label {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-weight: 500;
+  font-family: var(--font-hud);
+  font-weight: 600;
+  letter-spacing: 0.05em;
 }
 
 @media (max-width: 992px) {
   .about-grid {
     grid-template-columns: 1fr;
   }
-  .stats-hacker {
+  .stats-jarvis {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
-  .stat-item-hacker:nth-child(2) {
+  .stat-item-jarvis:nth-child(2) {
     border-right: none;
   }
 }
@@ -221,19 +232,19 @@
   .about-highlights-grid {
     grid-template-columns: 1fr;
   }
-  .about-bio-card {
+  .bio-inner-pad {
     padding: 1.5rem;
   }
-  .stats-hacker {
+  .stats-jarvis {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  .stat-item-hacker {
+  .stat-item-jarvis {
     border-right: none;
-    border-bottom: 1px solid rgba(0, 255, 136, 0.15);
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2);
     padding-bottom: 1.5rem;
   }
-  .stat-item-hacker:last-child {
+  .stat-item-jarvis:last-child {
     border-bottom: none;
     padding-bottom: 0;
   }

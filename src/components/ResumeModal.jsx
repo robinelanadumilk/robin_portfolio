@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X, FileCode, Download, Terminal, ShieldCheck } from 'lucide-react';
+import { X, Download, Zap } from 'lucide-react';
 import './ResumeModal.css';
 
 const ResumeModal = ({ isOpen, onClose }) => {
@@ -21,15 +21,15 @@ const ResumeModal = ({ isOpen, onClose }) => {
   return (
     <div className="modal-overlay modal-overlay-3d resume-modal-overlay" onClick={onClose}>
       <div 
-        className="modal-content modal-content-3d hacker-resume-modal" 
+        className="modal-content modal-content-3d jarvis-resume-modal hud-corner-brackets" 
         onClick={(e) => e.stopPropagation()}
       >
         <div className="resume-terminal-top">
           <span className="dot red"></span>
           <span className="dot yellow"></span>
           <span className="dot green"></span>
-          <span className="resume-terminal-title">$ gpg --decrypt robin_roy_curriculum_vitae.pdf.asc [AUTH: 0x7F]</span>
-          <button className="close-btn-top-hacker" onClick={onClose} aria-label="Close">
+          <span className="resume-terminal-title">J.A.R.V.I.S. // DECRYPTED DOSSIER • ROBIN ROY CV [STARK LEVEL-7 ACCESS]</span>
+          <button className="close-btn-top-jarvis" onClick={onClose} aria-label="Close">
             <X size={16} /> [ESC]
           </button>
         </div>
@@ -37,8 +37,8 @@ const ResumeModal = ({ isOpen, onClose }) => {
         <div className="resume-modal-actions no-print">
           <div className="modal-header-info">
             <h3 className="modal-cv-title">
-              <Terminal size={17} className="title-icon" /> 
-              <span>Robin Roy // Official Curriculum Vitae</span>
+              <Zap size={18} className="title-icon jarvis-pulse-dot" /> 
+              <span>Robin Roy // Official Verified Dossier</span>
             </h3>
           </div>
 
@@ -47,15 +47,15 @@ const ResumeModal = ({ isOpen, onClose }) => {
               href={driveUrl}
               target="_blank"
               rel="noreferrer"
-              className="btn btn-primary btn-hacker drive-btn"
-              title="Download Original Resume PDF"
+              className="btn btn-primary btn-jarvis drive-btn"
+              title="Download Verified Dossier PDF"
             >
-              <Download size={15} /> [DOWNLOAD_PDF]
+              <Download size={15} /> [DOWNLOAD DOSSIER PDF]
             </a>
           </div>
         </div>
 
-        <div className="pdf-viewer-wrapper pdf-viewer-hacker">
+        <div className="pdf-viewer-wrapper pdf-viewer-jarvis">
           <iframe
             src={previewUrl}
             title="Robin Roy Official Resume PDF"

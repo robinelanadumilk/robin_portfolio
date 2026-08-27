@@ -1,5 +1,5 @@
 import React from 'react';
-import { Briefcase, Calendar, MapPin, Award, ChevronRight, Terminal, GitCommit, GitBranch } from 'lucide-react';
+import { Calendar, MapPin, ChevronRight, Zap } from 'lucide-react';
 import use3DTilt from '../utils/use3DTilt';
 import './Experience.css';
 
@@ -7,47 +7,49 @@ const TimelineCard = ({ exp, commitHash }) => {
   const cardRef = use3DTilt({ max: 8, perspective: 1200, scale: 1.015 });
 
   return (
-    <div ref={cardRef} className="timeline-content glass-panel card-3d hacker-exp-card">
+    <div ref={cardRef} className="timeline-content glass-panel card-3d jarvis-exp-card hud-corner-brackets">
       <div className="exp-terminal-bar">
-        <GitBranch size={13} className="git-branch-icon" />
-        <span className="commit-hash">commit {commitHash}</span>
-        <span className="commit-branch">[main/production]</span>
+        <Zap size={13} className="jarvis-branch-icon" />
+        <span className="commit-hash">MISSION_LOG [0x{commitHash}]</span>
+        <span className="commit-branch">[STARK_CORE_DEPLOYMENT]</span>
       </div>
 
-      <div className="exp-header">
-        <div>
-          <span className="exp-type exp-type-hacker">{exp.type}</span>
-          <h3 className="exp-role">{exp.role}</h3>
-          <h4 className="exp-company hacker-glow-text">@ {exp.company}</h4>
+      <div className="exp-inner-pad">
+        <div className="exp-header">
+          <div>
+            <span className="exp-type exp-type-jarvis">{exp.type}</span>
+            <h3 className="exp-role">{exp.role}</h3>
+            <h4 className="exp-company jarvis-glow-text">@ {exp.company}</h4>
+          </div>
+          <div className="exp-meta">
+            <span className="exp-period">
+              <Calendar size={13} /> {exp.period}
+            </span>
+            <span className="exp-location">
+              <MapPin size={13} /> {exp.location}
+            </span>
+          </div>
         </div>
-        <div className="exp-meta">
-          <span className="exp-period">
-            <Calendar size={13} /> {exp.period}
-          </span>
-          <span className="exp-location">
-            <MapPin size={13} /> {exp.location}
-          </span>
+
+        <p className="exp-desc">{exp.description}</p>
+
+        <div className="exp-achievements">
+          <h5 className="achievements-title">// ENGINEERING &amp; ARCHITECTURAL CHANGELOG:</h5>
+          <ul>
+            {exp.achievements.map((item, i) => (
+              <li key={i} className="achieve-item-jarvis">
+                <ChevronRight size={14} className="achieve-icon" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
 
-      <p className="exp-desc">{exp.description}</p>
-
-      <div className="exp-achievements">
-        <h5 className="achievements-title">// ENGINEERING &amp; AUDIT CHANGELOG:</h5>
-        <ul>
-          {exp.achievements.map((item, i) => (
-            <li key={i} className="achieve-item-hacker">
-              <ChevronRight size={14} className="achieve-icon" />
-              <span>{item}</span>
-            </li>
+        <div className="exp-skills">
+          {exp.skills.map((s, idx) => (
+            <span key={idx} className="tech-pill tech-pill-jarvis">{s}</span>
           ))}
-        </ul>
-      </div>
-
-      <div className="exp-skills">
-        {exp.skills.map((s, idx) => (
-          <span key={idx} className="tech-pill tech-pill-hacker">{s}</span>
-        ))}
+        </div>
       </div>
     </div>
   );
@@ -56,7 +58,7 @@ const TimelineCard = ({ exp, commitHash }) => {
 const Experience = () => {
   const experiences = [
     {
-      commitHash: "78193a9",
+      commitHash: "78193A9",
       role: "Python Backend Developer",
       company: "Elanadu Milk Private Limited",
       location: "Thrissur",
@@ -80,7 +82,7 @@ const Experience = () => {
       skills: ["Python", "Django", "Django REST Framework", "Microsoft SQL Server (MSSQL)", "HTML", "CSS", "JavaScript", "REST APIs", "Flutter API", "ReportLab", "OpenPyXL", "Git"]
     },
     {
-      commitHash: "4fe8210",
+      commitHash: "4FE8210",
       role: "Jr. Python Django Full Stack Developer",
       company: "MGUIF",
       location: "Ettumanoor, Kottayam",
@@ -97,7 +99,7 @@ const Experience = () => {
       skills: ["Django", "React.js", "JavaScript", "Django REST Framework", "HTML", "CSS", "Bootstrap", "Git", "MySQL"]
     },
     {
-      commitHash: "2b9a712",
+      commitHash: "2B9A712",
       role: "Software Engineer",
       company: "Santhisoft Technologies",
       location: "Thodupuzha, Idukki",
@@ -112,7 +114,7 @@ const Experience = () => {
       skills: ["Angular", "Single-Page Applications", "UI/UX Design", "Scalability", "Git"]
     },
     {
-      commitHash: "109f3e5",
+      commitHash: "109F3E5",
       role: "Jr. Software Developer",
       company: "Luminar Technolab",
       location: "Kochi",
@@ -132,7 +134,7 @@ const Experience = () => {
       <div className="container">
         <div className="section-header">
           <div className="section-subtitle">
-            <Terminal size={14} /> $ git log --graph --decorate --oneline
+            <Zap size={14} /> J.A.R.V.I.S. // MISSION TIMELINE
           </div>
           <h2 className="section-title">
             Operational Career <span className="gradient-text">Audit Trail</span>
@@ -142,8 +144,8 @@ const Experience = () => {
         <div className="timeline-wrapper">
           {experiences.map((exp, index) => (
             <div key={index} className="timeline-item">
-              <div className="timeline-dot timeline-dot-hacker">
-                <GitCommit size={16} />
+              <div className="timeline-dot timeline-dot-jarvis">
+                <Zap size={16} />
               </div>
               <TimelineCard exp={exp} commitHash={exp.commitHash} />
             </div>

@@ -1,44 +1,54 @@
-.hacker-footer {
-  background: rgba(2, 5, 9, 0.95);
-  border-top: 1px solid rgba(0, 255, 136, 0.2);
+/* =========================================================
+   J.A.R.V.I.S. / STARK TECH FOOTER SECTION
+   ========================================================= */
+
+.jarvis-footer {
+  background: #01040d;
+  border-top: 1px solid rgba(0, 240, 255, 0.25);
   padding: 4.5rem 0 2rem 0;
   position: relative;
-  z-index: 10;
+  overflow: hidden;
 }
 
-.footer-container {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
+.jarvis-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00f0ff, #ffb700, #00f0ff, transparent);
+  box-shadow: 0 0 15px #00f0ff;
 }
 
 .footer-top {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   gap: 3.5rem;
+  margin-bottom: 3.5rem;
 }
 
 .footer-brand {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
 }
 
 .footer-bio {
   color: var(--text-muted);
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   line-height: 1.65;
+  margin-top: 1.25rem;
   max-width: 420px;
-  font-family: var(--font-mono);
+  font-family: var(--font-tech);
 }
 
 .footer-heading {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--matrix-green);
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--stark-gold);
   margin-bottom: 1.25rem;
-  letter-spacing: 0.05em;
-  font-family: var(--font-mono);
+  font-family: var(--font-hud);
+  letter-spacing: 0.06em;
 }
 
 .footer-links ul {
@@ -51,28 +61,35 @@
 .footer-links a {
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.85rem;
-  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-family: var(--font-hud);
   transition: all 0.2s ease;
+  letter-spacing: 0.04em;
 }
 
 .footer-links a:hover {
-  color: var(--matrix-green);
+  color: var(--arc-cyan);
   transform: translateX(4px);
-  display: inline-block;
-  text-shadow: 0 0 8px var(--matrix-green);
+  text-shadow: 0 0 10px var(--arc-cyan);
 }
 
 .footer-social-icons {
   display: flex;
   gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.footer-dossier-btn {
+  padding: 0.45rem 1rem;
+  font-size: 0.76rem;
+  width: 100%;
 }
 
 .footer-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid rgba(0, 255, 136, 0.12);
+  border-top: 1px solid rgba(0, 240, 255, 0.15);
   padding-top: 2rem;
   flex-wrap: wrap;
   gap: 1rem;
@@ -81,29 +98,31 @@
 .copyright {
   font-size: 0.82rem;
   color: var(--text-dim);
-  font-family: var(--font-mono);
+  font-family: var(--font-hud);
+  letter-spacing: 0.04em;
 }
 
-.back-to-top-hacker {
-  background: rgba(0, 255, 136, 0.06);
-  border: 1px solid rgba(0, 255, 136, 0.3);
-  color: var(--matrix-green);
-  padding: 0.45rem 1rem;
-  border-radius: var(--radius-sm);
-  display: flex;
+.back-to-top-jarvis {
+  display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: var(--arc-cyan);
+  font-family: var(--font-hud);
   font-size: 0.78rem;
-  font-family: var(--font-mono);
-  font-weight: 700;
+  font-weight: 800;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   transition: all 0.25s ease;
+  letter-spacing: 0.06em;
 }
 
-.back-to-top-hacker:hover {
-  background: var(--matrix-green);
-  color: #020508;
-  box-shadow: 0 0 15px var(--matrix-green);
+.back-to-top-jarvis:hover {
+  background: var(--arc-cyan);
+  color: #020712;
+  box-shadow: 0 0 18px var(--arc-cyan);
   transform: translateY(-2px);
 }
 

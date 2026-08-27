@@ -28,35 +28,34 @@ const Global3DBackground = () => {
     const bgGroup = new THREE.Group();
     scene.add(bgGroup);
 
-    // 1. Matrix Cyber Digital Particles (Green & Cyan Starfield Stream)
-    const particleCount = 600;
+    // 1. J.A.R.V.I.S. Arc Holographic Particle Constellation (Cyan, Electric Blue, Stark Gold)
+    const particleCount = 650;
     const particleGeo = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
     const velocities = [];
 
-    const matrixColors = [
-      new THREE.Color('#00ff88'), // Matrix Neon Green
-      new THREE.Color('#00f0ff'), // Cyber Cyan
-      new THREE.Color('#38ef7d'), // Toxic Green
-      new THREE.Color('#10b981'), // Emerald
-      new THREE.Color('#f59e0b'), // Terminal Amber
+    const jarvisColors = [
+      new THREE.Color('#00f0ff'), // Arc Cyan
+      new THREE.Color('#0099ff'), // Electric Blue
+      new THREE.Color('#70f4ff'), // Ice Cyan
+      new THREE.Color('#ffb700'), // Stark Gold
+      new THREE.Color('#38bdf8'), // Sky Blue
     ];
 
     for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 90;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 90;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 60;
+      positions[i * 3] = (Math.random() - 0.5) * 95;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 95;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 65;
 
-      const col = matrixColors[Math.floor(Math.random() * matrixColors.length)];
+      const col = jarvisColors[Math.floor(Math.random() * jarvisColors.length)];
       colors[i * 3] = col.r;
       colors[i * 3 + 1] = col.g;
       colors[i * 3 + 2] = col.b;
 
-      // Downward falling speed like matrix code rain
       velocities.push({
-        y: 0.05 + Math.random() * 0.08,
-        x: (Math.random() - 0.5) * 0.01,
+        y: 0.03 + Math.random() * 0.05,
+        x: (Math.random() - 0.5) * 0.015,
       });
     }
 
@@ -67,37 +66,37 @@ const Global3DBackground = () => {
       size: 0.22,
       vertexColors: true,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.85,
       blending: THREE.AdditiveBlending,
     });
 
     const particles = new THREE.Points(particleGeo, particleMat);
     bgGroup.add(particles);
 
-    // 2. Floating Hacker Polyhedra Wireframes with Matrix Neon Glow
+    // 2. Floating Stark Tech Hologram Polyhedra & HUD Rings
     const floatingShapes = [];
     const geometries = [
       new THREE.IcosahedronGeometry(2.6, 0),
       new THREE.OctahedronGeometry(2.4, 0),
       new THREE.TetrahedronGeometry(2.8, 0),
-      new THREE.TorusGeometry(2.2, 0.2, 8, 28),
+      new THREE.TorusGeometry(2.2, 0.18, 8, 30),
       new THREE.DodecahedronGeometry(2.0, 0),
     ];
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 9; i++) {
       const geo = geometries[i % geometries.length];
       const mat = new THREE.MeshBasicMaterial({
-        color: i % 2 === 0 ? 0x00ff88 : 0x00f0ff,
+        color: i % 3 === 0 ? 0xffb700 : 0x00f0ff,
         wireframe: true,
         transparent: true,
-        opacity: 0.18 + (i % 3) * 0.06,
+        opacity: 0.2 + (i % 3) * 0.06,
       });
 
       const mesh = new THREE.Mesh(geo, mat);
       mesh.position.set(
-        (Math.random() - 0.5) * 70,
-        (Math.random() - 0.5) * 70,
-        (Math.random() - 0.5) * 40 - 5
+        (Math.random() - 0.5) * 75,
+        (Math.random() - 0.5) * 75,
+        (Math.random() - 0.5) * 45 - 5
       );
 
       bgGroup.add(mesh);
@@ -110,8 +109,8 @@ const Global3DBackground = () => {
       });
     }
 
-    // 3. Cyber Matrix Grid Floor
-    const gridHelper = new THREE.GridHelper(100, 50, 0x00ff88, 0x064e3b);
+    // 3. Cyber Arc HUD Grid Floor
+    const gridHelper = new THREE.GridHelper(100, 50, 0x00f0ff, 0x072242);
     gridHelper.position.y = -19;
     gridHelper.position.z = 0;
     gridHelper.material.opacity = 0.35;
@@ -158,16 +157,15 @@ const Global3DBackground = () => {
       camera.position.y += (targetY - targetScrollY - camera.position.y) * 0.03;
       camera.lookAt(0, -targetScrollY, 0);
 
-      // Matrix Digital Rain Particle Stream Downward Animation
+      // Particle Stream Animation
       const posArray = particleGeo.attributes.position.array;
       for (let i = 0; i < particleCount; i++) {
         posArray[i * 3 + 1] -= velocities[i].y;
         posArray[i * 3] += velocities[i].x;
 
-        // Wrap around when falling below viewport
         if (posArray[i * 3 + 1] < -45) {
           posArray[i * 3 + 1] = 45;
-          posArray[i * 3] = (Math.random() - 0.5) * 90;
+          posArray[i * 3] = (Math.random() - 0.5) * 95;
         }
       }
       particleGeo.attributes.position.needsUpdate = true;
@@ -205,13 +203,27 @@ const Global3DBackground = () => {
       {/* 3D WebGL Canvas Layer */}
       <div ref={containerRef} className="global-3d-canvas-container" />
 
-      {/* Cyber Green Matrix Glow Orbs */}
-      <div className="matrix-glow-orb matrix-glow-1"></div>
-      <div className="matrix-glow-orb matrix-glow-2"></div>
-      <div className="matrix-glow-orb matrix-glow-3"></div>
+      {/* J.A.R.V.I.S. Arc Cyan Glow Orbs */}
+      <div className="jarvis-glow-orb jarvis-glow-1"></div>
+      <div className="jarvis-glow-orb jarvis-glow-2"></div>
+      <div className="jarvis-glow-orb jarvis-glow-3"></div>
 
-      {/* Matrix Hex Grid Pattern Overlay */}
-      <div className="matrix-hex-grid"></div>
+      {/* Holographic Arc HUD Circular Reticle Overlays */}
+      <div className="jarvis-hud-reticle reticle-top-right">
+        <div className="reticle-outer-ring"></div>
+        <div className="reticle-inner-ring"></div>
+        <div className="reticle-cross"></div>
+        <span className="reticle-label">TELEMETRY_LAT_10.5</span>
+      </div>
+
+      <div className="jarvis-hud-reticle reticle-bottom-left">
+        <div className="reticle-outer-ring"></div>
+        <div className="reticle-inner-ring"></div>
+        <span className="reticle-label">ARC_CORE_99.8%</span>
+      </div>
+
+      {/* Stark Tech Hex Grid Overlay */}
+      <div className="jarvis-hex-grid"></div>
     </div>
   );
 };

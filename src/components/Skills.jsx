@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, Layout, Server, Database, Wrench, CheckCircle2, GraduationCap, Award, Terminal, ShieldAlert } from 'lucide-react';
+import { Layout, Server, Database, Wrench, CheckCircle2, GraduationCap, Award, Zap } from 'lucide-react';
 import use3DTilt from '../utils/use3DTilt';
 import './Skills.css';
 
@@ -7,11 +7,11 @@ const SkillCategoryCard = ({ category }) => {
   const tiltRef = use3DTilt({ max: 10, perspective: 1100, scale: 1.02 });
 
   return (
-    <div ref={tiltRef} className="skill-category-card glass-panel card-3d hacker-skill-card">
+    <div ref={tiltRef} className="skill-category-card glass-panel card-3d jarvis-skill-card hud-corner-brackets">
       <div className="category-header">
-        <div className="cat-icon cat-icon-hacker">{category.icon}</div>
+        <div className="cat-icon cat-icon-jarvis">{category.icon}</div>
         <div>
-          <span className="cat-prefix">// ARSENAL_CATEGORY</span>
+          <span className="cat-prefix">// ARSENAL_MODULE</span>
           <h3 className="cat-title">{category.title}</h3>
         </div>
       </div>
@@ -26,9 +26,9 @@ const SkillCategoryCard = ({ category }) => {
               </span>
               <span className="skill-percent">{skill.level}%</span>
             </div>
-            <div className="progress-bar-bg progress-bar-hacker">
+            <div className="progress-bar-bg progress-bar-jarvis">
               <div
-                className="progress-bar-fill progress-fill-hacker"
+                className="progress-bar-fill progress-fill-jarvis"
                 style={{ width: `${skill.level}%` }}
               ></div>
             </div>
@@ -117,7 +117,7 @@ const Skills = () => {
       <div className="container">
         <div className="section-header">
           <div className="section-subtitle">
-            <Terminal size={14} /> $ python -m inspect_capabilities
+            <Zap size={14} /> J.A.R.V.I.S. // ARSENAL CAPABILITIES
           </div>
           <h2 className="section-title">
             Technical Arsenal &amp; <span className="gradient-text">Proficiencies</span>
@@ -134,9 +134,9 @@ const Skills = () => {
         {/* Education & Certifications Row */}
         <div className="credentials-row">
           {/* Education Card */}
-          <div ref={eduRef} className="credentials-card glass-panel card-3d hacker-cred-card">
+          <div ref={eduRef} className="credentials-card glass-panel card-3d jarvis-cred-card hud-corner-brackets">
             <div className="credentials-header">
-              <div className="cat-icon edu-icon cat-icon-hacker">
+              <div className="cat-icon edu-icon cat-icon-jarvis">
                 <GraduationCap size={20} />
               </div>
               <div>
@@ -146,14 +146,14 @@ const Skills = () => {
             </div>
             <div className="credentials-list">
               {education.map((edu, idx) => (
-                <div key={idx} className="cred-item cred-item-hacker">
+                <div key={idx} className="cred-item cred-item-jarvis">
                   <div className="cred-main">
                     <h4 className="cred-title">{edu.degree}</h4>
                     <p className="cred-sub">{edu.institution}</p>
                   </div>
                   <div className="cred-badge-wrap">
                     <span className="cred-period">{edu.period}</span>
-                    <span className="cred-score score-hacker">SCORE: {edu.score}</span>
+                    <span className="cred-score score-jarvis">SCORE: {edu.score}</span>
                   </div>
                 </div>
               ))}
@@ -161,19 +161,19 @@ const Skills = () => {
           </div>
 
           {/* Certifications Card */}
-          <div ref={certRef} className="credentials-card glass-panel card-3d hacker-cred-card">
+          <div ref={certRef} className="credentials-card glass-panel card-3d jarvis-cred-card hud-corner-brackets">
             <div className="credentials-header">
-              <div className="cat-icon cert-icon cat-icon-hacker">
+              <div className="cat-icon cert-icon cat-icon-jarvis">
                 <Award size={20} />
               </div>
               <div>
-                <span className="cat-prefix">// CRYPTOGRAPHIC_CREDENTIALS</span>
+                <span className="cat-prefix">// VERIFIED_CREDENTIALS</span>
                 <h3 className="cat-title">Verified Certifications</h3>
               </div>
             </div>
             <div className="cert-grid">
               {certificates.map((cert, idx) => (
-                <div key={idx} className="cert-item cert-item-hacker">
+                <div key={idx} className="cert-item cert-item-jarvis">
                   <CheckCircle2 size={15} className="cert-check" />
                   <div>
                     <h4 className="cert-title">{cert.name}</h4>

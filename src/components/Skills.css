@@ -1,3 +1,7 @@
+/* =========================================================
+   J.A.R.V.I.S. / STARK TECH SKILLS SECTION
+   ========================================================= */
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -5,14 +9,14 @@
   margin-bottom: 3.5rem;
 }
 
-.hacker-skill-card {
+.jarvis-skill-card {
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   transform-style: preserve-3d;
-  background: rgba(4, 10, 16, 0.88);
-  border: 1px solid rgba(0, 255, 136, 0.25);
+  background: rgba(4, 14, 30, 0.88);
+  border: 1px solid rgba(0, 240, 255, 0.25);
 }
 
 .category-header {
@@ -24,30 +28,32 @@
 }
 
 .cat-prefix {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--cyber-cyan);
+  font-family: var(--font-hud);
+  font-size: 0.65rem;
+  color: var(--stark-gold);
   display: block;
+  letter-spacing: 0.06em;
 }
 
-.cat-icon-hacker {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-sm);
-  background: rgba(0, 255, 136, 0.1);
-  border: 1px solid rgba(0, 255, 136, 0.3);
+.cat-icon-jarvis {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-xs);
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(0, 240, 255, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--matrix-green);
-  box-shadow: 0 0 12px rgba(0, 255, 136, 0.25);
+  color: var(--arc-cyan);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
 }
 
 .cat-title {
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 800;
   color: #fff;
-  font-family: var(--font-mono);
+  font-family: var(--font-hud);
+  letter-spacing: 0.03em;
 }
 
 .skill-list {
@@ -62,48 +68,48 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.4rem;
-  font-size: 0.82rem;
-  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-family: var(--font-tech);
 }
 
 .skill-name {
   color: var(--text-main);
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  font-weight: 500;
+  gap: 0.45rem;
+  font-weight: 600;
 }
 
 .skill-bullet {
-  color: var(--matrix-green);
+  color: var(--arc-cyan);
 }
 
 .skill-percent {
-  font-family: var(--font-mono);
+  font-family: var(--font-hud);
   font-size: 0.78rem;
-  color: var(--matrix-green);
-  font-weight: 700;
+  color: var(--stark-gold);
+  font-weight: 800;
 }
 
-.progress-bar-hacker {
+.progress-bar-jarvis {
   height: 6px;
-  background: rgba(0, 255, 136, 0.08);
-  border-radius: var(--radius-sm);
+  background: rgba(0, 240, 255, 0.08);
+  border-radius: var(--radius-xs);
   overflow: hidden;
-  border: 1px solid rgba(0, 255, 136, 0.2);
+  border: 1px solid rgba(0, 240, 255, 0.25);
   transform: translateZ(8px);
 }
 
-.progress-fill-hacker {
+.progress-fill-jarvis {
   height: 100%;
-  background: linear-gradient(90deg, #00ff88 0%, #00f0ff 100%);
-  border-radius: var(--radius-sm);
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
-  transition: width 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: linear-gradient(90deg, #00f0ff 0%, #70f4ff 50%, #ffb700 100%);
+  border-radius: var(--radius-xs);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.7);
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* =========================================
-   HACKER CREDENTIALS ROW
+   J.A.R.V.I.S. CREDENTIALS ROW
    ========================================= */
 .credentials-row {
   display: grid;
@@ -111,12 +117,12 @@
   gap: 2.25rem;
 }
 
-.hacker-cred-card {
+.jarvis-cred-card {
   padding: 2rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   transform-style: preserve-3d;
-  background: rgba(4, 10, 16, 0.88);
-  border: 1px solid rgba(0, 255, 136, 0.25);
+  background: rgba(4, 14, 30, 0.88);
+  border: 1px solid rgba(0, 240, 255, 0.25);
 }
 
 .credentials-header {
@@ -133,10 +139,10 @@
   gap: 1.15rem;
 }
 
-.cred-item-hacker {
-  background: rgba(0, 255, 136, 0.03);
-  border: 1px solid rgba(0, 255, 136, 0.15);
-  border-radius: var(--radius-sm);
+.cred-item-jarvis {
+  background: rgba(0, 240, 255, 0.03);
+  border: 1px solid rgba(0, 240, 255, 0.18);
+  border-radius: var(--radius-xs);
   padding: 1rem 1.15rem;
   display: flex;
   justify-content: space-between;
@@ -147,24 +153,25 @@
   transform: translateZ(10px);
 }
 
-.cred-item-hacker:hover {
+.cred-item-jarvis:hover {
   transform: translateX(5px) translateZ(15px);
-  border-color: var(--matrix-green);
-  background: rgba(0, 255, 136, 0.08);
+  border-color: var(--arc-cyan);
+  background: rgba(0, 240, 255, 0.1);
 }
 
 .cred-title {
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-weight: 700;
   color: #fff;
   margin-bottom: 0.2rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-hud);
+  letter-spacing: 0.02em;
 }
 
 .cred-sub {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
-  font-family: var(--font-mono);
+  font-family: var(--font-tech);
 }
 
 .cred-badge-wrap {
@@ -175,20 +182,20 @@
 }
 
 .cred-period {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-family: var(--font-hud);
+  font-size: 0.7rem;
   color: var(--text-dim);
 }
 
-.score-hacker {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--matrix-green);
-  font-weight: 700;
-  background: rgba(0, 255, 136, 0.1);
-  border: 1px solid rgba(0, 255, 136, 0.25);
-  padding: 0.15rem 0.55rem;
-  border-radius: var(--radius-sm);
+.score-jarvis {
+  font-family: var(--font-hud);
+  font-size: 0.74rem;
+  color: var(--stark-gold);
+  font-weight: 800;
+  background: rgba(255, 183, 0, 0.1);
+  border: 1px solid rgba(255, 183, 0, 0.3);
+  padding: 0.18rem 0.6rem;
+  border-radius: var(--radius-xs);
 }
 
 .cert-grid {
@@ -197,43 +204,44 @@
   gap: 0.85rem;
 }
 
-.cert-item-hacker {
+.cert-item-jarvis {
   display: flex;
   align-items: flex-start;
   gap: 0.65rem;
-  background: rgba(0, 255, 136, 0.03);
-  border: 1px solid rgba(0, 255, 136, 0.15);
-  border-radius: var(--radius-sm);
-  padding: 0.75rem;
+  background: rgba(0, 240, 255, 0.03);
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  border-radius: var(--radius-xs);
+  padding: 0.8rem;
   transition: all 0.25s ease;
   transform: translateZ(10px);
 }
 
-.cert-item-hacker:hover {
+.cert-item-jarvis:hover {
   transform: translateY(-3px) translateZ(15px);
-  border-color: var(--matrix-green);
-  background: rgba(0, 255, 136, 0.08);
+  border-color: var(--arc-cyan);
+  background: rgba(0, 240, 255, 0.08);
 }
 
 .cert-check {
-  color: var(--matrix-green);
+  color: var(--arc-cyan);
   flex-shrink: 0;
   margin-top: 2px;
 }
 
 .cert-title {
-  font-size: 0.82rem;
-  font-weight: 600;
+  font-size: 0.86rem;
+  font-weight: 700;
   color: #fff;
   margin-bottom: 0.15rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-hud);
+  letter-spacing: 0.02em;
 }
 
 .cert-issuer {
-  font-size: 0.7rem;
-  color: var(--cyber-cyan);
+  font-size: 0.72rem;
+  color: var(--stark-gold);
   display: block;
-  font-family: var(--font-mono);
+  font-family: var(--font-tech);
 }
 
 @media (max-width: 992px) {
@@ -246,7 +254,7 @@
   .cert-grid {
     grid-template-columns: 1fr;
   }
-  .cred-item-hacker {
+  .cred-item-jarvis {
     flex-direction: column;
     align-items: flex-start;
   }

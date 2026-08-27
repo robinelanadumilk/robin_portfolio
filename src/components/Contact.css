@@ -1,30 +1,35 @@
+/* =========================================================
+   J.A.R.V.I.S. / STARK TECH CONTACT SECTION
+   ========================================================= */
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.15fr;
   gap: 2.5rem;
 }
 
-.toast-hacker {
+.toast-jarvis {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
   padding: 0.85rem 1.35rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--matrix-green);
-  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--arc-cyan);
+  box-shadow: 0 10px 30px rgba(0, 240, 255, 0.45);
   z-index: 10000;
   display: flex;
   align-items: center;
   gap: 0.75rem;
   animation: slideUp 0.3s ease;
-  background: rgba(3, 8, 14, 0.98);
-  color: var(--matrix-green);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
+  background: rgba(3, 10, 22, 0.98);
+  color: var(--arc-cyan);
+  font-family: var(--font-hud);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
 }
 
 .toast-icon {
-  color: var(--matrix-green);
+  color: var(--stark-gold);
 }
 
 @keyframes slideUp {
@@ -32,33 +37,34 @@
   to { transform: translateY(0); opacity: 1; }
 }
 
-.hacker-contact-card {
+.jarvis-contact-card {
   padding: 0;
   overflow: hidden;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   transform-style: preserve-3d;
-  background: rgba(4, 10, 16, 0.88);
-  border: 1px solid rgba(0, 255, 136, 0.25);
+  background: rgba(4, 14, 30, 0.88);
+  border: 1px solid rgba(0, 240, 255, 0.25);
 }
 
 .contact-terminal-bar {
-  background: rgba(2, 6, 10, 0.95);
+  background: rgba(2, 8, 18, 0.95);
   padding: 0.5rem 1.25rem;
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  border-bottom: 1px solid rgba(0, 255, 136, 0.15);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.2);
 }
 
 .contact-terminal-title {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--matrix-green);
+  font-family: var(--font-hud);
+  font-size: 0.72rem;
+  color: var(--arc-cyan);
   margin-left: 0.5rem;
+  letter-spacing: 0.05em;
 }
 
 .contact-card-inner {
-  padding: 2rem;
+  padding: 2.25rem;
 }
 
 .info-title {
@@ -66,15 +72,16 @@
   font-weight: 800;
   color: #fff;
   margin-bottom: 0.85rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-hud);
+  letter-spacing: 0.02em;
 }
 
 .info-desc {
   color: var(--text-muted);
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   line-height: 1.65;
   margin-bottom: 1.75rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-tech);
 }
 
 .info-items {
@@ -84,35 +91,35 @@
   margin-bottom: 1.75rem;
 }
 
-.info-item-hacker {
+.info-item-jarvis {
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  background: rgba(0, 255, 136, 0.03);
+  background: rgba(0, 240, 255, 0.03);
   padding: 0.75rem 1rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(0, 255, 136, 0.15);
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(0, 240, 255, 0.18);
   transition: all 0.25s ease;
   transform: translateZ(10px);
 }
 
-.info-item-hacker:hover {
+.info-item-jarvis:hover {
   transform: translateX(6px) translateZ(15px);
-  border-color: var(--matrix-green);
-  background: rgba(0, 255, 136, 0.08);
+  border-color: var(--arc-cyan);
+  background: rgba(0, 240, 255, 0.1);
 }
 
-.icon-hacker {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-sm);
-  background: rgba(0, 255, 136, 0.1);
-  border: 1px solid rgba(0, 255, 136, 0.3);
+.icon-jarvis {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-xs);
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--matrix-green);
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+  color: var(--arc-cyan);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
   flex-shrink: 0;
 }
 
@@ -124,31 +131,32 @@
 }
 
 .info-label {
-  font-size: 0.7rem;
-  color: var(--cyber-cyan);
-  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--stark-gold);
+  font-family: var(--font-hud);
+  letter-spacing: 0.05em;
 }
 
 .info-value {
   color: #fff;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   font-weight: 600;
-  font-family: var(--font-mono);
+  font-family: var(--font-tech);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .info-value:hover {
-  color: var(--matrix-green);
+  color: var(--arc-cyan);
 }
 
-.copy-btn-hacker {
-  background: rgba(0, 255, 136, 0.06);
-  border: 1px solid rgba(0, 255, 136, 0.25);
-  color: var(--matrix-green);
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
+.copy-btn-jarvis {
+  background: rgba(0, 240, 255, 0.06);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  color: var(--arc-cyan);
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-xs);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -156,62 +164,63 @@
   transition: all 0.2s ease;
 }
 
-.copy-btn-hacker:hover {
-  color: #020508;
-  background: var(--matrix-green);
-  border-color: var(--matrix-green);
+.copy-btn-jarvis:hover {
+  color: #020712;
+  background: var(--arc-cyan);
+  border-color: var(--arc-cyan);
   transform: scale(1.1);
 }
 
-.hacker-meta-grid {
+.jarvis-meta-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
   padding: 1rem;
-  background: rgba(0, 255, 136, 0.03);
-  border: 1px solid rgba(0, 255, 136, 0.15);
-  border-radius: var(--radius-sm);
+  background: rgba(0, 240, 255, 0.03);
+  border: 1px solid rgba(0, 240, 255, 0.18);
+  border-radius: var(--radius-xs);
   margin-bottom: 1.25rem;
   transform: translateZ(8px);
 }
 
 .meta-label {
   display: block;
-  font-size: 0.68rem;
-  color: var(--cyber-cyan);
-  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  font-family: var(--font-hud);
   margin-bottom: 0.15rem;
 }
 
 .meta-val {
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: #fff;
-  font-family: var(--font-mono);
+  font-family: var(--font-hud);
+  font-weight: 700;
 }
 
-.response-guarantee-hacker {
+.response-guarantee-jarvis {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  font-size: 0.78rem;
-  font-family: var(--font-mono);
-  color: var(--matrix-green);
-  background: rgba(0, 255, 136, 0.08);
-  border: 1px solid rgba(0, 255, 136, 0.25);
+  font-size: 0.82rem;
+  font-family: var(--font-tech);
+  color: var(--arc-cyan);
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.25);
   padding: 0.65rem 0.85rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   transform: translateZ(10px);
 }
 
 .guarantee-icon {
-  color: var(--matrix-green);
+  color: var(--stark-gold);
   flex-shrink: 0;
 }
 
 /* =========================================
-   HACKER FORM & INPUTS
+   J.A.R.V.I.S. FORM & INPUTS
    ========================================= */
-.form-group-hacker {
+.form-group-jarvis {
   margin-bottom: 1.25rem;
   display: flex;
   flex-direction: column;
@@ -219,41 +228,42 @@
   transform: translateZ(8px);
 }
 
-.form-group-hacker label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--matrix-green);
-  font-family: var(--font-mono);
+.form-group-jarvis label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--stark-gold);
+  font-family: var(--font-hud);
+  letter-spacing: 0.05em;
 }
 
-.input-hacker {
+.input-jarvis {
   width: 100%;
-  padding: 0.8rem 1rem;
-  border-radius: var(--radius-sm);
-  background: rgba(2, 6, 10, 0.85);
-  border: 1px solid rgba(0, 255, 136, 0.25);
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-xs);
+  background: rgba(2, 8, 18, 0.85);
+  border: 1px solid rgba(0, 240, 255, 0.25);
   color: #fff;
-  font-family: var(--font-mono);
-  font-size: 0.88rem;
+  font-family: var(--font-tech);
+  font-size: 0.95rem;
   transition: all 0.25s ease;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-.input-hacker:focus {
+.input-jarvis:focus {
   outline: none;
-  border-color: var(--matrix-green);
-  background: rgba(2, 8, 14, 0.95);
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.8);
+  border-color: var(--arc-cyan);
+  background: rgba(2, 10, 24, 0.95);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.35), inset 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .input-error {
-  border-color: #ef4444 !important;
+  border-color: #ff3b30 !important;
 }
 
 .error-text {
   font-size: 0.74rem;
-  color: #ef4444;
-  font-family: var(--font-mono);
+  color: #ff3b30;
+  font-family: var(--font-hud);
   display: flex;
   align-items: center;
   gap: 0.3rem;
@@ -261,8 +271,8 @@
 
 .submit-btn {
   width: 100%;
-  padding: 0.9rem;
-  font-size: 0.92rem;
+  padding: 0.95rem;
+  font-size: 0.95rem;
   margin-top: 0.5rem;
 }
 
@@ -274,35 +284,35 @@
   padding: 2rem 1rem;
 }
 
-.success-icon-hacker {
+.success-icon-jarvis {
   width: 65px;
   height: 65px;
-  border-radius: var(--radius-sm);
-  background: rgba(0, 255, 136, 0.12);
-  border: 1px solid var(--matrix-green);
-  color: var(--matrix-green);
+  border-radius: var(--radius-xs);
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid var(--arc-cyan);
+  color: var(--arc-cyan);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.25rem;
-  box-shadow: 0 0 25px rgba(0, 255, 136, 0.5);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
 }
 
 .success-title {
-  font-size: 1.45rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: #fff;
   margin-bottom: 0.65rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-hud);
 }
 
 .success-desc {
   color: var(--text-muted);
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   max-width: 400px;
   margin-bottom: 1.75rem;
   line-height: 1.6;
-  font-family: var(--font-mono);
+  font-family: var(--font-tech);
 }
 
 @media (max-width: 992px) {
@@ -312,11 +322,11 @@
 }
 
 @media (max-width: 576px) {
-  .hacker-meta-grid {
+  .jarvis-meta-grid {
     grid-template-columns: 1fr;
     gap: 0.65rem;
   }
   .contact-card-inner {
-    padding: 1.25rem;
+    padding: 1.5rem;
   }
 }

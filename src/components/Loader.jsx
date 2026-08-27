@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import logoImg from '../assets/logo.jpg';
-import { Terminal, Shield, Cpu, Lock } from 'lucide-react';
+import { Zap } from 'lucide-react';
 import './Loader.css';
 
 const Loader = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
   const [isFading, setIsFading] = useState(false);
-  const [statusText, setStatusText] = useState('root@robinroy:~$ init_kernel.sh');
+  const [statusText, setStatusText] = useState('JARVIS_AI: INITIALIZING STARK CORE PROTOCOLS...');
 
   useEffect(() => {
     const statuses = [
-      { at: 0, text: 'root@robin:~$ ./boot_system.sh --target=production' },
-      { at: 20, text: '[OK] Loaded Python 3.12 & Django Enterprise Modules' },
-      { at: 45, text: '[OK] RESTful API Endpoints & Auth Gateways Mounted' },
-      { at: 70, text: '[OK] MSSQL Database Cluster Synchronized [0x7F]' },
-      { at: 90, text: '[ACCESS GRANTED] Launching Developer Console...' }
+      { at: 0, text: 'JARVIS_AI: INITIATING STARK MARK-LXXXV PROTOCOL...' },
+      { at: 20, text: '[OK] ARC REACTOR CORE STABLE • 3.2 GIGAWATTS [100%]' },
+      { at: 45, text: '[OK] NEURAL MODULES: PYTHON 3.12 & DJANGO REST ONLINE' },
+      { at: 70, text: '[OK] MSSQL DATABASE CLUSTERS & ERP ARRAYS SYNCED' },
+      { at: 90, text: '[STATUS: ONLINE] WELCOME BACK, SIR. DISPLAYING HUD...' }
     ];
 
     const interval = setInterval(() => {
@@ -33,12 +33,12 @@ const Loader = ({ onFinish }) => {
             setTimeout(() => {
               if (onFinish) onFinish();
             }, 600);
-          }, 300);
+          }, 350);
           return 100;
         }
         return next;
       });
-    }, 35);
+    }, 32);
 
     return () => clearInterval(interval);
   }, [onFinish]);
@@ -48,26 +48,27 @@ const Loader = ({ onFinish }) => {
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <div className={`page-loader ${isFading ? 'fade-out' : ''}`}>
-      <div className="loader-matrix-grid"></div>
+    <div className={`page-loader jarvis-loader ${isFading ? 'fade-out' : ''}`}>
+      <div className="loader-arc-grid"></div>
       <div className="loader-glow-orb"></div>
 
       <div className="loader-3d-wrapper">
-        {/* Terminal Status Tag */}
-        <div className="loader-bios-tag">
-          <Terminal size={14} className="hacker-green-icon" />
-          <span>ROBIN_OS_v3.2 [SECURE SHELL]</span>
+        {/* Stark Industries Protocol Tag */}
+        <div className="loader-bios-tag jarvis-tag">
+          <Zap size={14} className="jarvis-cyan-icon pulse-anim" />
+          <span>J.A.R.V.I.S. OS v8.5 [STARK INDUSTRIES]</span>
         </div>
 
-        {/* 3D Hacker Gyroscope Rings */}
+        {/* 3D Arc Reactor Holographic Gyroscope */}
         <div className="gyroscope-container">
           <div className="gyro-ring gyro-ring-outer"></div>
           <div className="gyro-ring gyro-ring-middle"></div>
           <div className="gyro-ring gyro-ring-inner"></div>
+          <div className="gyro-ring gyro-ring-stark-gold"></div>
 
-          {/* Central 3D Glowing Core */}
+          {/* Central 3D Arc Reactor Core */}
           <div className="core-3d">
-            <div className="core-cube">
+            <div className="core-cube jarvis-core">
               <div className="cube-face cube-front">
                 <img src={logoImg} alt="Robin Roy" className="core-logo" />
               </div>
@@ -79,7 +80,7 @@ const Loader = ({ onFinish }) => {
             </div>
           </div>
 
-          {/* Orbiting Matrix Nodes */}
+          {/* Orbiting Arc Energy Photons */}
           <div className="orbit-track">
             <div className="orbit-node node-1"></div>
             <div className="orbit-node node-2"></div>
@@ -87,21 +88,21 @@ const Loader = ({ onFinish }) => {
           </div>
         </div>
 
-        {/* Hacker Typography */}
+        {/* J.A.R.V.I.S. Typography */}
         <div className="loader-brand-box">
           <h1 className="loader-title">
-            ROBIN <span className="matrix-gradient-text">ROY</span>
+            ROBIN <span className="jarvis-gradient-text">ROY</span>
           </h1>
-          <p className="loader-subtitle">&lt;Python / Django Full-Stack Developer /&gt;</p>
+          <p className="loader-subtitle">STARK TECH • PYTHON DJANGO FULL STACK DEVELOPER</p>
         </div>
 
-        {/* 3D Circular HUD Progress */}
+        {/* 3D Circular Arc Reactor HUD Progress */}
         <div className="loader-hud-progress">
           <div className="circular-progress-wrap">
             <svg className="progress-ring" width="150" height="150">
               <circle
                 className="progress-ring-bg"
-                stroke="rgba(0, 255, 136, 0.12)"
+                stroke="rgba(0, 240, 255, 0.12)"
                 strokeWidth="4"
                 fill="transparent"
                 r={radius}
@@ -110,7 +111,7 @@ const Loader = ({ onFinish }) => {
               />
               <circle
                 className="progress-ring-circle"
-                stroke="url(#matrixLoaderGradient)"
+                stroke="url(#jarvisLoaderGradient)"
                 strokeWidth="5"
                 strokeDasharray={`${circumference} ${circumference}`}
                 style={{ strokeDashoffset }}
@@ -121,10 +122,10 @@ const Loader = ({ onFinish }) => {
                 cy="75"
               />
               <defs>
-                <linearGradient id="matrixLoaderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#00ff88" />
-                  <stop offset="50%" stopColor="#00f0ff" />
-                  <stop offset="100%" stopColor="#4ade80" />
+                <linearGradient id="jarvisLoaderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#00f0ff" />
+                  <stop offset="50%" stopColor="#70f4ff" />
+                  <stop offset="100%" stopColor="#ffb700" />
                 </linearGradient>
               </defs>
             </svg>
@@ -135,10 +136,10 @@ const Loader = ({ onFinish }) => {
             </div>
           </div>
 
-          {/* Hacker Terminal Prompt Feed */}
+          {/* J.A.R.V.I.S. Voice Diagnostic Line */}
           <div className="loader-status-container">
             <div className="status-terminal-line">
-              <span className="terminal-prompt">&gt;</span>
+              <span className="terminal-prompt">⚡</span>
               <span className="terminal-text">{statusText}</span>
               <span className="terminal-cursor">_</span>
             </div>

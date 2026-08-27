@@ -1,5 +1,5 @@
 /* =========================================================
-   HACKER / MATRIX 3D BACKGROUND STYLING
+   J.A.R.V.I.S. / STARK TECH 3D BACKGROUND STYLING
    ========================================================= */
 
 .global-3d-bg-root {
@@ -11,7 +11,7 @@
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  background-color: #03070b;
+  background-color: #020612;
 }
 
 .global-3d-canvas-container {
@@ -24,77 +24,149 @@
 }
 
 /* =========================================
-   MATRIX NEON GLOW LIGHTS
+   STARK ARC CYAN & GOLD AMBIENT GLOW
    ========================================= */
-.matrix-glow-orb {
+.jarvis-glow-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.45;
+  filter: blur(100px);
+  opacity: 0.4;
   will-change: transform;
   pointer-events: none;
   z-index: 0;
 }
 
-/* Matrix Neon Green Top Glow */
-.matrix-glow-1 {
+/* Arc Cyan Top Glow */
+.jarvis-glow-1 {
   top: -10%;
   left: 10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(0, 255, 136, 0.28) 0%, rgba(0, 255, 136, 0.05) 55%, transparent 75%);
-  animation: floatMatrix1 16s ease-in-out infinite alternate;
-}
-
-/* Cyber Cyan Bottom Glow */
-.matrix-glow-2 {
-  bottom: 0%;
-  right: -5%;
   width: 650px;
   height: 650px;
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.25) 0%, rgba(0, 240, 255, 0.05) 50%, transparent 75%);
-  animation: floatMatrix2 20s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.25) 0%, rgba(0, 153, 255, 0.08) 55%, transparent 75%);
+  animation: floatJarvis1 16s ease-in-out infinite alternate;
 }
 
-/* Deep Emerald Mid Glow */
-.matrix-glow-3 {
+/* Stark Gold Bottom Glow */
+.jarvis-glow-2 {
+  bottom: -5%;
+  right: -5%;
+  width: 680px;
+  height: 680px;
+  background: radial-gradient(circle, rgba(255, 183, 0, 0.18) 0%, rgba(0, 240, 255, 0.05) 50%, transparent 75%);
+  animation: floatJarvis2 20s ease-in-out infinite alternate;
+}
+
+/* Deep Arc Blue Mid Glow */
+.jarvis-glow-3 {
   top: 45%;
   right: 25%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, rgba(0, 59, 30, 0.08) 60%, transparent 80%);
-  animation: floatMatrix3 18s ease-in-out infinite alternate;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(0, 132, 255, 0.2) 0%, rgba(4, 15, 35, 0.08) 60%, transparent 80%);
+  animation: floatJarvis3 18s ease-in-out infinite alternate;
 }
 
-@keyframes floatMatrix1 {
+@keyframes floatJarvis1 {
   0% { transform: translate(0, 0) scale(1); }
   50% { transform: translate(60px, 50px) scale(1.15); }
   100% { transform: translate(-30px, 70px) scale(0.95); }
 }
 
-@keyframes floatMatrix2 {
+@keyframes floatJarvis2 {
   0% { transform: translate(0, 0) scale(1); }
   50% { transform: translate(-70px, -60px) scale(1.1); }
   100% { transform: translate(30px, -40px) scale(0.9); }
 }
 
-@keyframes floatMatrix3 {
+@keyframes floatJarvis3 {
   0% { transform: translate(0, 0) scale(0.9); }
   50% { transform: translate(-50px, 60px) scale(1.2); }
   100% { transform: translate(50px, -30px) scale(1); }
 }
 
-/* Matrix Hex Grid Pattern Overlay */
-.matrix-hex-grid {
+/* Holographic Reticle Overlays */
+.jarvis-hud-reticle {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.35;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reticle-top-right {
+  top: 90px;
+  right: 40px;
+  width: 140px;
+  height: 140px;
+}
+
+.reticle-bottom-left {
+  bottom: 80px;
+  left: 30px;
+  width: 110px;
+  height: 110px;
+}
+
+.reticle-outer-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 240, 255, 0.5);
+  animation: spinReticle 25s linear infinite;
+}
+
+.reticle-inner-ring {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-top-color: var(--arc-cyan);
+  animation: spinReticle 12s linear infinite reverse;
+}
+
+.reticle-cross {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translate(-50%, -50%);
+  border-top: 1px solid var(--stark-gold);
+  border-bottom: 1px solid var(--stark-gold);
+}
+
+.reticle-label {
+  position: absolute;
+  bottom: -22px;
+  font-family: var(--font-hud);
+  font-size: 0.65rem;
+  color: var(--arc-cyan);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+@keyframes spinReticle {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Stark Tech Hex Grid Overlay */
+.jarvis-hex-grid {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(to right, rgba(0, 255, 136, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
-  background-size: 32px 32px;
+    linear-gradient(to right, rgba(0, 240, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.025) 1px, transparent 1px);
+  background-size: 36px 36px;
   z-index: 2;
   pointer-events: none;
 }

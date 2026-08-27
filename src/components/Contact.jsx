@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, MessageSquare, Copy, Check, Terminal, Lock, ShieldCheck } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, AlertCircle, Copy, Check, Zap, ShieldCheck } from 'lucide-react';
 import use3DTilt from '../utils/use3DTilt';
 import './Contact.css';
 
@@ -21,20 +21,20 @@ const Contact = () => {
 
   const copyToClipboard = (text, label) => {
     navigator.clipboard.writeText(text);
-    setToastMessage(`[CLIPBOARD] ${label} copied!`);
+    setToastMessage(`[QUANTUM_RELAY] ${label} copied to clipboard!`);
     setTimeout(() => setToastMessage(''), 3000);
   };
 
   const validate = () => {
     const errs = {};
-    if (!formData.name.trim()) errs.name = "[ERR] Identifier/Name required";
+    if (!formData.name.trim()) errs.name = "[ERR] Sender Identifier required";
     if (!formData.email.trim()) {
-      errs.email = "[ERR] Return address required";
+      errs.email = "[ERR] Return Quantum Address required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       errs.email = "[ERR] Invalid email syntax";
     }
-    if (!formData.subject.trim()) errs.subject = "[ERR] Packet Subject required";
-    if (!formData.message.trim()) errs.message = "[ERR] Payload message required";
+    if (!formData.subject.trim()) errs.subject = "[ERR] Mission Subject required";
+    if (!formData.message.trim()) errs.message = "[ERR] Dispatch Payload required";
 
     setErrors(errs);
     return Object.keys(errs).length === 0;
@@ -64,7 +64,7 @@ const Contact = () => {
       setLoading(false);
       setSubmitted(true);
       window.location.href = mailtoUrl;
-      setToastMessage('[200 OK] Launching mail transfer agent...');
+      setToastMessage('[200 OK] Establishing Quantum Mail Link...');
       setFormData({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setToastMessage(''), 4000);
     }, 600);
@@ -73,7 +73,7 @@ const Contact = () => {
   return (
     <section id="contact" className="section contact-section">
       {toastMessage && (
-        <div className="contact-toast glass-panel toast-hacker">
+        <div className="contact-toast glass-panel toast-jarvis">
           <Check size={16} className="toast-icon pulse-anim" />
           <span>{toastMessage}</span>
         </div>
@@ -82,203 +82,200 @@ const Contact = () => {
       <div className="container">
         <div className="section-header">
           <div className="section-subtitle">
-            <Terminal size={14} /> $ ./transmit_encrypted_packet.sh
+            <Zap size={14} /> J.A.R.V.I.S. // SECURE QUANTUM COMMS
           </div>
           <h2 className="section-title">
-            Establish Secure <span className="gradient-text">Communication</span>
+            Establish Direct <span className="gradient-text">Transmission</span>
           </h2>
         </div>
 
         <div className="contact-grid">
           {/* Info Card */}
-          <div ref={infoCardRef} className="contact-info-card glass-panel card-3d hacker-contact-card">
+          <div ref={infoCardRef} className="contact-info-card glass-panel card-3d jarvis-contact-card hud-corner-brackets">
             <div className="contact-terminal-bar">
               <span className="dot red"></span>
               <span className="dot yellow"></span>
               <span className="dot green"></span>
-              <span className="contact-terminal-title">endpoints.config</span>
+              <span className="contact-terminal-title">stark_quantum_comms.relay</span>
             </div>
 
             <div className="contact-card-inner">
-              <h3 className="info-title">
-                <span className="hacker-green-icon">&gt;</span> Direct Channels
-              </h3>
+              <h3 className="info-title">Quantum Transmission Relays</h3>
               <p className="info-desc">
-                Looking for a dedicated Python Django Full Stack Developer? Send a transmission directly via secure email, telephone, or dispatch a message below.
+                Open for high-impact software engineering roles, enterprise backend architecture, and technical consulting.
               </p>
 
               <div className="info-items">
-                <div className="info-item info-item-hacker">
-                  <div className="info-icon icon-hacker">
+                {/* Email Relay */}
+                <div className="info-item-jarvis">
+                  <div className="icon-jarvis">
                     <Mail size={18} />
                   </div>
                   <div className="info-details-wrap">
-                    <span className="info-label">// PRIMARY_EMAIL</span>
-                    <a href="mailto:robinroy1225@gmail.com" className="info-value">robinroy1225@gmail.com</a>
+                    <span className="info-label">// DIRECT QUANTUM MAIL:</span>
+                    <a href="mailto:robinroy1225@gmail.com" className="info-value">
+                      robinroy1225@gmail.com
+                    </a>
                   </div>
-                  <button 
-                    className="copy-btn copy-btn-hacker"
+                  <button
                     onClick={() => copyToClipboard('robinroy1225@gmail.com', 'Email')}
-                    title="Copy email"
+                    className="copy-btn-jarvis"
+                    aria-label="Copy Email"
+                    title="Copy to clipboard"
                   >
-                    <Copy size={15} />
+                    <Copy size={14} />
                   </button>
                 </div>
 
-                <div className="info-item info-item-hacker">
-                  <div className="info-icon icon-hacker">
+                {/* Telephone Relay */}
+                <div className="info-item-jarvis">
+                  <div className="icon-jarvis">
                     <Phone size={18} />
                   </div>
                   <div className="info-details-wrap">
-                    <span className="info-label">// VOICE_LINE</span>
-                    <a href="tel:8281189244" className="info-value">+91 8281189244</a>
+                    <span className="info-label">// SECURE VOICE RELAY:</span>
+                    <a href="tel:8281189244" className="info-value">
+                      +91 8281189244
+                    </a>
                   </div>
-                  <button 
-                    className="copy-btn copy-btn-hacker"
+                  <button
                     onClick={() => copyToClipboard('+918281189244', 'Phone')}
-                    title="Copy phone"
+                    className="copy-btn-jarvis"
+                    aria-label="Copy Phone Number"
+                    title="Copy to clipboard"
                   >
-                    <Copy size={15} />
+                    <Copy size={14} />
                   </button>
                 </div>
 
-                <div className="info-item info-item-hacker">
-                  <div className="info-icon icon-hacker">
+                {/* Geo Coordinates */}
+                <div className="info-item-jarvis">
+                  <div className="icon-jarvis">
                     <MapPin size={18} />
                   </div>
                   <div className="info-details-wrap">
-                    <span className="info-label">// GEO_LOCATION</span>
-                    <span className="info-value">BETHESDA, CHUNAKKARA, Alappuzha, Kerala - 690534</span>
+                    <span className="info-label">// STARK BASE COORDINATES:</span>
+                    <span className="info-value">Kerala, India [Open for Remote &amp; Hybrid]</span>
                   </div>
                 </div>
               </div>
 
-              <div className="personal-meta-grid hacker-meta-grid">
-                <div>
-                  <span className="meta-label">[DOB]</span>
-                  <strong className="meta-val">11/12/1997</strong>
+              <div className="jarvis-meta-grid">
+                <div className="meta-card">
+                  <span className="meta-label">RELAY LATENCY</span>
+                  <span className="meta-val">&lt; 12ms</span>
                 </div>
-                <div>
-                  <span className="meta-label">[GENDER]</span>
-                  <strong className="meta-val">Male</strong>
+                <div className="meta-card">
+                  <span className="meta-label">DISPATCH STATUS</span>
+                  <span className="meta-val jarvis-glow-text">READY</span>
                 </div>
-                <div>
-                  <span className="meta-label">[NATIONALITY]</span>
-                  <strong className="meta-val">Indian</strong>
+                <div className="meta-card">
+                  <span className="meta-label">SECURITY</span>
+                  <span className="meta-val stark-gold-text">ENCRYPTED</span>
                 </div>
               </div>
 
-              <div className="response-guarantee response-guarantee-hacker">
-                <ShieldCheck size={17} className="guarantee-icon" />
-                <span>[READY] Available for Python Django Backend &amp; Full-Stack Deployments.</span>
+              <div className="response-guarantee-jarvis">
+                <ShieldCheck size={16} className="guarantee-icon" />
+                <span>Priority response guaranteed within 24 operational hours.</span>
               </div>
             </div>
           </div>
 
           {/* Form Card */}
-          <div ref={formCardRef} className="contact-form-card glass-panel card-3d hacker-contact-card">
+          <div ref={formCardRef} className="contact-form-card glass-panel card-3d jarvis-contact-card hud-corner-brackets">
             <div className="contact-terminal-bar">
               <span className="dot red"></span>
               <span className="dot yellow"></span>
               <span className="dot green"></span>
-              <span className="contact-terminal-title">dispatch_console.sh</span>
+              <span className="contact-terminal-title">dispatch_console.sh --interactive</span>
             </div>
 
             <div className="contact-card-inner">
               {submitted ? (
                 <div className="success-banner">
-                  <div className="success-icon-box success-icon-hacker">
-                    <CheckCircle2 size={38} className="pulse-anim" />
+                  <div className="success-icon-jarvis">
+                    <Zap size={32} />
                   </div>
-                  <h3 className="success-title">[200 OK] Packet Transmitted!</h3>
+                  <h3 className="success-title">Dispatch Broadcast Sent!</h3>
                   <p className="success-desc">
-                    Transmission delivered successfully. Operator Robin Roy has logged your request and will respond shortly.
+                    Your transmission payload has been initiated. If your mail client didn't open automatically, reach out directly to robinroy1225@gmail.com.
                   </p>
                   <button
-                    className="btn btn-primary btn-hacker"
                     onClick={() => setSubmitted(false)}
+                    className="btn btn-secondary btn-jarvis"
                   >
-                    ./send_another_packet
+                    Transmit Another Dispatch
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="contact-form" noValidate>
-                  <div className="form-group form-group-hacker">
-                    <label htmlFor="name">&gt; Input_Sender_Name:</label>
+                <form onSubmit={handleSubmit} noValidate>
+                  <div className="form-group-jarvis">
+                    <label htmlFor="name">// SENDER IDENTIFIER</label>
                     <input
                       type="text"
                       id="name"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="e.g. Alex Morgan"
-                      className={`input-hacker ${errors.name ? 'input-error' : ''}`}
+                      placeholder="Tony Stark / Stark Industries..."
+                      className={`input-jarvis ${errors.name ? 'input-error' : ''}`}
                     />
-                    {errors.name && (
-                      <span className="error-text">
-                        <AlertCircle size={13} /> {errors.name}
-                      </span>
-                    )}
+                    {errors.name && <span className="error-text"><AlertCircle size={12} /> {errors.name}</span>}
                   </div>
 
-                  <div className="form-group form-group-hacker">
-                    <label htmlFor="email">&gt; Input_Return_Email:</label>
+                  <div className="form-group-jarvis">
+                    <label htmlFor="email">// RETURN QUANTUM ADDRESS</label>
                     <input
                       type="email"
                       id="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="e.g. alex@enterprise.com"
-                      className={`input-hacker ${errors.email ? 'input-error' : ''}`}
+                      placeholder="stark@starkindustries.com"
+                      className={`input-jarvis ${errors.email ? 'input-error' : ''}`}
                     />
-                    {errors.email && (
-                      <span className="error-text">
-                        <AlertCircle size={13} /> {errors.email}
-                      </span>
-                    )}
+                    {errors.email && <span className="error-text"><AlertCircle size={12} /> {errors.email}</span>}
                   </div>
 
-                  <div className="form-group form-group-hacker">
-                    <label htmlFor="subject">&gt; Input_Packet_Subject:</label>
+                  <div className="form-group-jarvis">
+                    <label htmlFor="subject">// MISSION SUBJECT</label>
                     <input
                       type="text"
                       id="subject"
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      placeholder="e.g. Python Backend Architecture Project"
-                      className={`input-hacker ${errors.subject ? 'input-error' : ''}`}
+                      placeholder="Enterprise Python / Django Architecture Project..."
+                      className={`input-jarvis ${errors.subject ? 'input-error' : ''}`}
                     />
-                    {errors.subject && (
-                      <span className="error-text">
-                        <AlertCircle size={13} /> {errors.subject}
-                      </span>
-                    )}
+                    {errors.subject && <span className="error-text"><AlertCircle size={12} /> {errors.subject}</span>}
                   </div>
 
-                  <div className="form-group form-group-hacker">
-                    <label htmlFor="message">&gt; Input_Payload_Message:</label>
+                  <div className="form-group-jarvis">
+                    <label htmlFor="message">// DISPATCH PAYLOAD</label>
                     <textarea
                       id="message"
                       name="message"
                       rows="4"
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Detail your application requirements, timeline, or inquiries..."
-                      className={`input-hacker ${errors.message ? 'input-error' : ''}`}
+                      placeholder="Detail project specifications, backend requirements, timeline..."
+                      className={`input-jarvis ${errors.message ? 'input-error' : ''}`}
                     ></textarea>
-                    {errors.message && (
-                      <span className="error-text">
-                        <AlertCircle size={13} /> {errors.message}
-                      </span>
-                    )}
+                    {errors.message && <span className="error-text"><AlertCircle size={12} /> {errors.message}</span>}
                   </div>
 
-                  <button type="submit" className="btn btn-primary btn-hacker submit-btn" disabled={loading}>
-                    {loading ? '[TRANSMITTING...]' : (
+                  <button
+                    type="submit"
+                    className="btn btn-primary submit-btn btn-jarvis"
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <>Transmitting Encrypted Payload...</>
+                    ) : (
                       <>
-                        <Send size={15} /> [TRANSMIT PACKET]
+                        <Send size={16} /> TRANSMIT COMMS PAYLOAD
                       </>
                     )}
                   </button>
