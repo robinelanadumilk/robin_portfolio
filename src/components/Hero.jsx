@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Zap, Shield, Code2, Database, Cpu, ChevronRight, FileText } from 'lucide-react';
+import { Mail, Phone, Code2, Database, Cpu, ArrowUpRight, FileText, Layers, Globe } from 'lucide-react';
 import ThreeHeroCanvas from './ThreeHeroCanvas';
 import use3DTilt from '../utils/use3DTilt';
 import './Hero.css';
 
 const roles = [
-  "Python Django Backend Engineer",
-  "Enterprise ERP System Architect",
+  "Web Developer",
+  "Python Django Developer",
   "RESTful API Specialist",
-  "Full Stack Web Engineer"
+  "Full Stack Engineer"
 ];
 
 const Hero = ({ onOpenResume }) => {
@@ -43,76 +43,78 @@ const Hero = ({ onOpenResume }) => {
   return (
     <section id="hero" className="hero-section">
       <div className="hero-arc-glow-bg"></div>
+      <div className="hero-availability" aria-hidden="true">Open to remote & hybrid roles</div>
 
       <div className="container hero-container">
-        {/* Left Column: Stark HUD Command Terminal */}
         <div className="hero-content">
           <div className="hero-badge badge-jarvis">
-            <Zap size={14} className="jarvis-icon pulse-anim" />
-            <span>J.A.R.V.I.S. INTERFACE • MARK-LXXXV ONLINE</span>
+            <span className="status-indicator-dot online"></span>
+            <span>Web Developer · Thrissur, Kerala</span>
           </div>
 
           <h1 className="hero-title">
-            Robin <span className="jarvis-gradient-text">Roy</span>
+            Robin <em>Roy</em>
           </h1>
 
           <div className="hero-role-wrapper">
-            <span className="jarvis-cli-prompt">&gt; SPEC:</span>
-            <span className="role-dynamic jarvis-glow-text">"{displayText}"</span>
-            <span className="cursor-block">_</span>
+            <span className="jarvis-cli-prompt">Currently</span>
+            <span className="role-dynamic">{displayText}</span>
+            <span className="cursor-block">|</span>
           </div>
 
           <p className="hero-description">
-            Enthusiastic Jr. Python Full Stack Developer specializing in architecting resilient backend systems, high-throughput RESTful APIs, and enterprise ERP applications using Python, Django, React.js, and MSSQL.
+            Web Developer with 2+ years building and maintaining production web applications and REST APIs
+            with Python and Django, plus JavaScript, React, MSSQL, and MySQL. I debug, optimize, and
+            improve live systems — including legacy code — with a strong OOP and software-design foundation.
           </p>
 
-          {/* Stark Tech Pills */}
           <div className="hero-tech-badges">
             <span className="hero-tech-pill tech-pill-jarvis"><Code2 size={13} /> Python &amp; Django</span>
-            <span className="hero-tech-pill tech-pill-jarvis"><Zap size={13} /> Django REST APIs</span>
+            <span className="hero-tech-pill tech-pill-jarvis"><Layers size={13} /> REST APIs</span>
             <span className="hero-tech-pill tech-pill-jarvis"><Database size={13} /> MSSQL &amp; MySQL</span>
-            <span className="hero-tech-pill tech-pill-jarvis"><Cpu size={13} /> React.js &amp; Three.js</span>
+            <span className="hero-tech-pill tech-pill-jarvis"><Cpu size={13} /> React.js</span>
           </div>
 
           <div className="hero-actions">
-            <a href="#projects" className="btn btn-primary btn-jarvis">
-              <ChevronRight size={16} /> ACCESS BLUEPRINTS
+            <a href="#projects" className="btn btn-primary">
+              View selected work <ArrowUpRight size={16} />
             </a>
-            <button onClick={onOpenResume} className="btn btn-secondary btn-jarvis">
-              <FileText size={15} /> DECRYPT DOSSIER
+            <button onClick={onOpenResume} className="btn btn-secondary">
+              <FileText size={15} /> Resume
             </button>
-            <a href="#contact" className="btn btn-secondary btn-jarvis">
-              <Mail size={15} /> TRANSMIT COMMS
+            <a href="#contact" className="btn btn-secondary">
+              <Mail size={15} /> Contact
             </a>
           </div>
 
           <div className="social-links-wrapper">
-            <span className="social-label">// QUANTUM RELAY:</span>
+            <span className="social-label">Direct</span>
             <div className="social-icons">
               <a href="mailto:robinroy1225@gmail.com" aria-label="Email" className="social-btn social-btn-jarvis" title="robinroy1225@gmail.com">
                 <Mail size={16} />
               </a>
-              <a href="tel:8281189244" aria-label="Phone" className="social-btn social-btn-jarvis" title="+91 8281189244">
-                <Zap size={16} />
+              <a href="tel:+919778004292" aria-label="Phone" className="social-btn social-btn-jarvis" title="+91 9778004292">
+                <Phone size={16} />
+              </a>
+              <a href="https://linkedin.com/in/robinroy1225" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="social-btn social-btn-jarvis" title="linkedin.com/in/robinroy1225">
+                <Globe size={16} />
               </a>
             </div>
           </div>
         </div>
 
-        {/* Right Column: 3D Holographic Arc Reactor */}
         <div className="hero-visual">
           <div className="hero-3d-model-free">
             <ThreeHeroCanvas />
           </div>
 
-          {/* 3D Floating Stark Telemetry Metric Badge */}
-          <div ref={statCardRef} className="hero-floating-stat glass-panel tilt-card-3d jarvis-stat-badge hud-corner-brackets">
+          <div ref={statCardRef} className="hero-floating-stat glass-panel tilt-card-3d jarvis-stat-badge">
             <div className="stat-icon-wrapper stat-jarvis-glow">
-              <Shield size={22} className="stat-icon" />
+              <span>02+</span>
             </div>
             <div>
-              <div className="stat-number jarvis-glow-text">3+ YEARS ARCHITECTURE</div>
-              <div className="stat-desc">Python • Django REST • Enterprise ERP</div>
+              <div className="stat-number">Years in production</div>
+              <div className="stat-desc">Python · Django · React</div>
             </div>
           </div>
         </div>

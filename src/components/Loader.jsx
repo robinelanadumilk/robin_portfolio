@@ -6,15 +6,15 @@ import './Loader.css';
 const Loader = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
   const [isFading, setIsFading] = useState(false);
-  const [statusText, setStatusText] = useState('JARVIS_AI: INITIALIZING STARK CORE PROTOCOLS...');
+  const [statusText, setStatusText] = useState('Preparing workspace…');
 
   useEffect(() => {
     const statuses = [
-      { at: 0, text: 'JARVIS_AI: INITIATING STARK MARK-LXXXV PROTOCOL...' },
-      { at: 20, text: '[OK] ARC REACTOR CORE STABLE • 3.2 GIGAWATTS [100%]' },
-      { at: 45, text: '[OK] NEURAL MODULES: PYTHON 3.12 & DJANGO REST ONLINE' },
-      { at: 70, text: '[OK] MSSQL DATABASE CLUSTERS & ERP ARRAYS SYNCED' },
-      { at: 90, text: '[STATUS: ONLINE] WELCOME BACK, SIR. DISPLAYING HUD...' }
+      { at: 0, text: 'Preparing workspace…' },
+      { at: 20, text: 'Loading systems and production work' },
+      { at: 45, text: 'Python · Django REST · React' },
+      { at: 70, text: 'MSSQL, ERP, and reporting pipelines' },
+      { at: 90, text: 'Ready. Welcome in.' }
     ];
 
     const interval = setInterval(() => {
@@ -56,7 +56,7 @@ const Loader = ({ onFinish }) => {
         {/* Stark Industries Protocol Tag */}
         <div className="loader-bios-tag jarvis-tag">
           <Zap size={14} className="jarvis-cyan-icon pulse-anim" />
-          <span>J.A.R.V.I.S. OS v8.5 [STARK INDUSTRIES]</span>
+          <span>Robin Roy · Portfolio</span>
         </div>
 
         {/* 3D Arc Reactor Holographic Gyroscope */}
@@ -93,7 +93,7 @@ const Loader = ({ onFinish }) => {
           <h1 className="loader-title">
             ROBIN <span className="jarvis-gradient-text">ROY</span>
           </h1>
-          <p className="loader-subtitle">STARK TECH • PYTHON DJANGO FULL STACK DEVELOPER</p>
+          <p className="loader-subtitle">Web Developer · Python · Django</p>
         </div>
 
         {/* 3D Circular Arc Reactor HUD Progress */}
@@ -102,7 +102,7 @@ const Loader = ({ onFinish }) => {
             <svg className="progress-ring" width="150" height="150">
               <circle
                 className="progress-ring-bg"
-                stroke="rgba(0, 240, 255, 0.12)"
+                stroke="rgba(212, 165, 116, 0.14)"
                 strokeWidth="4"
                 fill="transparent"
                 r={radius}
@@ -123,9 +123,9 @@ const Loader = ({ onFinish }) => {
               />
               <defs>
                 <linearGradient id="jarvisLoaderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#00f0ff" />
-                  <stop offset="50%" stopColor="#70f4ff" />
-                  <stop offset="100%" stopColor="#ffb700" />
+                  <stop offset="0%" stopColor="#d4a574" />
+                  <stop offset="50%" stopColor="#ead3b3" />
+                  <stop offset="100%" stopColor="#7ec8c0" />
                 </linearGradient>
               </defs>
             </svg>
@@ -139,7 +139,7 @@ const Loader = ({ onFinish }) => {
           {/* J.A.R.V.I.S. Voice Diagnostic Line */}
           <div className="loader-status-container">
             <div className="status-terminal-line">
-              <span className="terminal-prompt">⚡</span>
+              <span className="terminal-prompt">›</span>
               <span className="terminal-text">{statusText}</span>
               <span className="terminal-cursor">_</span>
             </div>

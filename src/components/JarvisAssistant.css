@@ -1,23 +1,18 @@
-/* =========================================================
-   J.A.R.V.I.S. INTERACTIVE AI VOICE & HUD COMMAND HUB
-   ========================================================= */
-
 .jarvis-assistant-wrapper {
   position: fixed;
   bottom: 25px;
   right: 25px;
   z-index: 9999;
-  font-family: var(--font-hud);
+  font-family: var(--font-sans);
 }
 
-/* Floating Arc Reactor Orb Button */
 .jarvis-trigger-orb {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: radial-gradient(circle at center, #020b18 0%, #001f3f 60%, #00f0ff 100%);
-  border: 2px solid var(--arc-cyan);
-  box-shadow: 0 0 25px rgba(0, 240, 255, 0.6), inset 0 0 15px rgba(0, 240, 255, 0.5);
+  background: #121318;
+  border: 1px solid rgba(212, 165, 116, 0.45);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,31 +25,31 @@
 }
 
 .jarvis-trigger-orb:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 35px rgba(0, 240, 255, 0.9), inset 0 0 20px rgba(0, 240, 255, 0.8);
+  transform: scale(1.06);
+  border-color: var(--accent);
 }
 
 .orb-arc-ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px dashed var(--arc-cyan);
+  border: 1px dashed rgba(212, 165, 116, 0.35);
   pointer-events: none;
 }
 
 .orb-arc-ring.ring-1 {
   width: 72px;
   height: 72px;
-  animation: spinRing 8s linear infinite;
-  opacity: 0.7;
+  animation: spinRing 12s linear infinite;
+  opacity: 0.55;
 }
 
 .orb-arc-ring.ring-2 {
   width: 84px;
   height: 84px;
-  border: 1px solid rgba(255, 183, 0, 0.5);
+  border: 1px solid rgba(126, 200, 192, 0.28);
   border-left-color: transparent;
   border-right-color: transparent;
-  animation: spinRing 5s linear infinite reverse;
+  animation: spinRing 8s linear infinite reverse;
 }
 
 @keyframes spinRing {
@@ -67,36 +62,28 @@
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  text-shadow: 0 0 10px var(--arc-cyan);
 }
 
 .orb-zap-icon {
-  color: var(--arc-cyan);
-  filter: drop-shadow(0 0 8px #00f0ff);
-  animation: zapGlow 1.8s ease-in-out infinite alternate;
-}
-
-@keyframes zapGlow {
-  0% { transform: scale(0.9); opacity: 0.8; }
-  100% { transform: scale(1.15); opacity: 1; filter: drop-shadow(0 0 14px #ffb700); }
+  color: var(--accent);
 }
 
 .orb-hud-label {
-  font-size: 0.52rem;
-  color: var(--arc-cyan);
-  letter-spacing: 0.1em;
-  font-weight: 800;
+  font-size: 0.58rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  font-weight: 500;
   margin-top: 1px;
+  text-transform: uppercase;
 }
 
-/* Expanded Holographic HUD AI Window */
 .jarvis-hud-window {
   width: 380px;
   max-width: calc(100vw - 30px);
-  background: rgba(3, 12, 26, 0.96);
-  border: 1.5px solid var(--arc-cyan);
-  border-radius: var(--radius-xs);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 240, 255, 0.35);
+  background: rgba(16, 17, 22, 0.96);
+  border: 1px solid rgba(232, 216, 196, 0.12);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   display: flex;
@@ -114,9 +101,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1rem;
-  background: rgba(0, 240, 255, 0.08);
-  border-bottom: 1px solid rgba(0, 240, 255, 0.25);
+  padding: 0.85rem 1rem;
+  background: rgba(239, 234, 226, 0.03);
+  border-bottom: 1px solid rgba(232, 216, 196, 0.08);
   gap: 0.5rem;
 }
 
@@ -138,8 +125,8 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--arc-cyan);
-  box-shadow: 0 0 10px var(--arc-cyan);
+  background: #7dba8a;
+  box-shadow: 0 0 8px #7dba8a;
 }
 
 .status-ripple {
@@ -149,7 +136,7 @@
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  border: 1px solid var(--arc-cyan);
+  border: 1px solid #7dba8a;
   animation: pulseRipple 1.8s infinite ease-out;
 }
 
@@ -159,20 +146,16 @@
 }
 
 .jarvis-hud-title {
-  font-size: 0.82rem;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 0.08em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #efeae2;
+  font-family: var(--font-display);
 }
 
 .jarvis-hud-sub {
-  font-size: 0.62rem;
-  color: var(--arc-cyan);
-  letter-spacing: 0.06em;
-  white-space: nowrap;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
 }
 
 .jarvis-header-actions {
@@ -186,23 +169,21 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  background: rgba(0, 240, 255, 0.1);
-  border: 1px solid rgba(0, 240, 255, 0.35);
-  color: var(--arc-cyan);
-  padding: 0.3rem 0.6rem;
-  border-radius: var(--radius-xs);
-  font-size: 0.68rem;
-  font-family: var(--font-hud);
+  background: transparent;
+  border: 1px solid rgba(232, 216, 196, 0.14);
+  color: var(--text-muted);
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-family: var(--font-sans);
   cursor: pointer;
   transition: var(--transition);
   white-space: nowrap;
 }
 
 .jarvis-audio-btn.active {
-  background: rgba(0, 240, 255, 0.25);
-  border-color: var(--arc-cyan);
-  color: #fff;
-  box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  border-color: rgba(212, 165, 116, 0.45);
+  color: var(--text-main);
 }
 
 .jarvis-close-btn {
@@ -221,31 +202,27 @@
   color: var(--stark-red);
 }
 
-/* Telemetry Strip */
 .jarvis-telemetry-strip {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.4rem 1rem;
-  background: rgba(0, 15, 35, 0.7);
-  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
-  font-size: 0.65rem;
-  color: var(--text-muted);
+  border-bottom: 1px solid rgba(232, 216, 196, 0.08);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
 }
 
 .telemetry-core {
-  color: var(--stark-gold);
-  font-weight: 700;
+  color: var(--accent);
 }
 
-/* Preset Directives Row */
 .jarvis-presets-row {
   display: flex;
   gap: 0.35rem;
   padding: 0.55rem 0.75rem;
   overflow-x: auto;
-  background: rgba(0, 240, 255, 0.03);
-  border-bottom: 1px solid rgba(0, 240, 255, 0.12);
+  border-bottom: 1px solid rgba(232, 216, 196, 0.08);
   scrollbar-width: thin;
 }
 
@@ -254,25 +231,22 @@
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  background: rgba(0, 240, 255, 0.08);
-  border: 1px solid rgba(0, 240, 255, 0.25);
-  color: var(--arc-cyan);
-  padding: 0.28rem 0.6rem;
-  border-radius: var(--radius-xs);
-  font-size: 0.68rem;
-  font-family: var(--font-hud);
+  background: transparent;
+  border: 1px solid rgba(232, 216, 196, 0.12);
+  color: var(--text-muted);
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-family: var(--font-sans);
   cursor: pointer;
   transition: var(--transition);
 }
 
 .preset-pill:hover {
-  background: rgba(0, 240, 255, 0.2);
-  border-color: var(--arc-cyan);
-  color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 240, 255, 0.35);
+  border-color: rgba(212, 165, 116, 0.4);
+  color: var(--text-main);
 }
 
-/* Chat Transcript */
 .jarvis-messages-container {
   height: clamp(180px, 30vh, 250px);
   overflow-y: auto;
@@ -296,9 +270,9 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: rgba(0, 240, 255, 0.15);
-  border: 1px solid var(--arc-cyan);
-  color: var(--arc-cyan);
+  background: rgba(212, 165, 116, 0.12);
+  border: 1px solid rgba(212, 165, 116, 0.28);
+  color: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -307,31 +281,29 @@
 
 .jarvis-msg-bubble {
   padding: 0.65rem 0.85rem;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-tech);
-  font-size: 0.88rem;
-  line-height: 1.4;
+  border-radius: var(--radius-md);
+  font-size: 0.86rem;
+  line-height: 1.45;
   max-width: 85%;
   word-break: break-word;
 }
 
 .jarvis-msg-row.jarvis .jarvis-msg-bubble {
-  background: rgba(4, 20, 42, 0.85);
-  border: 1px solid rgba(0, 240, 255, 0.3);
+  background: rgba(239, 234, 226, 0.04);
+  border: 1px solid rgba(232, 216, 196, 0.1);
   color: var(--text-main);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .jarvis-msg-row.user .jarvis-msg-bubble {
-  background: linear-gradient(135deg, rgba(0, 153, 255, 0.3) 0%, rgba(0, 240, 255, 0.25) 100%);
-  border: 1px solid var(--arc-cyan);
-  color: #ffffff;
+  background: var(--text-main);
+  border: 1px solid transparent;
+  color: #12110f;
   text-align: right;
 }
 
 .jarvis-msg-bubble.processing {
   font-style: italic;
-  color: var(--arc-cyan);
+  color: var(--text-muted);
 }
 
 .spin-icon {
@@ -343,49 +315,38 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Input Form */
 .jarvis-input-form {
   display: flex;
   align-items: center;
   padding: 0.65rem 0.85rem;
-  background: rgba(2, 8, 18, 0.95);
-  border-top: 1px solid rgba(0, 240, 255, 0.25);
+  border-top: 1px solid rgba(232, 216, 196, 0.08);
   gap: 0.45rem;
-}
-
-.input-prefix {
-  font-size: 0.68rem;
-  color: var(--stark-gold);
-  font-weight: 800;
-  white-space: nowrap;
 }
 
 .jarvis-cmd-input {
   flex: 1;
-  background: rgba(0, 240, 255, 0.05);
-  border: 1px solid rgba(0, 240, 255, 0.25);
-  border-radius: var(--radius-xs);
+  background: rgba(8, 9, 12, 0.55);
+  border: 1px solid rgba(232, 216, 196, 0.12);
+  border-radius: var(--radius-full);
   color: #ffffff;
-  padding: 0.5rem 0.75rem;
-  font-family: var(--font-tech);
-  font-size: 16px; /* Prevents auto-zoom on mobile iOS */
+  padding: 0.55rem 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 16px;
   outline: none;
   transition: var(--transition);
-  box-sizing: border-box;
 }
 
 .jarvis-cmd-input:focus {
-  border-color: var(--arc-cyan);
-  box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+  border-color: var(--accent);
 }
 
 .jarvis-send-btn {
-  background: linear-gradient(135deg, #00f0ff 0%, #0084ff 100%);
+  background: var(--text-main);
   border: none;
-  color: #020712;
+  color: #12110f;
   width: 36px;
   height: 36px;
-  border-radius: var(--radius-xs);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -396,7 +357,6 @@
 
 .jarvis-send-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px var(--arc-cyan);
 }
 
 @media (max-width: 576px) {

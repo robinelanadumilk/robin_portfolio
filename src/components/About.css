@@ -1,10 +1,6 @@
-/* =========================================================
-   J.A.R.V.I.S. / STARK TECH ABOUT SECTION
-   ========================================================= */
-
 .about-grid {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: 1.12fr 1fr;
   gap: clamp(1.5rem, 3vw, 2.5rem);
   margin-bottom: clamp(2rem, 4vw, 3.5rem);
 }
@@ -12,192 +8,140 @@
 .jarvis-bio-panel {
   padding: 0;
   overflow: hidden;
-  border-radius: var(--radius-xs);
-  border: 1px solid rgba(0, 240, 255, 0.35);
-  background: rgba(4, 14, 30, 0.88);
-}
-
-.jarvis-panel-header {
-  background: rgba(2, 8, 18, 0.95);
-  padding: 0.65rem 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  border-bottom: 1px solid rgba(0, 240, 255, 0.25);
-}
-
-.terminal-panel-title {
-  font-family: var(--font-hud);
-  font-size: 0.76rem;
-  color: var(--arc-cyan);
-  margin-left: 0.5rem;
-  letter-spacing: 0.06em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  border-radius: var(--radius-lg);
 }
 
 .bio-inner-pad {
-  padding: clamp(1.25rem, 3vw, 2.25rem);
+  padding: clamp(1.5rem, 3vw, 2.4rem);
 }
 
 .bio-header-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  font-family: var(--font-hud);
-  font-size: clamp(0.65rem, 1.3vw, 0.72rem);
-  color: var(--stark-gold);
-  background: rgba(255, 183, 0, 0.08);
-  border: 1px solid rgba(255, 183, 0, 0.3);
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  background: rgba(212, 165, 116, 0.08);
+  border: 1px solid rgba(212, 165, 116, 0.22);
   padding: 0.35rem 0.85rem;
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-full);
   margin-bottom: 1.25rem;
-  letter-spacing: 0.05em;
-  flex-wrap: wrap;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .bio-title {
-  font-size: clamp(1.35rem, 3vw, 1.85rem);
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 1.25rem;
-  font-family: var(--font-hud);
-  letter-spacing: 0.03em;
-  word-break: break-word;
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  font-weight: 400;
+  color: #efeae2;
+  margin-bottom: 1.15rem;
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
 }
 
 .bio-paragraph {
   color: var(--text-muted);
-  font-size: clamp(0.88rem, 1.3vw, 0.95rem);
+  font-size: clamp(0.92rem, 1.3vw, 1rem);
   line-height: 1.75;
-  margin-bottom: 1.25rem;
-  font-family: var(--font-tech);
+  margin-bottom: 1.1rem;
+  font-weight: 300;
 }
 
 .key-points {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-  margin-top: 1.75rem;
+  gap: 0.65rem;
+  margin-top: 1.6rem;
 }
 
 .point-item-jarvis {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  font-size: clamp(0.78rem, 1.3vw, 0.88rem);
-  font-family: var(--font-hud);
+  font-size: 0.9rem;
   color: var(--text-main);
-  background: rgba(0, 240, 255, 0.04);
-  padding: 0.7rem 1rem;
-  border-radius: var(--radius-xs);
-  border: 1px solid rgba(0, 240, 255, 0.18);
+  background: rgba(239, 234, 226, 0.03);
+  padding: 0.72rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(232, 216, 196, 0.08);
   transition: all 0.25s ease;
-  letter-spacing: 0.04em;
-  word-break: break-word;
 }
 
 .point-item-jarvis:hover {
-  transform: translateX(6px);
-  border-color: var(--arc-cyan);
-  background: rgba(0, 240, 255, 0.12);
-  box-shadow: 0 0 18px rgba(0, 240, 255, 0.25);
+  transform: translateX(5px);
+  border-color: rgba(212, 165, 116, 0.35);
 }
 
 .check-icon {
-  color: var(--arc-cyan);
+  color: var(--accent);
   flex-shrink: 0;
 }
 
-/* J.A.R.V.I.S. Highlights Grid */
 .about-highlights-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-  gap: clamp(1rem, 2vw, 1.5rem);
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1rem, 2vw, 1.35rem);
 }
 
 .jarvis-card {
-  padding: clamp(1.25rem, 2vw, 1.75rem);
+  padding: clamp(1.2rem, 2vw, 1.6rem);
   display: flex;
   flex-direction: column;
-  border-radius: var(--radius-xs);
-  transform-style: preserve-3d;
-  border: 1px solid rgba(0, 240, 255, 0.25);
-  background: rgba(4, 14, 30, 0.85);
-  position: relative;
+  border-radius: var(--radius-md);
 }
 
 .card-top-tag {
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  font-family: var(--font-hud);
-  font-size: 0.65rem;
-  color: var(--stark-gold);
-  background: rgba(255, 183, 0, 0.08);
-  padding: 0.2rem 0.55rem;
-  border-radius: var(--radius-xs);
-  border: 1px solid rgba(255, 183, 0, 0.3);
-  letter-spacing: 0.05em;
+  top: 1rem;
+  right: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent);
+  letter-spacing: 0.12em;
 }
 
 .hl-icon-jarvis {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-xs);
-  background: rgba(0, 240, 255, 0.12);
-  border: 1px solid rgba(0, 240, 255, 0.4);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(212, 165, 116, 0.1);
+  border: 1px solid rgba(212, 165, 116, 0.22);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.25rem;
-  color: var(--arc-cyan);
-  box-shadow: 0 0 18px rgba(0, 240, 255, 0.35);
-  transform: translateZ(15px);
+  margin-bottom: 1.1rem;
+  color: var(--accent);
 }
 
 .hl-title {
-  font-size: clamp(0.98rem, 1.5vw, 1.1rem);
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 0.5rem;
-  font-family: var(--font-hud);
-  transform: translateZ(10px);
-  letter-spacing: 0.03em;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #efeae2;
+  margin-bottom: 0.45rem;
+  font-family: var(--font-display);
 }
 
 .hl-desc {
-  font-size: 0.85rem;
+  font-size: 0.86rem;
   color: var(--text-muted);
   line-height: 1.6;
-  font-family: var(--font-tech);
+  font-weight: 300;
 }
 
-/* 3D Stark Stats Row */
 .stats-jarvis {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  padding: clamp(1.25rem, 3vw, 2rem) 1rem;
+  padding: clamp(1.4rem, 3vw, 2rem) 1rem;
   text-align: center;
-  border: 1px solid rgba(0, 240, 255, 0.35);
-  background: rgba(4, 14, 30, 0.88);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.85), 0 0 30px rgba(0, 240, 255, 0.2);
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-lg);
 }
 
 .stat-item-jarvis {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: 1px solid rgba(0, 240, 255, 0.2);
-  padding: 0 clamp(0.5rem, 1.5vw, 1rem);
-  transform: translateZ(10px);
-  transition: transform 0.3s ease;
-}
-
-.stat-item-jarvis:hover {
-  transform: translateZ(25px) scale(1.05);
+  border-right: 1px solid rgba(232, 216, 196, 0.08);
+  padding: 0 1rem;
 }
 
 .stat-item-jarvis:last-child {
@@ -205,19 +149,17 @@
 }
 
 .stat-value {
-  font-size: clamp(1.65rem, 3.5vw, 2.3rem);
-  font-weight: 900;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 400;
   line-height: 1.1;
-  margin-bottom: 0.35rem;
-  font-family: var(--font-hud);
-  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+  font-family: var(--font-display);
+  color: var(--accent);
 }
 
 .stat-label {
-  font-size: clamp(0.72rem, 1.2vw, 0.82rem);
+  font-size: 0.78rem;
   color: var(--text-muted);
-  font-family: var(--font-hud);
-  font-weight: 600;
   letter-spacing: 0.04em;
 }
 
@@ -227,7 +169,7 @@
   }
   .stats-jarvis {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 1.4rem;
   }
   .stat-item-jarvis:nth-child(2) {
     border-right: none;
@@ -238,17 +180,13 @@
   .about-highlights-grid {
     grid-template-columns: 1fr;
   }
-  .bio-inner-pad {
-    padding: 1.25rem;
-  }
   .stats-jarvis {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
   }
   .stat-item-jarvis {
     border-right: none;
-    border-bottom: 1px solid rgba(0, 240, 255, 0.2);
-    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(232, 216, 196, 0.08);
+    padding-bottom: 1.1rem;
   }
   .stat-item-jarvis:last-child {
     border-bottom: none;

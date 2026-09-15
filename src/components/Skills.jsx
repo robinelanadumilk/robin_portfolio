@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Server, Database, Wrench, CheckCircle2, GraduationCap, Award, Zap } from 'lucide-react';
+import { Layout, Server, Database, Wrench, CheckCircle2, GraduationCap, Award } from 'lucide-react';
 import use3DTilt from '../utils/use3DTilt';
 import './Skills.css';
 
@@ -7,11 +7,11 @@ const SkillCategoryCard = ({ category }) => {
   const tiltRef = use3DTilt({ max: 10, perspective: 1100, scale: 1.02 });
 
   return (
-    <div ref={tiltRef} className="skill-category-card glass-panel card-3d jarvis-skill-card hud-corner-brackets">
+    <div ref={tiltRef} className="skill-category-card glass-panel card-3d jarvis-skill-card">
       <div className="category-header">
         <div className="cat-icon cat-icon-jarvis">{category.icon}</div>
         <div>
-          <span className="cat-prefix">// ARSENAL_MODULE</span>
+          <span className="cat-prefix">Capability</span>
           <h3 className="cat-title">{category.title}</h3>
         </div>
       </div>
@@ -45,68 +45,68 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      title: "Backend & Python Frameworks",
+      title: "Languages & Frameworks",
       icon: <Server size={20} />,
       skills: [
-        { name: "Python 3.x", level: 95 },
-        { name: "Django Framework", level: 92 },
-        { name: "Django REST Framework (DRF)", level: 90 },
-        { name: "RESTful API Architecture", level: 95 },
-        { name: "ReportLab & OpenPyXL", level: 88 }
+        { name: "Python & Django", level: 92 },
+        { name: "Django REST Framework", level: 90 },
+        { name: "JavaScript & React.js", level: 88 },
+        { name: "HTML5, CSS3 & Bootstrap", level: 90 },
+        { name: "ReportLab & OpenPyXL", level: 86 }
       ]
     },
     {
-      title: "Frontend Engineering",
+      title: "Foundations",
       icon: <Layout size={20} />,
       skills: [
-        { name: "HTML5 & Semantic UI", level: 95 },
-        { name: "CSS3 & Modern Animations", level: 92 },
-        { name: "JavaScript (ES6+)", level: 90 },
-        { name: "React.js & Three.js 3D", level: 88 },
-        { name: "Bootstrap & Responsive UI", level: 88 }
+        { name: "Object-Oriented Programming", level: 90 },
+        { name: "Data Structures & Algorithms", level: 85 },
+        { name: "Software Design Principles", level: 88 },
+        { name: "Debugging & troubleshooting", level: 90 },
+        { name: "Unit testing & CI/CD basics", level: 80 }
       ]
     },
     {
-      title: "Databases & Security Architecture",
+      title: "Databases & APIs",
       icon: <Database size={20} />,
       skills: [
         { name: "Microsoft SQL Server (MSSQL)", level: 90 },
-        { name: "MySQL Optimization", level: 88 },
-        { name: "Stored Procedures & Triggers", level: 88 },
-        { name: "Role-Based Access Control (RBAC)", level: 90 }
+        { name: "MySQL schema & queries", level: 88 },
+        { name: "Stored procedures, views & triggers", level: 86 },
+        { name: "REST APIs & secure authentication", level: 90 }
       ]
     },
     {
-      title: "DevOps & Integration Tools",
+      title: "Tools & Practices",
       icon: <Wrench size={20} />,
       skills: [
-        { name: "GIT (Version Control)", level: 95 },
-        { name: "Flutter (Backend Integration)", level: 85 },
-        { name: "Agile Development & Sprints", level: 90 },
-        { name: "Production Debugging & Profiling", level: 90 }
+        { name: "Git, Agile & code review", level: 92 },
+        { name: "AI-assisted development (Cursor, Claude, ChatGPT)", level: 88 },
+        { name: "Role-based access & audit logging", level: 86 },
+        { name: "Open to ColdFusion & PHP training", level: 70 }
       ]
     }
   ];
 
   const certificates = [
-    { name: "Database Management System", issuer: "NPTEL Verified" },
-    { name: "Python Basics", issuer: "Coursera Verified" },
-    { name: "MEAN STACK Web Development", issuer: "National Council for Tech & Training" },
-    { name: "Python and Data Visualization", issuer: "ShapeAI 7-Day Bootcamp" },
-    { name: "Introduction to Python & OpenCV", issuer: "PRODDEC College of Eng" },
-    { name: "C for Everyone: Programming", issuer: "Coursera Verified" }
+    { name: "Database Management System", issuer: "NPTEL" },
+    { name: "Python Basics", issuer: "Coursera" },
+    { name: "MEAN Stack Web Development", issuer: "National Council for Technology and Training" },
+    { name: "Python and Data Visualization", issuer: "ShapeAI 7-day bootcamp" },
+    { name: "Introduction to Python and OpenCV", issuer: "PRODDEC College of Engineering, Chengannur" },
+    { name: "C for Everyone: Programming Fundamentals", issuer: "Coursera" }
   ];
 
   const education = [
     {
-      degree: "MCA (Master of Computer Applications)",
-      institution: "Santhigiri College of Computer Science (MGU)",
-      period: "11/2021 – 08/2023",
+      degree: "MCA — Master of Computer Applications",
+      institution: "Santhigiri College of Computer Science (Mahatma Gandhi University), Thodupuzha",
+      period: "2021 – 2023",
       score: "69%"
     },
     {
-      degree: "Bachelor of Computer Application (BCA)",
-      institution: "Manonmaniam Sundaranar University",
+      degree: "BCA — Bachelor of Computer Applications",
+      institution: "Manonmaniam Sundaranar University, Tirunelveli",
       period: "2017 – 2020",
       score: "74%"
     }
@@ -116,11 +116,13 @@ const Skills = () => {
     <section id="skills" className="section skills-section">
       <div className="container">
         <div className="section-header">
-          <div className="section-subtitle">
-            <Zap size={14} /> J.A.R.V.I.S. // ARSENAL CAPABILITIES
+          <div className="section-index">
+            <span className="section-num">03</span>
+            <span className="section-rule"></span>
+            <span className="section-kicker">Skills & credentials</span>
           </div>
           <h2 className="section-title">
-            Technical Arsenal &amp; <span className="gradient-text">Proficiencies</span>
+            The stack I use to ship <span className="accent-italic">reliable software</span>
           </h2>
         </div>
 
@@ -134,14 +136,14 @@ const Skills = () => {
         {/* Education & Certifications Row */}
         <div className="credentials-row">
           {/* Education Card */}
-          <div ref={eduRef} className="credentials-card glass-panel card-3d jarvis-cred-card hud-corner-brackets">
+          <div ref={eduRef} className="credentials-card glass-panel card-3d jarvis-cred-card">
             <div className="credentials-header">
               <div className="cat-icon edu-icon cat-icon-jarvis">
                 <GraduationCap size={20} />
               </div>
               <div>
-                <span className="cat-prefix">// ACADEMIC_QUALIFICATIONS</span>
-                <h3 className="cat-title">Education Background</h3>
+                <span className="cat-prefix">Education</span>
+                <h3 className="cat-title">Academic background</h3>
               </div>
             </div>
             <div className="credentials-list">
@@ -153,7 +155,7 @@ const Skills = () => {
                   </div>
                   <div className="cred-badge-wrap">
                     <span className="cred-period">{edu.period}</span>
-                    <span className="cred-score score-jarvis">SCORE: {edu.score}</span>
+                    <span className="cred-score score-jarvis">{edu.score}</span>
                   </div>
                 </div>
               ))}
@@ -161,14 +163,14 @@ const Skills = () => {
           </div>
 
           {/* Certifications Card */}
-          <div ref={certRef} className="credentials-card glass-panel card-3d jarvis-cred-card hud-corner-brackets">
+          <div ref={certRef} className="credentials-card glass-panel card-3d jarvis-cred-card">
             <div className="credentials-header">
               <div className="cat-icon cert-icon cat-icon-jarvis">
                 <Award size={20} />
               </div>
               <div>
-                <span className="cat-prefix">// VERIFIED_CREDENTIALS</span>
-                <h3 className="cat-title">Verified Certifications</h3>
+                <span className="cat-prefix">Credentials</span>
+                <h3 className="cat-title">Certifications</h3>
               </div>
             </div>
             <div className="cert-grid">

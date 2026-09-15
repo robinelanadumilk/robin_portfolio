@@ -1,30 +1,23 @@
 import React, { useState } from 'react';
-import { ExternalLink, X, CheckCircle2, Zap, ArrowUpRight } from 'lucide-react';
+import { ExternalLink, X, CheckCircle2, ArrowUpRight } from 'lucide-react';
 import elanaduImg from '../assets/elanadu_milk_project.jpg';
 import use3DTilt from '../utils/use3DTilt';
 import './Projects.css';
 
 // Subcomponent with individual 3D tilt
-const ProjectCard = ({ project, onSelect }) => {
+const ProjectCard = ({ project, onSelect, featured }) => {
   const cardRef = use3DTilt({ max: 12, perspective: 1100, scale: 1.025 });
 
   return (
-    <div ref={cardRef} className="project-card glass-panel card-3d jarvis-project-card hud-corner-brackets">
-      <div className="project-terminal-bar">
-        <span className="dot red"></span>
-        <span className="dot yellow"></span>
-        <span className="dot green"></span>
-        <span className="project-port-tag">{project.portTag}</span>
-      </div>
-
+    <div ref={cardRef} className={`project-card glass-panel card-3d jarvis-project-card ${featured ? 'is-featured' : ''}`}>
       <div className="project-image-wrapper">
         <img src={project.image} alt={project.title} className="project-image" />
         <div className="project-overlay">
           <button
-            className="btn btn-primary preview-btn btn-jarvis"
+            className="btn btn-primary preview-btn"
             onClick={() => onSelect(project)}
           >
-            <Zap size={15} /> INSPECT BLUEPRINT
+            View case <ArrowUpRight size={15} />
           </button>
         </div>
         <span className="project-tag tag-jarvis">{project.tag}</span>
@@ -32,7 +25,7 @@ const ProjectCard = ({ project, onSelect }) => {
 
       <div className="project-info">
         <div className="project-cat-row">
-          <span className="project-category">// {project.category}</span>
+          <span className="project-category">{project.category}</span>
         </div>
         
         <h3 className="project-title">{project.title}</h3>
@@ -52,7 +45,7 @@ const ProjectCard = ({ project, onSelect }) => {
             className="details-link-jarvis"
             onClick={() => onSelect(project)}
           >
-            &gt; View Architecture &amp; Spec &rarr;
+            View architecture →
           </button>
           <div className="external-links">
             <a href={project.demoUrl} target="_blank" rel="noreferrer" className="icon-link-jarvis" aria-label="Live Demo" title="Launch Production URL">
@@ -72,14 +65,14 @@ const Projects = () => {
   const projectsData = [
     {
       id: 1,
-      title: "Elanadu Milk Enterprise ERP & Mobile App",
+      title: "Elanadu Milk HR & ERP Website",
       category: "ERP & Live",
-      tag: "Live Production Cluster",
-      portTag: "PORT: 443 [MSSQL/DRF]",
+      tag: "Live production",
+      portTag: "ERP · MSSQL · DRF",
       image: elanaduImg,
-      description: "Developed and maintained an enterprise ERP platform using Python, Django, and MSSQL to manage procurement, inventory, sales, distribution, attendance, and RESTful APIs.",
-      longDescription: "Comprehensive enterprise ERP platform built for Elanadu Milk Private Limited. Manages inventory, milk procurement, sales, distribution, stock transfers, employee attendance, trip management, automated PDF/Excel report generation, and RESTful API endpoints for Flutter mobile applications.",
-      techStack: ["Python", "Django", "Django REST Framework", "MSSQL", "ReportLab", "OpenPyXL", "Flutter API"],
+      description: "Built and maintain a full ERP system managing inventory, sales, distribution, attendance, and reporting via REST APIs, with a React frontend. Live at est.elanadu.in.",
+      longDescription: "Full ERP system for Elanadu Milk Private Limited, built with Python, Django, MSSQL, and React. Manages inventory, sales, distribution, attendance, and reporting through REST APIs, following OOP design principles. Frontend built with React.",
+      techStack: ["Python", "Django", "MSSQL", "React", "ReportLab", "OpenPyXL", "REST APIs"],
       features: [
         "Inventory, milk procurement, sales & distribution management system",
         "RESTful APIs for web and Flutter mobile apps with secure authentication",
@@ -93,8 +86,8 @@ const Projects = () => {
       id: 2,
       title: "MGUIF Mainsite Portal",
       category: "Full Stack",
-      tag: "Live Portal",
-      portTag: "PORT: 8080 [REACT/DRF]",
+      tag: "Live portal",
+      portTag: "React · Django REST",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
       description: "Scalable interactive web application with React.js frontend and Django REST API integration.",
       longDescription: "Developed a scalable and responsive frontend web application using React.js to support interactive user workflows. Integrated RESTful APIs for real-time data retrieval and submission with a Django backend.",
@@ -111,8 +104,8 @@ const Projects = () => {
       id: 3,
       title: "MGUIF High-Performance Computing (HPC)",
       category: "Full Stack",
-      tag: "HPC Computing Node",
-      portTag: "PORT: 9000 [HPC/API]",
+      tag: "HPC platform",
+      portTag: "React · HPC APIs",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
       description: "High-performance computing web interface built with React.js and Django REST Framework.",
       longDescription: "Developed a scalable frontend application using React.js to support complex HPC workflows. Integrated RESTful APIs for seamless, real-time data communication with the Django backend.",
@@ -129,8 +122,8 @@ const Projects = () => {
       id: 4,
       title: "MGUIF Startup Incubation Platform",
       category: "Full Stack",
-      tag: "Incubation Platform",
-      portTag: "PORT: 4000 [REACT/DRF]",
+      tag: "Incubation",
+      portTag: "React · Django REST",
       image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
       description: "Startup incubation platform featuring mentor coordination modules and automated UI workflows.",
       longDescription: "Developed a startup incubation platform frontend using React.js with secure API integration. Designed mentor coordination modules, automated UI workflows, dynamic onboarding forms, and resource management tools.",
@@ -147,8 +140,8 @@ const Projects = () => {
       id: 5,
       title: "ICSG Global Web Platform",
       category: "Full Stack",
-      tag: "ICSG Production",
-      portTag: "PORT: 3000 [REACT/API]",
+      tag: "Live platform",
+      portTag: "React · REST APIs",
       image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
       description: "Interactive web platform with optimized rendering state management and Django REST API integration.",
       longDescription: "Developed a scalable and responsive frontend using React.js for interactive user engagement. Integrated RESTful APIs for real-time data operations with a Django backend.",
@@ -165,8 +158,8 @@ const Projects = () => {
       id: 6,
       title: "Campuzine Publication System",
       category: "Frontend",
-      tag: "Live Pipeline",
-      portTag: "PORT: 5000 [REACT/JS]",
+      tag: "Live product",
+      portTag: "React · Django",
       image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80",
       description: "Digital campus publication app built with React.js and real-time Django REST API integration.",
       longDescription: "Ongoing live project of MGUIF. Developed a scalable frontend application using React.js for interactive user workflows, real-time data streaming, dynamic UI rendering, and secure user authentication.",
@@ -201,19 +194,18 @@ const Projects = () => {
     <section id="projects" className="section projects-section">
       <div className="container">
         <div className="section-header">
-          <div className="section-subtitle">
-            <Zap size={14} /> J.A.R.V.I.S. // CLASSIFIED BLUEPRINTS
+          <div className="section-index">
+            <span className="section-num">02</span>
+            <span className="section-rule"></span>
+            <span className="section-kicker">Selected work</span>
           </div>
           <h2 className="section-title">
-            Enterprise Deployments &amp; <span className="gradient-text">Applications</span>
+            Systems in the wild, not <span className="accent-italic">just case studies</span>
           </h2>
         </div>
 
-        {/* Filter Controls with Stark Buttons */}
         <div className="filter-wrapper">
-          <div className="filter-label">
-            <Zap size={15} /> // FILTER CLUSTER:
-          </div>
+          <div className="filter-label">Filter</div>
           <div className="filter-buttons">
             {categories.map((cat) => (
               <button
@@ -221,7 +213,7 @@ const Projects = () => {
                 className={`filter-btn filter-btn-jarvis ${activeFilter === cat ? 'active' : ''}`}
                 onClick={() => setActiveFilter(cat)}
               >
-                [{cat}]
+                {cat}
               </button>
             ))}
           </div>
@@ -234,6 +226,7 @@ const Projects = () => {
               key={project.id}
               project={project}
               onSelect={setSelectedProject}
+              featured={activeFilter === 'All' && project.id === 1}
             />
           ))}
         </div>
@@ -241,20 +234,17 @@ const Projects = () => {
         {/* 3D Stark Detail Modal */}
         {selectedProject && (
           <div className="modal-overlay modal-overlay-3d" onClick={() => setSelectedProject(null)}>
-            <div className="modal-content modal-content-3d jarvis-project-modal hud-corner-brackets" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-content modal-content-3d jarvis-project-modal" onClick={(e) => e.stopPropagation()}>
               <div className="modal-terminal-top">
-                <span className="dot red"></span>
-                <span className="dot yellow"></span>
-                <span className="dot green"></span>
-                <span className="modal-terminal-file">blueprint_{selectedProject.id}.spec // J.A.R.V.I.S. DIAGNOSTICS</span>
+                <span className="modal-terminal-file">{selectedProject.portTag}</span>
                 <button className="close-btn-top-jarvis" onClick={() => setSelectedProject(null)} aria-label="Close">
-                  <X size={16} /> [ESC]
+                  <X size={16} /> Close
                 </button>
               </div>
 
               <div className="modal-header">
                 <span className="modal-category category-pill-jarvis">{selectedProject.portTag}</span>
-                <h2 className="modal-title jarvis-glow-text">{selectedProject.title}</h2>
+                <h2 className="modal-title">{selectedProject.title}</h2>
               </div>
 
               <div className="modal-image-wrapper-jarvis">
@@ -262,10 +252,10 @@ const Projects = () => {
               </div>
 
               <div className="modal-body">
-                <h4 className="modal-subheading">// ARCHITECTURE &amp; DEPLOYMENT SPEC</h4>
+                <h4 className="modal-subheading">Overview</h4>
                 <p className="modal-text">{selectedProject.longDescription}</p>
 
-                <h4 className="modal-subheading">// SYSTEM CAPABILITIES &amp; INTEGRATIONS</h4>
+                <h4 className="modal-subheading">What shipped</h4>
                 <ul className="modal-features">
                   {selectedProject.features.map((feat, i) => (
                     <li key={i} className="feature-item feature-item-jarvis">
@@ -275,7 +265,7 @@ const Projects = () => {
                   ))}
                 </ul>
 
-                <h4 className="modal-subheading">// ACTIVE TECH STACK</h4>
+                <h4 className="modal-subheading">Stack</h4>
                 <div className="modal-tech-pills">
                   {selectedProject.techStack.map((tech, i) => (
                     <span key={i} className="tech-pill tech-pill-jarvis modal-pill">{tech}</span>
@@ -283,8 +273,8 @@ const Projects = () => {
                 </div>
 
                 <div className="modal-actions">
-                  <a href={selectedProject.demoUrl} target="_blank" rel="noreferrer" className="btn btn-primary btn-jarvis">
-                    <ExternalLink size={15} /> LAUNCH LIVE PRODUCTION URL
+                  <a href={selectedProject.demoUrl} target="_blank" rel="noreferrer" className="btn btn-primary">
+                    <ExternalLink size={15} /> Open live site
                   </a>
                 </div>
               </div>

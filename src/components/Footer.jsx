@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Mail, Zap, Shield } from 'lucide-react';
+import { ArrowUp, Mail, Phone, FileText, Globe } from 'lucide-react';
 import logoImg from '../assets/logo.jpg';
 import './Footer.css';
 
@@ -18,42 +18,43 @@ const Footer = ({ onOpenResume }) => {
                 <img src={logoImg} alt="Robin Roy Logo" className="brand-logo-img" />
               </div>
               <div className="brand-text-wrap">
-                <span className="brand-name">
-                  <span className="jarvis-prefix">J.A.R.V.I.S. // </span>ROBIN ROY
-                </span>
-                <span className="brand-status-sub">STARK AI ARCHITECTURE • PYTHON DJANGO</span>
+                <span className="brand-name">Robin Roy</span>
+                <span className="brand-status-sub">Web Developer · Thrissur</span>
               </div>
             </a>
             <p className="footer-bio">
-              Constructing and maintaining high-throughput enterprise web architectures, RESTful API gateways, and scalable MSSQL ERP systems.
+              Web Developer with 2+ years building production Python/Django applications, REST APIs, and MSSQL-backed ERP systems.
             </p>
           </div>
 
           <div className="footer-links">
-            <h4 className="footer-heading">// HUD_NAVIGATION</h4>
+            <h4 className="footer-heading">Index</h4>
             <ul>
-              <li><a href="#hero">&gt; [00] HOME / ARC CORE</a></li>
-              <li><a href="#about">&gt; [01] BIOGRAPHICAL DOSSIER</a></li>
-              <li><a href="#projects">&gt; [02] CLASSIFIED BLUEPRINTS</a></li>
-              <li><a href="#skills">&gt; [03] COMPUTATIONAL ARSENAL</a></li>
-              <li><a href="#experience">&gt; [04] MISSION TIMELINE</a></li>
-              <li><a href="#contact">&gt; [05] QUANTUM COMMS</a></li>
+              <li><a href="#hero">Intro</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#projects">Work</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#experience">Career</a></li>
+              <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
 
           <div className="footer-socials">
-            <h4 className="footer-heading">// COMMS_CHANNELS</h4>
+            <h4 className="footer-heading">Reach me</h4>
             <div className="footer-social-icons">
-              <a href="mailto:robinroy1225@gmail.com" className="social-btn social-btn-jarvis" aria-label="Email" title="robinroy1225@gmail.com">
+              <a href="mailto:robinroy1225@gmail.com" className="social-btn social-btn-jarvis" aria-label="Email">
                 <Mail size={16} />
               </a>
-              <a href="tel:8281189244" className="social-btn social-btn-jarvis" aria-label="Phone" title="+91 8281189244">
-                <Zap size={16} />
+              <a href="tel:+919778004292" className="social-btn social-btn-jarvis" aria-label="Phone">
+                <Phone size={16} />
+              </a>
+              <a href="https://linkedin.com/in/robinroy1225" target="_blank" rel="noreferrer" className="social-btn social-btn-jarvis" aria-label="LinkedIn">
+                <Globe size={16} />
               </a>
             </div>
             {onOpenResume && (
               <button onClick={onOpenResume} className="btn btn-secondary footer-dossier-btn">
-                <Shield size={14} /> Decrypt Dossier (CV)
+                <FileText size={14} /> Resume
               </button>
             )}
           </div>
@@ -61,11 +62,11 @@ const Footer = ({ onOpenResume }) => {
 
         <div className="footer-bottom">
           <p className="copyright">
-            &copy; {new Date().getFullYear()} Robin Roy // J.A.R.V.I.S. Mark-LXXXV Protocol [ARC REACTOR: 100% OPERATIONAL]
+            &copy; {new Date().getFullYear()} Robin Roy. Crafted with care in Kerala.
           </p>
 
           <button className="back-to-top back-to-top-jarvis" onClick={scrollToTop} aria-label="Back to top">
-            <ArrowUp size={16} /> TOP_ORBIT
+            <ArrowUp size={16} /> Top
           </button>
         </div>
       </div>

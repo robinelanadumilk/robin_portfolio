@@ -49,7 +49,6 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* Immersive 3D Global Space & Stark HUD Background */}
       <Global3DBackground />
 
       {/* Holographic Diagnostic Laser Scan Overlay */}
@@ -57,14 +56,33 @@ function App() {
         <div className="jarvis-diagnostic-laser-overlay">
           <div className="diagnostic-scanner-bar"></div>
           <div className="diagnostic-hud-hudtext">
-            <span>[J.A.R.V.I.S. FULL SPECTRUM SYSTEM DIAGNOSTIC RUNNING...]</span>
-            <span>ALL NODES: 100% OPERATIONAL // PYTHON 3.12 • DJANGO • MSSQL</span>
+            <span>System check in progress</span>
+            <span>Python · Django · MSSQL · React</span>
           </div>
         </div>
       )}
 
       {isLoading && <Loader onFinish={() => setIsLoading(false)} />}
       <Navbar activeSection={activeSection} onOpenResume={() => setIsResumeOpen(true)} />
+      <nav className="section-rail" aria-label="Section index">
+        {[
+          { id: 'hero', label: 'Intro' },
+          { id: 'about', label: 'About' },
+          { id: 'projects', label: 'Work' },
+          { id: 'skills', label: 'Skills' },
+          { id: 'experience', label: 'Career' },
+          { id: 'contact', label: 'Contact' },
+        ].map((item) => (
+          <a
+            key={item.id}
+            href={`#${item.id}`}
+            className={activeSection === item.id ? 'active' : ''}
+            aria-label={item.label}
+          >
+            <span>{item.label}</span>
+          </a>
+        ))}
+      </nav>
       <main className="main-content">
         <Hero onOpenResume={() => setIsResumeOpen(true)} />
         <About />
@@ -76,7 +94,6 @@ function App() {
       <Footer onOpenResume={() => setIsResumeOpen(true)} />
       <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
 
-      {/* Interactive J.A.R.V.I.S. AI Voice & HUD Command Hub */}
       <JarvisAssistant
         onOpenResume={() => setIsResumeOpen(true)}
         onRunDiagnostics={triggerDiagnosticScan}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Volume2, VolumeX, Sparkles, Zap, Shield, FileText, Send, X, Activity, RefreshCw } from 'lucide-react';
+import { Volume2, VolumeX, Sparkles, MessageCircle, Shield, FileText, Send, X, Activity, RefreshCw } from 'lucide-react';
 import './JarvisAssistant.css';
 
 const JarvisAssistant = ({ onOpenResume, onRunDiagnostics }) => {
@@ -10,7 +10,7 @@ const JarvisAssistant = ({ onOpenResume, onRunDiagnostics }) => {
   const [messages, setMessages] = useState([
     {
       sender: 'jarvis',
-      text: 'Good day. J.A.R.V.I.S. protocol online. I am at your service to analyze developer Robin Roy’s architectural specs, projects, or credentials. How may I assist, sir?'
+      text: 'Hi — I can walk you through Robin’s background, selected work, skills, or resume. What would you like to see?'
     }
   ]);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -20,7 +20,6 @@ const JarvisAssistant = ({ onOpenResume, onRunDiagnostics }) => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Voice Synthesizer
   const speakText = (text) => {
     if (!voiceEnabled || !('speechSynthesis' in window)) return;
 
@@ -30,11 +29,10 @@ const JarvisAssistant = ({ onOpenResume, onRunDiagnostics }) => {
     utterance.rate = 1.05;
     utterance.pitch = 0.95;
 
-    // Pick British or English voice if available
     const voices = window.speechSynthesis.getVoices();
-    const jarvisVoice = voices.find(v => v.lang.includes('en-GB') || v.name.includes('Daniel') || v.name.includes('George') || v.name.includes('Oliver') || v.lang.includes('en'));
-    if (jarvisVoice) {
-      utterance.voice = jarvisVoice;
+    const preferredVoice = voices.find(v => v.lang.includes('en-GB') || v.name.includes('Daniel') || v.name.includes('George') || v.name.includes('Oliver') || v.lang.includes('en'));
+    if (preferredVoice) {
+      utterance.voice = preferredVoice;
     }
 
     utterance.onstart = () => setIsSpeaking(true);
@@ -47,7 +45,7 @@ const JarvisAssistant = ({ onOpenResume, onRunDiagnostics }) => {
   const handleToggleVoice = () => {
     if (!voiceEnabled) {
       setVoiceEnabled(true);
-      speakText("Audio interface activated. J.A.R.V.I.S. vocal telemetry online.");
+      speakText("Voice replies are on.");
     } else {
       window.speechSynthesis?.cancel();
       setVoiceEnabled(false);
@@ -63,27 +61,23 @@ const JarvisAssistant = ({ onOpenResume, onRunDiagnostics }) => {
     setTimeout(() => {
       let reply = '';
       if (actionType === 'diagnostics') {
-        reply = "Initiating full-spectrum diagnostic scan across Robin Roy’s architecture. All 6+ live production clusters and MSSQL database layers are reporting 100% operational efficiency, sir.";
+        reply = "Quick check: the live production systems, Django APIs, and MSSQL layers in this portfolio are all accounted for.";
         if (onRunDiagnostics) onRunDiagnostics();
       } else if (actionType === 'profile') {
-        reply = "Robin Roy is a Python & Django Full Stack Developer with 3+ years of experience specializing in high-throughput REST APIs, ERP systems, React.js frontend architecture, and MSSQL database optimization.";
-        const element = document.getElementById('about');
-        element?.scrollIntoView({ behavior: 'smooth' });
+        reply = "Robin Roy is a Web Developer with 2+ years of experience building production Python/Django applications, REST APIs, React interfaces, and MSSQL systems.";
+        document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
       } else if (actionType === 'projects') {
-        reply = "Navigating to classified blueprints. Highlights include the enterprise Elanadu Milk ERP platform, MGUIF Mainsite, and High-Performance Computing (HPC) platforms.";
-        const element = document.getElementById('projects');
-        element?.scrollIntoView({ behavior: 'smooth' });
+        reply = "Taking you to selected work — including the Elanadu Milk ERP, MGUIF mainsite, and HPC platforms.";
+        document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
       } else if (actionType === 'skills') {
-        reply = "Accessing computational arsenal: Python 3.x, Django REST Framework, React.js, MSSQL stored procedures, ReportLab PDF generators, and Flutter backend integration.";
-        const element = document.getElementById('skills');
-        element?.scrollIntoView({ behavior: 'smooth' });
+        reply = "Core stack: Python, Django REST Framework, React, MSSQL, ReportLab, and Flutter API integration.";
+        document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
       } else if (actionType === 'resume') {
-        reply = "Decrypting Robin Roy’s holographic resume and technical credentials for your review now.";
+        reply = "Opening Robin’s resume now.";
         if (onOpenResume) onOpenResume();
       } else if (actionType === 'contact') {
-        reply = "Redirecting to Stark Secure Quantum Comms relay. You may transmit direct dispatches to robinroy1225@gmail.com or phone +91 8281189244.";
-        const element = document.getElementById('contact');
-        element?.scrollIntoView({ behavior: 'smooth' });
+        reply = "You can reach Robin at robinroy1225@gmail.com, +91 9778004292, or linkedin.com/in/robinroy1225.";
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
       }
 
       setMessages(prev => [...prev, { sender: 'jarvis', text: reply }]);
@@ -106,18 +100,18 @@ const JarvisAssistant = ({ onOpenResume, onRunDiagnostics }) => {
       let response = '';
 
       if (lower.includes('experience') || lower.includes('background') || lower.includes('who') || lower.includes('about')) {
-        response = "Robin Roy holds a Master of Computer Applications (MCA) and possesses 3+ years of software engineering experience across Elanadu Milk, MGUIF, Santhisoft Technologies, and Luminar Technolab.";
+        response = "Robin holds an MCA and has 2+ years of professional web development experience at Elanadu Milk, MGUIF, Santhisoft Technologies, and Luminar Technolab.";
       } else if (lower.includes('project') || lower.includes('elanadu') || lower.includes('mguif') || lower.includes('work')) {
-        response = "Key flagship projects include Elanadu Milk Enterprise ERP (managing procurement, sales, Flutter APIs, and automated ReportLab PDF reports) and the MGUIF React/Django web applications.";
+        response = "Flagship work includes the Elanadu Milk ERP (procurement, sales, Flutter APIs, PDF reports) and MGUIF React/Django applications.";
       } else if (lower.includes('skill') || lower.includes('tech') || lower.includes('python') || lower.includes('django') || lower.includes('react')) {
-        response = "Robin's core arsenal consists of Python 3.12, Django & Django REST Framework, React.js, Microsoft SQL Server (MSSQL), MySQL, OpenPyXL, and Git version control.";
+        response = "Core skills: Python, Django & Django REST Framework, React, Microsoft SQL Server, MySQL, OpenPyXL, and Git.";
       } else if (lower.includes('contact') || lower.includes('email') || lower.includes('hire') || lower.includes('phone')) {
-        response = "You can contact Robin directly at robinroy1225@gmail.com or via telephone at +91 8281189244. Transmission channels are fully open.";
+        response = "Email robinroy1225@gmail.com, call +91 9778004292, or visit linkedin.com/in/robinroy1225.";
       } else if (lower.includes('resume') || lower.includes('cv') || lower.includes('download')) {
-        response = "Opening the verified dossier now, sir.";
+        response = "Opening the resume now.";
         if (onOpenResume) onOpenResume();
       } else {
-        response = `J.A.R.V.I.S. analysis: Regarding "${userText}", Robin Roy is fully primed to design and deploy scalable Python Django web applications and enterprise REST architectures tailored to your mission requirements.`;
+        response = `On “${userText}”: Robin designs and ships Python Django applications and enterprise REST APIs. Ask about work, skills, or how to get in touch.`;
       }
 
       setMessages(prev => [...prev, { sender: 'jarvis', text: response }]);
@@ -128,31 +122,28 @@ const JarvisAssistant = ({ onOpenResume, onRunDiagnostics }) => {
 
   return (
     <div className={`jarvis-assistant-wrapper ${isOpen ? 'is-open' : ''}`}>
-      {/* Floating HUD Arc Reactor Core Orb Trigger */}
       {!isOpen && (
         <button
           className="jarvis-trigger-orb"
           onClick={() => {
             setIsOpen(true);
-            speakText("J.A.R.V.I.S. AI command console active. Ready for input.");
+            speakText("Hi. How can I help you explore this portfolio?");
           }}
-          aria-label="Open JARVIS AI Assistant"
-          title="Open J.A.R.V.I.S. Command Hub"
+          aria-label="Open portfolio guide"
+          title="Ask about this portfolio"
         >
           <div className="orb-arc-ring ring-1"></div>
           <div className="orb-arc-ring ring-2"></div>
           <div className="orb-arc-core">
-            <Zap size={20} className="orb-zap-icon" />
+            <MessageCircle size={20} className="orb-zap-icon" />
           </div>
           <div className="orb-pulse-wave"></div>
-          <span className="orb-hud-label">J.A.R.V.I.S.</span>
+          <span className="orb-hud-label">Ask</span>
         </button>
       )}
 
-      {/* Expanded Holographic HUD AI Window */}
       {isOpen && (
-        <div className="jarvis-hud-window glass-panel hud-corner-brackets">
-          {/* Header Bar */}
+        <div className="jarvis-hud-window glass-panel">
           <div className="jarvis-window-header">
             <div className="jarvis-header-left">
               <div className="jarvis-status-orb">
@@ -160,8 +151,8 @@ const JarvisAssistant = ({ onOpenResume, onRunDiagnostics }) => {
                 <div className="status-ripple"></div>
               </div>
               <div>
-                <div className="jarvis-hud-title">J.A.R.V.I.S. MARK-LXXXV</div>
-                <div className="jarvis-hud-sub">STARK AI NEURAL CONSOLE • ONLINE</div>
+                <div className="jarvis-hud-title">Portfolio guide</div>
+                <div className="jarvis-hud-sub">Ask about work, skills, or contact</div>
               </div>
             </div>
 
@@ -169,10 +160,10 @@ const JarvisAssistant = ({ onOpenResume, onRunDiagnostics }) => {
               <button
                 className={`jarvis-audio-btn ${voiceEnabled ? 'active' : ''}`}
                 onClick={handleToggleVoice}
-                title={voiceEnabled ? 'Mute Voice Synthesizer' : 'Enable J.A.R.V.I.S. Voice'}
+                title={voiceEnabled ? 'Mute voice' : 'Enable voice'}
               >
                 {voiceEnabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
-                <span className="audio-btn-label">{voiceEnabled ? 'VOICE ON' : 'MUTE'}</span>
+                <span className="audio-btn-label">{voiceEnabled ? 'Voice on' : 'Muted'}</span>
               </button>
 
               <button
@@ -181,16 +172,15 @@ const JarvisAssistant = ({ onOpenResume, onRunDiagnostics }) => {
                   window.speechSynthesis?.cancel();
                   setIsOpen(false);
                 }}
-                aria-label="Close J.A.R.V.I.S. Console"
+                aria-label="Close guide"
               >
                 <X size={16} />
               </button>
             </div>
           </div>
 
-          {/* Equalizer Wave bar if speaking */}
           <div className="jarvis-telemetry-strip">
-            <span className="telemetry-label">VOICE_SYNTH: {isSpeaking ? 'TRANSMITTING...' : 'IDLE'}</span>
+            <span className="telemetry-label">{isSpeaking ? 'Speaking…' : 'Ready'}</span>
             <div className="audio-visualizer-bars">
               <span></span>
               <span></span>
@@ -198,50 +188,48 @@ const JarvisAssistant = ({ onOpenResume, onRunDiagnostics }) => {
               <span></span>
               <span></span>
             </div>
-            <span className="telemetry-core">ARC_CORE: 100%</span>
+            <span className="telemetry-core">Robin Roy</span>
           </div>
 
-          {/* Quick Preset Directive Buttons */}
           <div className="jarvis-presets-row">
             <button
               className="preset-pill"
-              onClick={() => handleCommand("Run System Diagnostics", "diagnostics")}
+              onClick={() => handleCommand("Run a quick systems check", "diagnostics")}
             >
-              <Zap size={11} /> ⚡ Run Diagnostics
+              <Sparkles size={11} /> Systems
             </button>
             <button
               className="preset-pill"
-              onClick={() => handleCommand("Summarize Architecture", "profile")}
+              onClick={() => handleCommand("Tell me about Robin", "profile")}
             >
-              <Shield size={11} /> 👤 Developer Specs
+              <Shield size={11} /> About
             </button>
             <button
               className="preset-pill"
-              onClick={() => handleCommand("Access Project Blueprints", "projects")}
+              onClick={() => handleCommand("Show selected work", "projects")}
             >
-              <Activity size={11} /> 📂 Deployed Systems
+              <Activity size={11} /> Work
             </button>
             <button
               className="preset-pill"
-              onClick={() => handleCommand("Inspect Technical Arsenal", "skills")}
+              onClick={() => handleCommand("What is the tech stack?", "skills")}
             >
-              <Sparkles size={11} /> ⚙️ Skills Matrix
+              <Sparkles size={11} /> Skills
             </button>
             <button
               className="preset-pill"
-              onClick={() => handleCommand("Decrypt Resume Dossier", "resume")}
+              onClick={() => handleCommand("Open the resume", "resume")}
             >
-              <FileText size={11} /> 📜 Decrypt Dossier
+              <FileText size={11} /> Resume
             </button>
           </div>
 
-          {/* Chat Transcript Area */}
           <div className="jarvis-messages-container">
             {messages.map((m, idx) => (
               <div key={idx} className={`jarvis-msg-row ${m.sender}`}>
                 {m.sender === 'jarvis' && (
                   <div className="jarvis-msg-avatar">
-                    <Zap size={13} />
+                    <MessageCircle size={13} />
                   </div>
                 )}
                 <div className="jarvis-msg-bubble">
@@ -255,24 +243,22 @@ const JarvisAssistant = ({ onOpenResume, onRunDiagnostics }) => {
                   <RefreshCw size={13} className="spin-icon" />
                 </div>
                 <div className="jarvis-msg-bubble processing">
-                  <span>Processing Stark Neural Query...</span>
+                  <span>Thinking…</span>
                 </div>
               </div>
             )}
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Command Input Field */}
           <form className="jarvis-input-form" onSubmit={handleSendQuery}>
-            <div className="input-prefix">JARVIS &gt;</div>
             <input
               type="text"
               className="jarvis-cmd-input"
-              placeholder="Ask J.A.R.V.I.S. about Robin's experience, Django projects..."
+              placeholder="Ask about experience, projects, or how to reach Robin…"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
-            <button type="submit" className="jarvis-send-btn" aria-label="Send Directive">
+            <button type="submit" className="jarvis-send-btn" aria-label="Send message">
               <Send size={15} />
             </button>
           </form>

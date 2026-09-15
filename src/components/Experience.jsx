@@ -1,25 +1,19 @@
 import React from 'react';
-import { Calendar, MapPin, ChevronRight, Zap } from 'lucide-react';
+import { Calendar, MapPin, ChevronRight } from 'lucide-react';
 import use3DTilt from '../utils/use3DTilt';
 import './Experience.css';
 
-const TimelineCard = ({ exp, commitHash }) => {
+const TimelineCard = ({ exp }) => {
   const cardRef = use3DTilt({ max: 8, perspective: 1200, scale: 1.015 });
 
   return (
-    <div ref={cardRef} className="timeline-content glass-panel card-3d jarvis-exp-card hud-corner-brackets">
-      <div className="exp-terminal-bar">
-        <Zap size={13} className="jarvis-branch-icon" />
-        <span className="commit-hash">MISSION_LOG [0x{commitHash}]</span>
-        <span className="commit-branch">[STARK_CORE_DEPLOYMENT]</span>
-      </div>
-
+    <div ref={cardRef} className="timeline-content glass-panel card-3d jarvis-exp-card">
       <div className="exp-inner-pad">
         <div className="exp-header">
           <div>
             <span className="exp-type exp-type-jarvis">{exp.type}</span>
             <h3 className="exp-role">{exp.role}</h3>
-            <h4 className="exp-company jarvis-glow-text">@ {exp.company}</h4>
+            <h4 className="exp-company">{exp.company}</h4>
           </div>
           <div className="exp-meta">
             <span className="exp-period">
@@ -34,7 +28,7 @@ const TimelineCard = ({ exp, commitHash }) => {
         <p className="exp-desc">{exp.description}</p>
 
         <div className="exp-achievements">
-          <h5 className="achievements-title">// ENGINEERING &amp; ARCHITECTURAL CHANGELOG:</h5>
+          <h5 className="achievements-title">Selected work</h5>
           <ul>
             {exp.achievements.map((item, i) => (
               <li key={i} className="achieve-item-jarvis">
@@ -63,21 +57,15 @@ const Experience = () => {
       company: "Elanadu Milk Private Limited",
       location: "Thrissur",
       period: "09/2025 – Present",
-      type: "Full-Time Production",
-      description: "Develop and maintain enterprise-grade web applications, RESTful APIs, and core backend services using Python and Django.",
+      type: "Full-time",
+      description: "Develop and maintain enterprise-grade web applications and REST APIs using Python and Django for an ERP covering inventory, procurement, sales, distribution, stock transfers, attendance, and trip management.",
       achievements: [
-        "Develop and maintain enterprise-grade web applications and RESTful APIs using Python and Django.",
-        "Design, develop, and optimize backend services for inventory management, milk procurement, sales, distribution, stock transfers, attendance, trip management, and reporting systems.",
-        "Build and integrate REST APIs for web and Flutter mobile applications, ensuring secure authentication and efficient data exchange.",
-        "Develop responsive frontend interfaces using HTML, CSS, JavaScript, and Django templates.",
-        "Design and optimize Microsoft SQL Server (MSSQL) databases, including tables, stored procedures, views, triggers, and complex SQL queries.",
-        "Generate business reports in PDF and Excel formats using ReportLab and OpenPyXL.",
-        "Implement role-based access control, logging, audit trails, and API security for enterprise applications.",
-        "Integrate third-party APIs and internal business services to streamline operational workflows.",
-        "Debug, optimize, and maintain production applications, improving system performance and reliability.",
-        "Collaborate with cross-functional teams to gather requirements, develop new features, and deliver business-critical solutions.",
-        "Contribute to the development and backend integration of Flutter-based mobile applications.",
-        "Participate in version control, code reviews, testing, deployment, and ongoing system maintenance using Git."
+        "Build and integrate REST APIs consumed by web and Flutter mobile apps, with secure authentication and efficient data exchange, following OOP and clean-code principles.",
+        "Design and optimize Microsoft SQL Server databases, including stored procedures, views, triggers, and complex queries.",
+        "Develop responsive frontend interfaces using HTML, CSS, JavaScript, React, and Django templates.",
+        "Debug, troubleshoot, and optimize production systems — including legacy modules — to improve performance and reliability; manage releases via Git.",
+        "Use AI coding assistants to speed up implementation and code review, while validating generated code for correctness, security, and maintainability.",
+        "Generate automated business reports in PDF and Excel using ReportLab and OpenPyXL; implement role-based access control and audit trails."
       ],
       skills: ["Python", "Django", "Django REST Framework", "Microsoft SQL Server (MSSQL)", "HTML", "CSS", "JavaScript", "REST APIs", "Flutter API", "ReportLab", "OpenPyXL", "Git"]
     },
@@ -87,14 +75,14 @@ const Experience = () => {
       company: "MGUIF",
       location: "Ettumanoor, Kottayam",
       period: "06/2024 – 09/2025",
-      type: "Full-Time Deployment",
-      description: "Developed dynamic and responsive web applications and integrated RESTful APIs across multiple live projects.",
+      type: "Full-time",
+      description: "Developed dynamic, responsive web applications using Django, React.js, and JavaScript across five live production projects.",
       achievements: [
-        "Developed dynamic and responsive web applications using Django, React.js, and JavaScript.",
-        "Designed and integrated RESTful APIs for seamless client-server communication using Django REST Framework.",
-        "Built cross-device compatible interfaces with HTML, CSS, and Bootstrap for frontend components.",
-        "Utilized Git for version control and managed code across collaborative branches.",
-        "Participated in Agile development processes, including sprint planning, code reviews, and daily standups."
+        "Delivered five live production projects: Mainsite, HPC, Incubation Site, ICSG Website, and Campuzine.",
+        "Designed and integrated RESTful APIs for client-server communication using Django REST Framework and MySQL.",
+        "Built cross-device interfaces with HTML, CSS, and Bootstrap; implemented secure authentication and data handling.",
+        "Participated in Agile development: sprint planning, code reviews, and daily standups.",
+        "Used Git for version control across collaborative feature branches."
       ],
       skills: ["Django", "React.js", "JavaScript", "Django REST Framework", "HTML", "CSS", "Bootstrap", "Git", "MySQL"]
     },
@@ -104,12 +92,12 @@ const Experience = () => {
       company: "Santhisoft Technologies",
       location: "Thodupuzha, Idukki",
       period: "11/2023 – 05/2024",
-      type: "Full-Time Deployment",
-      description: "Built and integrated modular components for scalable single-page applications.",
+      type: "Full-time",
+      description: "Built and integrated modular components for scalable single-page applications using Angular.",
       achievements: [
         "Built and integrated modular components for scalable single-page applications using Angular.",
-        "Collaborated on frontend deployment strategies and maintained codebase using Git.",
-        "Contributed to UI/UX design discussions, focusing on scalability, modularity, and performance optimization."
+        "Collaborated on frontend deployment strategies and maintained the codebase using Git.",
+        "Contributed to UI/UX design discussions focused on scalability, modularity, and performance."
       ],
       skills: ["Angular", "Single-Page Applications", "UI/UX Design", "Scalability", "Git"]
     },
@@ -119,11 +107,10 @@ const Experience = () => {
       company: "Luminar Technolab",
       location: "Kochi",
       period: "11/2020 – 06/2021",
-      type: "Software Apprenticeship",
-      description: "Hands-on software application development and web engineering training.",
+      type: "Apprenticeship",
+      description: "Gained foundational experience in software development practices and web technologies.",
       achievements: [
-        "Built core Python application modules and learned web technology engineering practices.",
-        "Gained practical experience with collaborative version control using Git."
+        "Gained foundational experience in software development practices and web technologies."
       ],
       skills: ["Python", "Web Engineering", "Git"]
     }
@@ -133,11 +120,13 @@ const Experience = () => {
     <section id="experience" className="section experience-section">
       <div className="container">
         <div className="section-header">
-          <div className="section-subtitle">
-            <Zap size={14} /> J.A.R.V.I.S. // MISSION TIMELINE
+          <div className="section-index">
+            <span className="section-num">04</span>
+            <span className="section-rule"></span>
+            <span className="section-kicker">Career</span>
           </div>
           <h2 className="section-title">
-            Operational Career <span className="gradient-text">Audit Trail</span>
+            A path through <span className="accent-italic">live systems</span>
           </h2>
         </div>
 
@@ -145,9 +134,9 @@ const Experience = () => {
           {experiences.map((exp, index) => (
             <div key={index} className="timeline-item">
               <div className="timeline-dot timeline-dot-jarvis">
-                <Zap size={16} />
+                <span>{String(index + 1).padStart(2, '0')}</span>
               </div>
-              <TimelineCard exp={exp} commitHash={exp.commitHash} />
+              <TimelineCard exp={exp} />
             </div>
           ))}
         </div>
